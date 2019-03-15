@@ -6,13 +6,20 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>Archives: 2019 | yo this is tulingrui</title>
+  <title>1个困扰很久的问题 | yo this is tulingrui</title>
   <meta name="author" content="John Doe">
+  
+  <meta name="description" content="更新项目时很多时候只改了一部分功能所以 更新时也是本地编译后更新修改的部分文件
+本地研发环境运行时是毫无问题
+但是更新到服务器上时偶尔就会报出
+java (Ljava/lang/String;Ljava/lang/String;I)V
+差不多就这种的 有斜杠斜杠分开的不同类型的错误
+怀疑过是环境问题">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="1个困扰很久的问题">
   <meta property="og:site_name" content="yo this is tulingrui">
 
   
@@ -113,123 +120,133 @@ var _hmt = _hmt || [];
   	<div class="content">
     	 
 
-<!-- title -->
-<div class="page-header">
-  <h1 class="archive-title"><i class="fa fa-archive"></i> 2019</h1>
-</div>
 
-<div class="row page">
-  <!-- cols -->
-  
-  <div class="col-md-9">
 	
-
-	  <div id="top_search"></div>
-
-	  <div class="archive">
-		
-		
-		
-			
-			
-			<h4 class="archive-ul" data-toggle="collapse" data-target="#2019">2019<b class="caret"></b></h4>
-			<ul id="2019" class="collapse in">
-			
-		
-		<li class="listing-item">
-		<span class="date_class"> 2019-03-15 </span> &raquo;
-		
-		   <span class="title"><a href="/main/2019/03/15/1个部署时遇到的问题/">1个困扰很久的问题</a></span>
-		
-		</li>			
-		
-		
-		
-		<li class="listing-item">
-		<span class="date_class"> 2019-03-14 </span> &raquo;
-		
-		   <span class="title"><a href="/main/2019/03/14/Test/">Test</a></span>
-		
-		</li>			
-		
-		
-		
-		<li class="listing-item">
-		<span class="date_class"> 2019-03-14 </span> &raquo;
-		
-		   <span class="title"><a href="/main/2019/03/14/hello-world/">Hello World</a></span>
-		
-		</li>			
-		
-		</ul>
+		<div class="page-header">
+			<h1> 1个困扰很久的问题</h1>
 		</div>
-
-</div> <!-- col-md-9/col-md-12 -->
-
-
-<div class="col-md-3">
-	<div id="sidebar">
 	
-			
-  <div id="site_search">
-   <div class="form-group">
-    <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control">
-   </div>  
-  <div id="local-search-result"></div>
-  </div>
 
 
-		
-			
-		
-			
 
-		
-			
-<div class="widget">
-  <h4>Recent Posts</h4>
-  <ul class="entry list-unstyled">
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>更新项目时很多时候只改了一部分功能<br>所以 更新时也是本地编译后更新修改的部分文件</p>
+<p>本地研发环境运行时是毫无问题</p>
+<p>但是更新到服务器上时偶尔就会报出</p>
+<pre><code>java (Ljava/lang/String;Ljava/lang/String;I)V
+</code></pre><p>差不多就这种的 有斜杠斜杠分开的不同类型的错误</p>
+<p>怀疑过是环境问题导致错误</p>
+<p>但是我将所有文件一起发布时又没问题了</p>
+<p>反复之后发现 将与更新文件有相关调用的文件一起发布才可以</p>
+<p>但是不明白原因</p>
+<p>找了很久 发现这篇博客 </p>
+<blockquote>
+<p><a href="https://blog.csdn.net/dailywater/article/details/72848770" target="_blank" rel="noopener">https://blog.csdn.net/dailywater/article/details/72848770</a></p>
+</blockquote>
+<p><strong>方法签名不一致</strong></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
     
-      <li>
-        <a href="/main/2019/03/15/1个部署时遇到的问题/"><i class="fa fa-file-o"></i>1个困扰很久的问题</a>
-      </li>
     
-      <li>
-        <a href="/main/2019/03/14/Test/"><i class="fa fa-file-o"></i>Test</a>
-      </li>
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
     
-      <li>
-        <a href="/main/2019/03/14/hello-world/"><i class="fa fa-file-o"></i>Hello World</a>
-      </li>
+
+    <a href="/main/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-  </ul>
+    <a href="/main/2019/03/14/Test/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
 </div>
 
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+    <div id="disqus_thread" class="ds-thread">
+        <script type="text/javascript">
+            /**
+             * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+                /*
+                 var disqus_config = function () {
+                 this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                 };
+                 */
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+
+                s.src = '//.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </div>
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
 		
-			
-<div class="widget">
-	<h4>Links</h4>
-	<ul class="blogroll list-unstyled">
 	
-		<li><i class="fa fa-github"></i><a href="https://github.com/wzpan/hexo-theme-freemind" title="Freemind's Github repository." target="_blank" ]);">Freemind</a></li>
-	
-		<li><i class="fa fa-github"></i><a href="https://github.com/kristopolous/BOOTSTRA.386" title="BOOTSTRA.386's Github repository." target="_blank" ]);">BOOTSTRA.386</a></li>
-	
-		<li><i class="fa fa-github"></i><a href="https://github.com/blackshow/hexo-theme-freemind.386" title="Freemind.386's Github repository." target="_blank" ]);">Freemind.386</a></li>
-	
-		<li><i class="fa fa-github"></i><a href="http://www.github.com/blackshow" title="My Github account." target="_blank" ]);">My Github</a></li>
-	
-	</ul>
-</div>
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
 
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-03-15 
+	</div>
+	
 
+	<!-- categories -->
+    
+
+	<!-- tags -->
 		
-	</div> <!-- sidebar -->
-</div> <!-- col-md-3 -->
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
 
 
 
-</div>
 	</div>
   </div>
   <div class="container-narrow">

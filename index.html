@@ -141,6 +141,47 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/main/2019/03/15/1个部署时遇到的问题/">1个困扰很久的问题</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-15  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>更新项目时很多时候只改了一部分功能<br>所以 更新时也是本地编译后更新修改的部分文件</p>
+<p>本地研发环境运行时是毫无问题</p>
+<p>但是更新到服务器上时偶尔就会报出</p>
+<pre><code>java (Ljava/lang/String;Ljava/lang/String;I)V
+</code></pre><p>差不多就这种的 有斜杠斜杠分开的不同类型的错误</p>
+<p>怀疑过是环境问题导致错误</p>
+<p>但是我将所有文件一起发布时又没问题了</p>
+<p>反复之后发现 将与更新文件有相关调用的文件一起发布才可以</p>
+<p>但是不明白原因</p>
+<p>找了很久 发现这篇博客 </p>
+<blockquote>
+<p><a href="https://blog.csdn.net/dailywater/article/details/72848770" target="_blank" rel="noopener">https://blog.csdn.net/dailywater/article/details/72848770</a></p>
+</blockquote>
+<p><strong>方法签名不一致</strong></p>
+
+	
+	</div>
+  <a type="button" href="/main/2019/03/15/1个部署时遇到的问题/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/main/2019/03/14/Test/">Test</a>
 		</h3>
 		</div>
@@ -240,6 +281,10 @@ var _hmt = _hmt || [];
 <div class="widget">
   <h4>Recent Posts</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/main/2019/03/15/1个部署时遇到的问题/"><i class="fa fa-file-o"></i>1个困扰很久的问题</a>
+      </li>
     
       <li>
         <a href="/main/2019/03/14/Test/"><i class="fa fa-file-o"></i>Test</a>
