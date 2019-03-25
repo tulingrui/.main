@@ -5,6 +5,19 @@
     
     <entry>
       <title>1个困扰很久的问题</title>
+      <link href="/main/2019/03/25/rsa/"/>
+      <url>/main/2019/03/25/rsa/</url>
+      
+        <content type="html"><![CDATA[<h2 id="RSA加密导致内存溢出"><a href="#RSA加密导致内存溢出" class="headerlink" title="RSA加密导致内存溢出"></a>RSA加密导致内存溢出</h2><p>近期做的一个功能需要用到RSA加密</p><p>之前没接触过</p><p>搜了一下然后就开始做了 功能完成上线测试时就发现问题了</p><p>内存飙升且降不下来 直到内存溢出Tomcat自动关闭了</p><p>再搜了1下 好多人都遇到这个问题 原因就是 </p><pre><code>BouncyCastleProvider </code></pre><p>这个类 每次 new一个就多一个，不回收</p><p>所以内存见增不见减</p><p>所有new的地方改成调用 getInstance()</p><pre><code>private static volatile BouncyCastleProvider bouncyCastleProvider = null;public static BouncyCastleProvider getInstance() {        if(null == bouncyCastleProvider){            synchronized(RSAUtil.class){                if(null == bouncyCastleProvider){                    bouncyCastleProvider = new BouncyCastleProvider();                }            }        }        return bouncyCastleProvider; }</code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>1个困扰很久的问题</title>
       <link href="/main/2019/03/15/1%E4%B8%AA%E9%83%A8%E7%BD%B2%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
       <url>/main/2019/03/15/1%E4%B8%AA%E9%83%A8%E7%BD%B2%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
       

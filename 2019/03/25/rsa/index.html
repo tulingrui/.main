@@ -9,12 +9,13 @@
   <title>1个困扰很久的问题 | yo this is tulingrui</title>
   <meta name="author" content="John Doe">
   
-  <meta name="description" content="更新项目时很多时候只改了一部分功能所以 更新时也是本地编译后更新修改的部分文件
-本地研发环境运行时是毫无问题
-但是更新到服务器上时偶尔就会报出
-java (Ljava/lang/String;Ljava/lang/String;I)V
-差不多就这种的 有斜杠斜杠分开的不同类型的错误
-怀疑过是环境问题">
+  <meta name="description" content="RSA加密导致内存溢出近期做的一个功能需要用到RSA加密
+之前没接触过
+搜了一下然后就开始做了 功能完成上线测试时就发现问题了
+内存飙升且降不下来 直到内存溢出Tomcat自动关闭了
+再搜了1下 好多人都遇到这个问题 原因就是 
+BouncyCastleProvider 
+这个类 每次 new一个就">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -140,21 +141,27 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <p>更新项目时很多时候只改了一部分功能<br>所以 更新时也是本地编译后更新修改的部分文件</p>
-<p>本地研发环境运行时是毫无问题</p>
-<p>但是更新到服务器上时偶尔就会报出</p>
-<pre><code>java (Ljava/lang/String;Ljava/lang/String;I)V
-</code></pre><p>差不多就这种的 有斜杠斜杠分开的不同类型的错误</p>
-<p>怀疑过是环境问题导致错误</p>
-<p>但是我将所有文件一起发布时又没问题了</p>
-<p>反复之后发现 将与更新文件有相关调用的文件一起发布才可以</p>
-<p>但是不明白原因</p>
-<p>找了很久 发现这篇博客 </p>
-<blockquote>
-<p><a href="https://blog.csdn.net/dailywater/article/details/72848770" target="_blank" rel="noopener">https://blog.csdn.net/dailywater/article/details/72848770</a></p>
-</blockquote>
-<p><strong>方法签名不一致</strong></p>
-	  
+	  <h2 id="RSA加密导致内存溢出"><a href="#RSA加密导致内存溢出" class="headerlink" title="RSA加密导致内存溢出"></a>RSA加密导致内存溢出</h2><p>近期做的一个功能需要用到RSA加密</p>
+<p>之前没接触过</p>
+<p>搜了一下然后就开始做了 功能完成上线测试时就发现问题了</p>
+<p>内存飙升且降不下来 直到内存溢出Tomcat自动关闭了</p>
+<p>再搜了1下 好多人都遇到这个问题 原因就是 </p>
+<pre><code>BouncyCastleProvider 
+</code></pre><p>这个类 每次 new一个就多一个，不回收</p>
+<p>所以内存见增不见减</p>
+<p>所有new的地方改成调用 getInstance()</p>
+<pre><code>private static volatile BouncyCastleProvider bouncyCastleProvider = null;
+public static BouncyCastleProvider getInstance() {
+        if(null == bouncyCastleProvider){
+            synchronized(RSAUtil.class){
+                if(null == bouncyCastleProvider){
+                    bouncyCastleProvider = new BouncyCastleProvider();
+                }
+            }
+        }
+        return bouncyCastleProvider;
+ }
+</code></pre>	  
 	</div>
 
 	<div>
@@ -163,12 +170,12 @@ var _hmt = _hmt || [];
 
     
     
-    <a href="/main/2019/03/25/rsa/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
     
 
     <a href="/main/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/main/2019/03/14/Test/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    <a href="/main/2019/03/15/1个部署时遇到的问题/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
     
 
     
@@ -221,7 +228,7 @@ var _hmt = _hmt || [];
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2019-03-15 
+	2019-03-25 
 	</div>
 	
 
