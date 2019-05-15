@@ -141,6 +141,95 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/main/2019/05/15/今天赚了1000块/">今天赚了1000块 耶</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-05-15  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>##今天赚了1000块 耶##</p>
+<p>去年2018年九十月份买了4000的BTC</p>
+<p>才零点零零几 接着就开始跌跌跌跌，偶尔看一眼 又跌了 最后一次看 卖出去只能卖2000多，就没再想着了</p>
+<p>今天突然看到新闻 喔嚯</p>
+<p><img src="https://i.imgur.com/pxuy2kF.png" alt></p>
+<p><strong>BTC突破8000美元了</strong></p>
+<p>打开遗忘在手机角落里的交易软件 嗯 密码我都忘了 找回1下</p>
+<p>然后进交易中看下 预估价值变5000多了 nice</p>
+<p>赶紧出手 小赚1000块 hahah 够买挺多零食了</p>
+
+	
+	</div>
+  <a type="button" href="/main/2019/05/15/今天赚了1000块/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/main/2019/05/07/记一个初试WebSocket遇到的问题/">记一个初试WebSocket遇到的问题</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-05-07  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>记一个初试WebSocket遇到的问题</p>
+<p>本机运行没问题，打包时报出</p>
+<pre><code>java.lang.IllegalStateException: javax.websocket.server.ServerContainer not available
+</code></pre><p>我把打包测试关掉之后没问题了</p>
+<pre><code>&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;source&gt;1.8&lt;/source&gt;
+                &lt;target&gt;1.8&lt;/target&gt;
+                &lt;encoding&gt;UTF-8&lt;/encoding&gt;
+                &lt;skip&gt;true&lt;/skip&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre><p>可以打包了</p>
+<p>而部署到服务器上运行时又报出</p>
+<pre><code>java.lang.IllegalStateException: Failed to register @ServerEndpoint class
+</code></pre><p>搜了一下<br>需要改一下WebSocketConfig，将@Configuration 删掉</p>
+<p>这时又报出了一个错误</p>
+<pre><code>Failed to start component [StandardEngine[Catalina].StandardHost[localhost]]
+</code></pre><p>搜了一下说是Tomcat问题</p>
+<p>换了个Tomcat8 OK了</p>
+
+	
+	</div>
+  <a type="button" href="/main/2019/05/07/记一个初试WebSocket遇到的问题/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/main/2019/04/17/记一事故md/">记一事故</a>
 		</h3>
 		</div>
@@ -391,6 +480,14 @@ public static BouncyCastleProvider getInstance() {
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/main/2019/05/15/今天赚了1000块/"><i class="fa fa-file-o"></i>今天赚了1000块 耶</a>
+      </li>
+    
+      <li>
+        <a href="/main/2019/05/07/记一个初试WebSocket遇到的问题/"><i class="fa fa-file-o"></i>记一个初试WebSocket遇到的问题</a>
+      </li>
+    
+      <li>
         <a href="/main/2019/04/17/记一事故md/"><i class="fa fa-file-o"></i>记一事故</a>
       </li>
     
@@ -400,14 +497,6 @@ public static BouncyCastleProvider getInstance() {
     
       <li>
         <a href="/main/2019/03/15/1个部署时遇到的问题/"><i class="fa fa-file-o"></i>1个困扰很久的问题</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/03/14/Test/"><i class="fa fa-file-o"></i>Test</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/03/14/hello-world/"><i class="fa fa-file-o"></i>Hello World</a>
       </li>
     
   </ul>
