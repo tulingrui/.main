@@ -141,6 +141,46 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/main/2019/05/22/微信授权时出现了一直不断获取授权的问题/">微信授权时出现了一直不断获取授权的问题</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-05-22  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>##微信授权时出现了一直不断获取授权的问题##</p>
+<pre><code>发生的问题
+</code></pre><p>在进行获取微信授权时出现了一直不断获取授权的情况</p>
+<pre><code>原因
+</code></pre><blockquote>
+<p>前端接口访问时带上了项目名 <a href="http://xxxx/项目名/action" target="_blank" rel="noopener">http://xxxx/项目名/action</a></p>
+</blockquote>
+<p>因为后端做了虚拟路径 所以访问时可以不带项目名 也可以带项目名 </p>
+<p>而后端设置的微信回调的地址是不带项目名的</p>
+<p>这时在进行获取微信授权时就发生了一直不断的获取授权的情况</p>
+<p>刚开始打开控制台看了一下 发现每次的sessionId都是不一样的</p>
+<p>排查了很久 还以为是nginx配置的有问题</p>
+<p>最后发现请求URL中带了项目名，突然想到回调的是不带项目名的 所以session每次都是不一样的</p>
+
+	
+	</div>
+  <a type="button" href="/main/2019/05/22/微信授权时出现了一直不断获取授权的问题/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/main/2019/05/15/今天赚了1000块/">今天赚了1000块 耶</a>
 		</h3>
 		</div>
@@ -480,6 +520,10 @@ public static BouncyCastleProvider getInstance() {
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/main/2019/05/22/微信授权时出现了一直不断获取授权的问题/"><i class="fa fa-file-o"></i>微信授权时出现了一直不断获取授权的问题</a>
+      </li>
+    
+      <li>
         <a href="/main/2019/05/15/今天赚了1000块/"><i class="fa fa-file-o"></i>今天赚了1000块 耶</a>
       </li>
     
@@ -493,10 +537,6 @@ public static BouncyCastleProvider getInstance() {
     
       <li>
         <a href="/main/2019/03/25/rsa/"><i class="fa fa-file-o"></i>RSA加密导致内存溢出</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/03/15/1个部署时遇到的问题/"><i class="fa fa-file-o"></i>1个困扰很久的问题</a>
       </li>
     
   </ul>

@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>微信授权时出现了一直不断获取授权的问题</title>
+      <link href="/main/2019/05/22/%E5%BE%AE%E4%BF%A1%E6%8E%88%E6%9D%83%E6%97%B6%E5%87%BA%E7%8E%B0%E4%BA%86%E4%B8%80%E7%9B%B4%E4%B8%8D%E6%96%AD%E8%8E%B7%E5%8F%96%E6%8E%88%E6%9D%83%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+      <url>/main/2019/05/22/%E5%BE%AE%E4%BF%A1%E6%8E%88%E6%9D%83%E6%97%B6%E5%87%BA%E7%8E%B0%E4%BA%86%E4%B8%80%E7%9B%B4%E4%B8%8D%E6%96%AD%E8%8E%B7%E5%8F%96%E6%8E%88%E6%9D%83%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<p>##微信授权时出现了一直不断获取授权的问题##</p><pre><code>发生的问题</code></pre><p>在进行获取微信授权时出现了一直不断获取授权的情况</p><pre><code>原因</code></pre><blockquote><p>前端接口访问时带上了项目名 <a href="http://xxxx/项目名/action" target="_blank" rel="noopener">http://xxxx/项目名/action</a></p></blockquote><p>因为后端做了虚拟路径 所以访问时可以不带项目名 也可以带项目名 </p><p>而后端设置的微信回调的地址是不带项目名的</p><p>这时在进行获取微信授权时就发生了一直不断的获取授权的情况</p><p>刚开始打开控制台看了一下 发现每次的sessionId都是不一样的</p><p>排查了很久 还以为是nginx配置的有问题</p><p>最后发现请求URL中带了项目名，突然想到回调的是不带项目名的 所以session每次都是不一样的</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>今天赚了1000块 耶</title>
       <link href="/main/2019/05/15/%E4%BB%8A%E5%A4%A9%E8%B5%9A%E4%BA%861000%E5%9D%97/"/>
       <url>/main/2019/05/15/%E4%BB%8A%E5%A4%A9%E8%B5%9A%E4%BA%861000%E5%9D%97/</url>
