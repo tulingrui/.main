@@ -174,7 +174,7 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/main/2019/05/22/微信授权时出现了一直不断获取授权的问题/">微信授权时出现了一直不断获取授权的问题</a>
+			<a href="/main/2019/05/22/微信授权时出现了一直不断获取授权的问题/">微信授权时一直不断获取授权的问题记录</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -188,19 +188,19 @@ var _hmt = _hmt || [];
   <div class="row">
 	
 	
-		<p>##微信授权时出现了一直不断获取授权的问题##</p>
-<pre><code>发生的问题
-</code></pre><p>在进行获取微信授权时出现了一直不断获取授权的情况</p>
-<pre><code>原因
-</code></pre><blockquote>
+		<p>##微信授权时一直不断获取授权的问题记录##</p>
+<p>最近要开发新的微信功能，在本地搭环境测试时获取微信授权时出现了一直不断获取授权的情况</p>
+<p>都做了这么久了，之前也没遇到过这个问题，想了半天才找到原因</p>
+<blockquote>
 <p>前端接口访问时带上了项目名 <a href="http://xxxx/项目名/action" target="_blank" rel="noopener">http://xxxx/项目名/action</a></p>
 </blockquote>
 <p>因为后端做了虚拟路径 所以访问时可以不带项目名 也可以带项目名 </p>
 <p>而后端设置的微信回调的地址是不带项目名的</p>
 <p>这时在进行获取微信授权时就发生了一直不断的获取授权的情况</p>
 <p>刚开始打开控制台看了一下 发现每次的sessionId都是不一样的</p>
-<p>排查了很久 还以为是nginx配置的有问题</p>
+<p>排查了半天 还以为是nginx配置的有问题</p>
 <p>最后发现请求URL中带了项目名，突然想到回调的是不带项目名的 所以session每次都是不一样的</p>
+<p>太久没开发微信 想不起来这个事 居然犯这种傻问题 真是浪费时间….</p>
 
 	
 	</div>
@@ -232,7 +232,6 @@ var _hmt = _hmt || [];
 <p>去年2018年九十月份买了4000的BTC</p>
 <p>才零点零零几 接着就开始跌跌跌跌，偶尔看一眼 又跌了 最后一次看 卖出去只能卖2000多，就没再想着了</p>
 <p>今天突然看到新闻 喔嚯</p>
-<p><img src="https://i.imgur.com/pxuy2kF.png" alt></p>
 <p><strong>BTC突破8000美元了</strong></p>
 <p>打开遗忘在手机角落里的交易软件 嗯 密码我都忘了 找回1下</p>
 <p>然后进交易中看下 预估价值变5000多了 nice</p>
@@ -303,7 +302,7 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/main/2019/04/17/记一事故md/">记一事故</a>
+			<a href="/main/2019/04/17/记一事故md/">记一个项目事故</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -317,7 +316,7 @@ var _hmt = _hmt || [];
   <div class="row">
 	
 	
-		<h2 id="记一事故"><a href="#记一事故" class="headerlink" title="记一事故"></a>记一事故</h2><p>最近两个月做了一个支持服务 </p>
+		<h2 id="记一个项目事故"><a href="#记一个项目事故" class="headerlink" title="记一个项目事故"></a>记一个项目事故</h2><p>最近两个月做了一个支持服务 </p>
 <p>同事的设备会有源源不断的请求来查询账号</p>
 <p>而多数请求是需要我去调用另外一个厂家（硬件合作关系）的查询接口得到账号</p>
 <p><strong>（这个厂家不给用户提供查询账号的接口，而他们的官网登录后却可以查到，没办法 我只能去扒取他们的内部接口调用）</strong></p>
@@ -344,14 +343,8 @@ var _hmt = _hmt || [];
 <p>发生错误又不确定怎么处理的时候，最好的办法就是什么都不做</p>
 </blockquote>
 <p>确实做了很多错误处理，也将那个Key返回了，但我没有用最优的方式保障服务</p>
-<p>所以现在假设 设备对于和厂家交互中使用账号是必定可用</p>
-<p>解决方案就是</p>
-<pre><code>首先 我将所有账号信息down下来存储起来
-服务依旧会去厂家接口查询账号
-如果发现返回账号信息有更变 就修改我存储起来的信息同时返回账号
-如果调用厂家接口查询失败了 就查询我存储的账号信息并返回账号
-如果既调用厂家的失败，又没查询到已存储的，就返回空
-</code></pre>
+<p>吃一堑长一智 赶紧把处理方案实现，这次事故后也将代码重新审查一番 更加完善了一些</p>
+
 	
 	</div>
   <a type="button" href="/main/2019/04/17/记一事故md/#more" class="btn btn-default more">Read More</a>
@@ -646,7 +639,7 @@ public static BouncyCastleProvider getInstance() {
       </li>
     
       <li>
-        <a href="/main/2019/05/22/微信授权时出现了一直不断获取授权的问题/"><i class="fa fa-file-o"></i>微信授权时出现了一直不断获取授权的问题</a>
+        <a href="/main/2019/05/22/微信授权时出现了一直不断获取授权的问题/"><i class="fa fa-file-o"></i>微信授权时一直不断获取授权的问题记录</a>
       </li>
     
       <li>
@@ -658,7 +651,7 @@ public static BouncyCastleProvider getInstance() {
       </li>
     
       <li>
-        <a href="/main/2019/04/17/记一事故md/"><i class="fa fa-file-o"></i>记一事故</a>
+        <a href="/main/2019/04/17/记一事故md/"><i class="fa fa-file-o"></i>记一个项目事故</a>
       </li>
     
   </ul>

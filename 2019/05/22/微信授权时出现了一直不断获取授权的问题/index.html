@@ -6,23 +6,21 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>微信授权时出现了一直不断获取授权的问题 | yo this is tulingrui</title>
+  <title>微信授权时一直不断获取授权的问题记录 | yo this is tulingrui</title>
   <meta name="author" content="John Doe">
   
-  <meta name="description" content="##微信授权时出现了一直不断获取授权的问题##
-发生的问题
-在进行获取微信授权时出现了一直不断获取授权的情况
-原因
+  <meta name="description" content="##微信授权时一直不断获取授权的问题记录##
+最近要开发新的微信功能，在本地搭环境测试时获取微信授权时出现了一直不断获取授权的情况
+都做了这么久了，之前也没遇到过这个问题，想了半天才找到原因
 
 前端接口访问时带上了项目名 http://xxxx/项目名/action
 
-因为后端做了虚拟路径 所以访问时可以不带项目名 也可以带项目名 
-而后端设置的微信回调的地址是不带项目名的">
+因为后端做了虚拟路径 所以访问">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="微信授权时出现了一直不断获取授权的问题">
+  <meta property="og:title" content="微信授权时一直不断获取授权的问题记录">
   <meta property="og:site_name" content="yo this is tulingrui">
 
   
@@ -126,7 +124,7 @@ var _hmt = _hmt || [];
 
 	
 		<div class="page-header">
-			<h1> 微信授权时出现了一直不断获取授权的问题</h1>
+			<h1> 微信授权时一直不断获取授权的问题记录</h1>
 		</div>
 	
 
@@ -143,19 +141,19 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <p>##微信授权时出现了一直不断获取授权的问题##</p>
-<pre><code>发生的问题
-</code></pre><p>在进行获取微信授权时出现了一直不断获取授权的情况</p>
-<pre><code>原因
-</code></pre><blockquote>
+	  <p>##微信授权时一直不断获取授权的问题记录##</p>
+<p>最近要开发新的微信功能，在本地搭环境测试时获取微信授权时出现了一直不断获取授权的情况</p>
+<p>都做了这么久了，之前也没遇到过这个问题，想了半天才找到原因</p>
+<blockquote>
 <p>前端接口访问时带上了项目名 <a href="http://xxxx/项目名/action" target="_blank" rel="noopener">http://xxxx/项目名/action</a></p>
 </blockquote>
 <p>因为后端做了虚拟路径 所以访问时可以不带项目名 也可以带项目名 </p>
 <p>而后端设置的微信回调的地址是不带项目名的</p>
 <p>这时在进行获取微信授权时就发生了一直不断的获取授权的情况</p>
 <p>刚开始打开控制台看了一下 发现每次的sessionId都是不一样的</p>
-<p>排查了很久 还以为是nginx配置的有问题</p>
+<p>排查了半天 还以为是nginx配置的有问题</p>
 <p>最后发现请求URL中带了项目名，突然想到回调的是不带项目名的 所以session每次都是不一样的</p>
+<p>太久没开发微信 想不起来这个事 居然犯这种傻问题 真是浪费时间….</p>
 	  
 	</div>
 

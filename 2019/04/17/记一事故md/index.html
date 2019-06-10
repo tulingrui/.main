@@ -6,19 +6,19 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>记一事故 | yo this is tulingrui</title>
+  <title>记一个项目事故 | yo this is tulingrui</title>
   <meta name="author" content="John Doe">
   
-  <meta name="description" content="记一事故最近两个月做了一个支持服务 
+  <meta name="description" content="记一个项目事故最近两个月做了一个支持服务 
 同事的设备会有源源不断的请求来查询账号
 而多数请求是需要我去调用另外一个厂家（硬件合作关系）的查询接口得到账号
 （这个厂家不给用户提供查询账号的接口，而他们的官网登录后却可以查到，没办法 我只能去扒取他们的内部接口调用）
-服务正式上线使用持续了一个多月 没有问题">
+服务正式上线使用持续了一个多月 没">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="记一事故">
+  <meta property="og:title" content="记一个项目事故">
   <meta property="og:site_name" content="yo this is tulingrui">
 
   
@@ -122,7 +122,7 @@ var _hmt = _hmt || [];
 
 	
 		<div class="page-header">
-			<h1> 记一事故</h1>
+			<h1> 记一个项目事故</h1>
 		</div>
 	
 
@@ -139,7 +139,7 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <h2 id="记一事故"><a href="#记一事故" class="headerlink" title="记一事故"></a>记一事故</h2><p>最近两个月做了一个支持服务 </p>
+	  <h2 id="记一个项目事故"><a href="#记一个项目事故" class="headerlink" title="记一个项目事故"></a>记一个项目事故</h2><p>最近两个月做了一个支持服务 </p>
 <p>同事的设备会有源源不断的请求来查询账号</p>
 <p>而多数请求是需要我去调用另外一个厂家（硬件合作关系）的查询接口得到账号</p>
 <p><strong>（这个厂家不给用户提供查询账号的接口，而他们的官网登录后却可以查到，没办法 我只能去扒取他们的内部接口调用）</strong></p>
@@ -166,14 +166,8 @@ var _hmt = _hmt || [];
 <p>发生错误又不确定怎么处理的时候，最好的办法就是什么都不做</p>
 </blockquote>
 <p>确实做了很多错误处理，也将那个Key返回了，但我没有用最优的方式保障服务</p>
-<p>所以现在假设 设备对于和厂家交互中使用账号是必定可用</p>
-<p>解决方案就是</p>
-<pre><code>首先 我将所有账号信息down下来存储起来
-服务依旧会去厂家接口查询账号
-如果发现返回账号信息有更变 就修改我存储起来的信息同时返回账号
-如果调用厂家接口查询失败了 就查询我存储的账号信息并返回账号
-如果既调用厂家的失败，又没查询到已存储的，就返回空
-</code></pre>	  
+<p>吃一堑长一智 赶紧把处理方案实现，这次事故后也将代码重新审查一番 更加完善了一些</p>
+	  
 	</div>
 
 	<div>
