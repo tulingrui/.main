@@ -141,6 +141,39 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/main/2019/05/23/内存泄漏与内存溢出/">内存泄漏和内存溢出</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-05-23  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="内存泄漏和内存溢出"><a href="#内存泄漏和内存溢出" class="headerlink" title="内存泄漏和内存溢出"></a>内存泄漏和内存溢出</h2><p>内存泄漏和内存溢出的区别，它俩是两个完全不同的概念， 它们之间存在一些关联。</p>
+<p>内存溢出 out of memory，是指程序在申请内存时，没有足够的内存空间供其使用，出现 out of memory；</p>
+<p>内存泄露 memory leak，是指程序在申请内存后，无法释放已申请的内存空间，一次内存泄露危害可以忽略，但内存泄露堆积后果很严重，无论多少内存,迟早会被占光。</p>
+<p>所以内存泄漏可能会导致内存溢出，但内存溢出并不完全都是因为内存泄漏，也有可能使用了太多的大对象导致。</p>
+<pre><code>作者：ityouknow
+链接：https://juejin.im/post/5ce5d750f265da1b6a346b91
+</code></pre>
+	
+	</div>
+  <a type="button" href="/main/2019/05/23/内存泄漏与内存溢出/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/main/2019/05/22/微信授权时出现了一直不断获取授权的问题/">微信授权时出现了一直不断获取授权的问题</a>
 		</h3>
 		</div>
@@ -419,11 +452,11 @@ public static BouncyCastleProvider getInstance() {
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/main/2019/03/14/Test/">Test</a>
+			<a href="/main/2019/01/24/做爬虫时犯了一个很蠢的问题/">做爬虫时犯了一个很蠢的问题</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
-		<div class="date">post @ 2019-03-14  </div>
+		<div class="date">post @ 2019-01-24  </div>
 		</div>
 	</div>
 	
@@ -433,11 +466,22 @@ public static BouncyCastleProvider getInstance() {
   <div class="row">
 	
 	
-		<p>hi 这里涂凌瑞的博客 :D</p>
+		<h2 id="做爬虫时犯了一个很蠢的问题"><a href="#做爬虫时犯了一个很蠢的问题" class="headerlink" title="做爬虫时犯了一个很蠢的问题"></a>做爬虫时犯了一个很蠢的问题</h2><p>需要爬取的信息在同一个li下</p>
+<p>一个a标签是地区名 在li下的span下 </p>
+<p>一个a标签是标题带内容 在li下</p>
+<p>之前抓取时没用到地区名 写的自动下载 ，没有问题</p>
+<p>现在客户提出新需求，要抓取下地区名 所以改成手动加入队列下载</p>
+<p>这时就发现 出现了 no protocol （无协议）</p>
+<p>并且 我在处理下载内容的同时需要将获取的地区名再加到parameters中</p>
+<p>而这时循环预下载列表中 获取地区名时 出现了下标越界 </p>
+<p>嗯？？满脑袋问号</p>
+<p>输出一下 好8 发现原来是同时把地区名的a标签的链接也抓取进来了</p>
+<p>导致列表的数据大小直接double，而地区名数据的大小是正常大小的，所以下标越界了</p>
+<p>而这时再去下载空字符的URL 就出现了 no protocol</p>
 
 	
 	</div>
-  <a type="button" href="/main/2019/03/14/Test/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/main/2019/01/24/做爬虫时犯了一个很蠢的问题/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -447,11 +491,11 @@ public static BouncyCastleProvider getInstance() {
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/main/2019/03/14/hello-world/">Hello World</a>
+			<a href="/main/2018/12/29/MyEclipse CI 2018 HTML标签不高亮显示/">MyEclipse CI 2018 HTML标签不高亮显示</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
-		<div class="date">post @ 2019-03-14  </div>
+		<div class="date">post @ 2018-12-29  </div>
 		</div>
 	</div>
 	
@@ -461,19 +505,87 @@ public static BouncyCastleProvider getInstance() {
   <div class="row">
 	
 	
-		<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+		<h2 id="MyEclipse-CI-2018-HTML标签不高亮显示"><a href="#MyEclipse-CI-2018-HTML标签不高亮显示" class="headerlink" title="MyEclipse CI 2018 HTML标签不高亮显示"></a>MyEclipse CI 2018 HTML标签不高亮显示</h2><p>新版本的是在左侧行数的旁边变色显示的，看起来很不舒服 </p>
+<p>Preferences &gt; General &gt; Editors &gt; File Associations &gt; 找到html 把编辑器改回JSP就好了！</p>
 
 	
 	</div>
-  <a type="button" href="/main/2019/03/14/hello-world/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/main/2018/12/29/MyEclipse CI 2018 HTML标签不高亮显示/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/main/2018/12/10/基于Socks5协议的代理服务搭建突破网络限制/">基于Socks5协议的代理服务搭建突破网络限制</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2018-12-10  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="基于Socks5协议的代理服务搭建突破网络限制"><a href="#基于Socks5协议的代理服务搭建突破网络限制" class="headerlink" title="基于Socks5协议的代理服务搭建突破网络限制"></a>基于Socks5协议的代理服务搭建突破网络限制</h2><p>操作系统 - Windows</p>
+<p>首先 需要有 nodeJs</p>
+<p>然后安装1下<strong>服务端</strong></p>
+<blockquote>
+<p>npm install -g shadowsocks</p>
+</blockquote>
+<p>安装完之后打开安装目录 举个栗子：</p>
+<blockquote>
+<p>C:\Users\DELL\AppData\Roaming\npm\node_modules\shadowsocks</p>
+</blockquote>
+<p>打开 config.json文件 开始配置</p>
+<pre><code>{
+&quot;server&quot;:&quot;你服务器的IP&quot;,
+&quot;server_port&quot;:8081,
+&quot;local_address&quot;:&quot;127.0.0.1&quot;,
+&quot;local_port&quot;:1080,
+&quot;password&quot;:&quot;Tulingrui321.!&quot;,
+&quot;timeout&quot;:600,
+&quot;method&quot;:&quot;aes-256-cfb&quot;
+}
+</code></pre><blockquote>
+<p>server : 你服务器的IP</p>
+<p>server_port : 对外的服务访问端口</p>
+<p>local_port : 本地端口</p>
+<p>password : 密码</p>
+<p>method : 加密方式</p>
+</blockquote>
+<p>保存  然后 cmd，输 ssserver 回车 启动了</p>
+<hr>
+<p><strong>客户端下载地址</strong> </p>
+<blockquote>
+<p><a href="https://github.com/shadowsocksr-backup/shadowsocksr-csharp/releases" target="_blank" rel="noopener">https://github.com/shadowsocksr-backup/shadowsocksr-csharp/releases</a></p>
+</blockquote>
+<p>客户端配置</p>
+<p>加密方式 - aes-256-cfb</p>
+<p>协议 - origin</p>
+<p>混淆 - plain</p>
+<p>全局代理 OK 一些网站可以访问了</p>
+<p>这时发现我的网易云音乐也被限制了</p>
+<p>首先 打开IE </p>
+<p>Internet选项 &gt; 连接 &gt; 局域网设置</p>
+<p>勾选为LAN使用代理服务器 </p>
+<p>取消勾选 对于本地地址不使用代理服务器</p>
+<p>地址：127.0.0.1</p>
+<p>端口：1080</p>
+<p>确定 </p>
+<p>网易云音乐中可以设置代理</p>
+<p>选择 【使用IE代理设置】确定后重新打开网易云音乐 OK了</p>
+
+	
+	</div>
+  <a type="button" href="/main/2018/12/10/基于Socks5协议的代理服务搭建突破网络限制/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -486,6 +598,16 @@ public static BouncyCastleProvider getInstance() {
 		<div class="pagination">
 
    
+    
+           <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
+        
+
+        <a href="/main/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+ 
+       <a href="/main/page/2/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>     
+        
+
+  
 </div>
 
   		</center>
@@ -520,6 +642,10 @@ public static BouncyCastleProvider getInstance() {
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/main/2019/05/23/内存泄漏与内存溢出/"><i class="fa fa-file-o"></i>内存泄漏和内存溢出</a>
+      </li>
+    
+      <li>
         <a href="/main/2019/05/22/微信授权时出现了一直不断获取授权的问题/"><i class="fa fa-file-o"></i>微信授权时出现了一直不断获取授权的问题</a>
       </li>
     
@@ -533,10 +659,6 @@ public static BouncyCastleProvider getInstance() {
     
       <li>
         <a href="/main/2019/04/17/记一事故md/"><i class="fa fa-file-o"></i>记一事故</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/03/25/rsa/"><i class="fa fa-file-o"></i>RSA加密导致内存溢出</a>
       </li>
     
   </ul>

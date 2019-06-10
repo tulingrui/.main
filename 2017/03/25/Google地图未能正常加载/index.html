@@ -6,23 +6,17 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>微信授权时出现了一直不断获取授权的问题 | yo this is tulingrui</title>
+  <title>Google地图未能正常加载 | yo this is tulingrui</title>
   <meta name="author" content="John Doe">
   
-  <meta name="description" content="##微信授权时出现了一直不断获取授权的问题##
-发生的问题
-在进行获取微信授权时出现了一直不断获取授权的情况
-原因
+  <meta name="description" content="Google地图未能正常加载项目里用到了Google地图,本机上可以正常加载,放到服务器上就不行了,搜了一下 找到了这个
 
-前端接口访问时带上了项目名 http://xxxx/项目名/action
-
-因为后端做了虚拟路径 所以访问时可以不带项目名 也可以带项目名 
-而后端设置的微信回调的地址是不带项目名的">
+If you are using the Google Maps API on localhost or your domain was not active prior to">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="微信授权时出现了一直不断获取授权的问题">
+  <meta property="og:title" content="Google地图未能正常加载">
   <meta property="og:site_name" content="yo this is tulingrui">
 
   
@@ -126,7 +120,7 @@ var _hmt = _hmt || [];
 
 	
 		<div class="page-header">
-			<h1> 微信授权时出现了一直不断获取授权的问题</h1>
+			<h1> Google地图未能正常加载</h1>
 		</div>
 	
 
@@ -143,19 +137,15 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <p>##微信授权时出现了一直不断获取授权的问题##</p>
-<pre><code>发生的问题
-</code></pre><p>在进行获取微信授权时出现了一直不断获取授权的情况</p>
-<pre><code>原因
-</code></pre><blockquote>
-<p>前端接口访问时带上了项目名 <a href="http://xxxx/项目名/action" target="_blank" rel="noopener">http://xxxx/项目名/action</a></p>
+	  <h2 id="Google地图未能正常加载"><a href="#Google地图未能正常加载" class="headerlink" title="Google地图未能正常加载"></a>Google地图未能正常加载</h2><p>项目里用到了Google地图,本机上可以正常加载,放到服务器上就不行了,<br>搜了一下 找到了这个</p>
+<blockquote>
+<p>If you are using the Google Maps API on localhost or your domain was not active prior to June 22nd, 2016, it will require a key going forward. To fix this problem, please see the Google Maps APIs documentation to get a key and add it to your application:</p>
 </blockquote>
-<p>因为后端做了虚拟路径 所以访问时可以不带项目名 也可以带项目名 </p>
-<p>而后端设置的微信回调的地址是不带项目名的</p>
-<p>这时在进行获取微信授权时就发生了一直不断的获取授权的情况</p>
-<p>刚开始打开控制台看了一下 发现每次的sessionId都是不一样的</p>
-<p>排查了很久 还以为是nginx配置的有问题</p>
-<p>最后发现请求URL中带了项目名，突然想到回调的是不带项目名的 所以session每次都是不一样的</p>
+<p>oh，原来是需要加key，百度了一下 , </p>
+<p>第一步<br>访问 API 控制台（网址为 <a href="https://code.google.com/apis/console）并使用您的" target="_blank" rel="noopener">https://code.google.com/apis/console）并使用您的</a> Google 帐户登录。</p>
+<p>第二步<br>在控制台中激活谷歌地图的相关服务，然后进入谷歌api库，选择Google 地图 API下的对应程序（我用的是Google Maps JavaScript API）</p>
+<p>第三步<br>点击为此 API 创建凭据，即可生成相关api的密钥，然后在地图文件中引入该密钥</p>
+<p>赶紧翻了个墙创建了个密钥,加上之后 就OK了。</p>
 	  
 	</div>
 
@@ -165,12 +155,12 @@ var _hmt = _hmt || [];
 
     
     
-    <a href="/main/2019/05/23/内存泄漏与内存溢出/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a href="/main/2018/08/07/MongoDB在Windows下安装时遇到的问题/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/main/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/main/2019/05/15/今天赚了1000块/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    <a href="/main/2017/03/21/SQLSERVER服务启动错误1068-依存服务或组无法启动/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
     
 
     
@@ -223,7 +213,7 @@ var _hmt = _hmt || [];
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2019-05-22 
+	2017-03-25 
 	</div>
 	
 

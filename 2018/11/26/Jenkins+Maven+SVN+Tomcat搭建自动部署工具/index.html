@@ -6,23 +6,19 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>微信授权时出现了一直不断获取授权的问题 | yo this is tulingrui</title>
+  <title>Jenkins+Maven+SVN+Tomcat搭建自动部署工具 | yo this is tulingrui</title>
   <meta name="author" content="John Doe">
   
-  <meta name="description" content="##微信授权时出现了一直不断获取授权的问题##
-发生的问题
-在进行获取微信授权时出现了一直不断获取授权的情况
-原因
-
-前端接口访问时带上了项目名 http://xxxx/项目名/action
-
-因为后端做了虚拟路径 所以访问时可以不带项目名 也可以带项目名 
-而后端设置的微信回调的地址是不带项目名的">
+  <meta name="description" content="Jenkins+Maven+SVN+Tomcat搭建自动部署工具项目更新比较频繁，每次都要上服务器 复制 粘贴 重启 很烦 
+百度了1下 Jenkins/Maven/SVN/Tomcat 嗯 开搞8 
+首先准备好 Maven、SVN、Tomcat（还有环境变量什么的）
+Jenkins 下载地址 ↓
+">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="微信授权时出现了一直不断获取授权的问题">
+  <meta property="og:title" content="Jenkins+Maven+SVN+Tomcat搭建自动部署工具">
   <meta property="og:site_name" content="yo this is tulingrui">
 
   
@@ -126,7 +122,7 @@ var _hmt = _hmt || [];
 
 	
 		<div class="page-header">
-			<h1> 微信授权时出现了一直不断获取授权的问题</h1>
+			<h1> Jenkins+Maven+SVN+Tomcat搭建自动部署工具</h1>
 		</div>
 	
 
@@ -143,19 +139,96 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <p>##微信授权时出现了一直不断获取授权的问题##</p>
-<pre><code>发生的问题
-</code></pre><p>在进行获取微信授权时出现了一直不断获取授权的情况</p>
-<pre><code>原因
-</code></pre><blockquote>
-<p>前端接口访问时带上了项目名 <a href="http://xxxx/项目名/action" target="_blank" rel="noopener">http://xxxx/项目名/action</a></p>
+	  <h2 id="Jenkins-Maven-SVN-Tomcat搭建自动部署工具"><a href="#Jenkins-Maven-SVN-Tomcat搭建自动部署工具" class="headerlink" title="Jenkins+Maven+SVN+Tomcat搭建自动部署工具"></a>Jenkins+Maven+SVN+Tomcat搭建自动部署工具</h2><p>项目更新比较频繁，每次都要上服务器 复制 粘贴 重启 很烦 </p>
+<p>百度了1下 Jenkins/Maven/SVN/Tomcat 嗯 开搞8 </p>
+<p>首先准备好 Maven、SVN、Tomcat（还有环境变量什么的）</p>
+<p>Jenkins 下载地址 ↓</p>
+<blockquote>
+<p> <a href="https://jenkins.io/download/" target="_blank" rel="noopener">https://jenkins.io/download/</a></p>
 </blockquote>
-<p>因为后端做了虚拟路径 所以访问时可以不带项目名 也可以带项目名 </p>
-<p>而后端设置的微信回调的地址是不带项目名的</p>
-<p>这时在进行获取微信授权时就发生了一直不断的获取授权的情况</p>
-<p>刚开始打开控制台看了一下 发现每次的sessionId都是不一样的</p>
-<p>排查了很久 还以为是nginx配置的有问题</p>
-<p>最后发现请求URL中带了项目名，突然想到回调的是不带项目名的 所以session每次都是不一样的</p>
+<p>我是放Tomcat下，下的是war包 (Generic Java package)</p>
+<p>下载好把它复制到 tomcat 的 webapps 文件夹中</p>
+<p>启动1下 Tomcat ，可以访问了 http:/localhost:8080/jenkins/</p>
+<p>Jenkins初始化页面会提示你输入密码， 按提示路径打开密码文件，输入密码确定</p>
+<hr>
+<p>记点重要的</p>
+<p>先进入<strong>插件管理</strong>安装必需的插件</p>
+<ol>
+<li>Build Timeout</li>
+<li>Deploy to container Plugin</li>
+<li>Email Extension Plugin</li>
+<li>Gradle Plugin</li>
+<li>LDAP Plugin</li>
+<li>Matrix Authorization Strategy Plugin</li>
+<li>OWASP Markup Formatter Plugin</li>
+<li>Pipeline</li>
+<li>Pipeline Maven Integration Plugin</li>
+<li>.Publish Over SSH</li>
+<li>SSH plugin</li>
+<li>SSH Slaves plugin</li>
+<li>Subversion Plug-in</li>
+<li>Timestamper</li>
+<li>Workspace Cleanup Plugin</li>
+</ol>
+<p>安装完重启1下Tomcat</p>
+<p>接下来 <strong>系统设置</strong></p>
+<p>设置编码全局属性  </p>
+<blockquote>
+<p>Name : LANG</p>
+<p>Value : zh_CN UTF-8</p>
+</blockquote>
+<p>增加系统管理员邮件地址</p>
+<blockquote>
+<p>Jenkins Location ：</p>
+<p>Jenkins URL - Jenkins的访问地址  <a href="http://localhost:8080/jenkins" target="_blank" rel="noopener">http://localhost:8080/jenkins</a></p>
+<p>System Admin e-mail address  <a href="mailto:youEmail@qq.com" target="_blank" rel="noopener">youEmail@qq.com</a></p>
+</blockquote>
+<p>其他暂时先默认的</p>
+<hr>
+<p>然后是 添加全局工具配置 <strong>Global ToolConfiguration</strong></p>
+<p>将JDK取消自动安装 把本机的JDK路径填上(例：E:\Java\jdk1.8.0_171)</p>
+<p>Maven也一样取消自动安装，将本机的Maven路径填上(例：D:\apache-maven-3.5.4)</p>
+<p>接着 可以开始一个任务了 - New任务</p>
+<p>构建一个自由风格的软件项目或者根据需要选类型</p>
+<p>新建完在左侧可以看到1些按钮，接下来可以配置（Configure）项目了</p>
+<p>General配置</p>
+<blockquote>
+<p>Description - 项目介绍</p>
+<p>Days to keep builds - 保持构造的天数 （我设置的 30）</p>
+<p>Max # of builds to keep -保持构造的最大个数 （100）</p>
+</blockquote>
+<p>然后是 代码管理(Source Code Management) 也就是 设置你项目的SVN地址</p>
+<blockquote>
+<p>Repository URL 输入你SVN的地址 </p>
+<p>点添加 输你SVN的账号密码</p>
+</blockquote>
+<p>还可以配置构建触发器（Build Triggers），但后来用不到就没配置了</p>
+<p>然后是构造 （Build Environment）</p>
+<blockquote>
+<p>勾选 构造之前删除工作空间 (Delete workspace before build starts) </p>
+<p>Maven Version ：maven-3.5.4</p>
+<p>Goals ：clean install</p>
+<p>POM :pom.xml</p>
+</blockquote>
+<hr>
+<p>接着是构造后的操作 (Post-build Actions)</p>
+<blockquote>
+<p>WAR/EAR files - 指的是你构造工作空间的目录</p>
+<p>我的是 C:\Users\DELL.jenkins\workspace\target\manageTool.war</p>
+<p>那么 填 target/manageTool.war 就可以了</p>
+<p>Context path - 是配置项目访问路径</p>
+<p>如填 /manageTool 项目根访问目录就是：<a href="http://localhost:8080/manageTool" target="_blank" rel="noopener">http://localhost:8080/manageTool</a></p>
+<p>Add Container 选你对应的Tomcat版本， add 添加你Tomcat的账号密码与Tomcat地址 </p>
+</blockquote>
+<p>Tomcat的用户配置 在 conf 下的 tomcat-users.xml 文件中</p>
+<p>例：</p>
+<pre><code>&lt;tomcat-users&gt;
+    &lt;role rolename=&quot;manager-gui&quot;/&gt;
+    &lt;role rolename=&quot;manager-script&quot;/&gt;
+ &lt;user username=&quot;admin&quot; password=&quot;admin&quot; roles=&quot;manager-gui,manager-script&quot;/&gt;
+&lt;/tomcat-users&gt; 
+</code></pre><p>密码要复杂点阿</p>
+<p>最后保存，回到Jenkins保存 - 左面列表 &gt; 立即构建 ok了</p>
 	  
 	</div>
 
@@ -165,12 +238,12 @@ var _hmt = _hmt || [];
 
     
     
-    <a href="/main/2019/05/23/内存泄漏与内存溢出/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a href="/main/2018/12/06/简单的nginx搭建负载均衡与根据URL关键字转发服务/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/main/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/main/2019/05/15/今天赚了1000块/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    <a href="/main/2018/10/12/高德地图中行政区划的坑/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
     
 
     
@@ -223,7 +296,7 @@ var _hmt = _hmt || [];
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2019-05-22 
+	2018-11-26 
 	</div>
 	
 

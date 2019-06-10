@@ -6,23 +6,22 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>微信授权时出现了一直不断获取授权的问题 | yo this is tulingrui</title>
+  <title>简单的nginx搭建负载均衡与根据URL关键字转发服务 | yo this is tulingrui</title>
   <meta name="author" content="John Doe">
   
-  <meta name="description" content="##微信授权时出现了一直不断获取授权的问题##
-发生的问题
-在进行获取微信授权时出现了一直不断获取授权的情况
-原因
-
-前端接口访问时带上了项目名 http://xxxx/项目名/action
-
-因为后端做了虚拟路径 所以访问时可以不带项目名 也可以带项目名 
-而后端设置的微信回调的地址是不带项目名的">
+  <meta name="description" content="简单的nginx搭建负载均衡与根据URL关键字转发服务项目要做前后端分离
+后端服务要做负载均衡
+本地先试1下 start
+首先
+写两个集群 
+upstream hd_cloud {  #后端服务集群名字   
+    serverlocalhost:9091  weight=1;
+    serve">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="微信授权时出现了一直不断获取授权的问题">
+  <meta property="og:title" content="简单的nginx搭建负载均衡与根据URL关键字转发服务">
   <meta property="og:site_name" content="yo this is tulingrui">
 
   
@@ -126,7 +125,7 @@ var _hmt = _hmt || [];
 
 	
 		<div class="page-header">
-			<h1> 微信授权时出现了一直不断获取授权的问题</h1>
+			<h1> 简单的nginx搭建负载均衡与根据URL关键字转发服务</h1>
 		</div>
 	
 
@@ -143,19 +142,51 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <p>##微信授权时出现了一直不断获取授权的问题##</p>
-<pre><code>发生的问题
-</code></pre><p>在进行获取微信授权时出现了一直不断获取授权的情况</p>
-<pre><code>原因
-</code></pre><blockquote>
-<p>前端接口访问时带上了项目名 <a href="http://xxxx/项目名/action" target="_blank" rel="noopener">http://xxxx/项目名/action</a></p>
-</blockquote>
-<p>因为后端做了虚拟路径 所以访问时可以不带项目名 也可以带项目名 </p>
-<p>而后端设置的微信回调的地址是不带项目名的</p>
-<p>这时在进行获取微信授权时就发生了一直不断的获取授权的情况</p>
-<p>刚开始打开控制台看了一下 发现每次的sessionId都是不一样的</p>
-<p>排查了很久 还以为是nginx配置的有问题</p>
-<p>最后发现请求URL中带了项目名，突然想到回调的是不带项目名的 所以session每次都是不一样的</p>
+	  <h2 id="简单的nginx搭建负载均衡与根据URL关键字转发服务"><a href="#简单的nginx搭建负载均衡与根据URL关键字转发服务" class="headerlink" title="简单的nginx搭建负载均衡与根据URL关键字转发服务"></a>简单的nginx搭建负载均衡与根据URL关键字转发服务</h2><p>项目要做前后端分离</p>
+<p>后端服务要做负载均衡</p>
+<p>本地先试1下 start</p>
+<p>首先</p>
+<p>写两个集群 </p>
+<pre><code>upstream hd_cloud {  #后端服务集群名字   
+    serverlocalhost:9091  weight=1;
+    serverlocalhost:9092  weight=1;
+    serverlocalhost:9093  weight=1;
+    serverlocalhost:9094  weight=1;
+}
+
+upstream hd_client{  #前端服务集群名字   
+    serverlocalhost:8081;
+}
+</code></pre><p>weight是权重的意思，权重越大，分配的概率越大。</p>
+<p>然后是 配置server</p>
+<pre><code>listen 80;
+server_name  localhost;
+location ~/action {
+    proxy_pass http://hd_cloud;  #后端集群的名 上面写的 upstream hd_cloud
+    proxy_connect_timeout 1; #连接超时时间
+    index  index.html index.htm;
+}
+
+location / {
+    proxy_pass http://hd_client; #前端集群的名 
+    proxy_connect_timeout 1; #连接超时时间
+    index  index.html index.htm;
+}
+</code></pre><p>location ~/action 匹配路径如果访问路径中包含action 就访问后端服务</p>
+<p>location / 表示通用匹配</p>
+<p>“~” 开头表示区分大小写的正则匹配</p>
+<p>“~*” 开头表示不区分大小写的正则匹配</p>
+<p>“/“ 通用匹配，任何请求都会匹配到</p>
+<p>还有其他的规则不列举了 </p>
+<p>nginx的匹配顺序是 先匹配正则 再匹配普通</p>
+<p>服务启动 试1下 可以了。</p>
+<p>nginx的关闭与重新载入配置信息</p>
+<pre><code>退出
+nginx.exe -s quit  
+
+重新载入配置信息
+nginx.exe -s reload  
+</code></pre><p>写个bat文件放在nginx目录中方便一些</p>
 	  
 	</div>
 
@@ -165,12 +196,12 @@ var _hmt = _hmt || [];
 
     
     
-    <a href="/main/2019/05/23/内存泄漏与内存溢出/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a href="/main/2018/12/10/基于Socks5协议的代理服务搭建突破网络限制/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/main/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/main/2019/05/15/今天赚了1000块/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    <a href="/main/2018/11/26/Jenkins+Maven+SVN+Tomcat搭建自动部署工具/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
     
 
     
@@ -223,7 +254,7 @@ var _hmt = _hmt || [];
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2019-05-22 
+	2018-12-06 
 	</div>
 	
 

@@ -6,23 +6,21 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>微信授权时出现了一直不断获取授权的问题 | yo this is tulingrui</title>
+  <title>高德地图中行政区划的坑 | yo this is tulingrui</title>
   <meta name="author" content="John Doe">
   
-  <meta name="description" content="##微信授权时出现了一直不断获取授权的问题##
-发生的问题
-在进行获取微信授权时出现了一直不断获取授权的情况
-原因
-
-前端接口访问时带上了项目名 http://xxxx/项目名/action
-
-因为后端做了虚拟路径 所以访问时可以不带项目名 也可以带项目名 
-而后端设置的微信回调的地址是不带项目名的">
+  <meta name="description" content="高德地图中行政区划的坑在查询所有行政区划代码时发现高德把县级以下的单位也加了进去 
+但所属的行政区划代码 和上级市级的行政区划代码是一样的 
+例：
+行政区划 上级号码 单位名称
+429006  420000   天门市
+429006  429006   胡市镇
+429006  429006   多祥">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="微信授权时出现了一直不断获取授权的问题">
+  <meta property="og:title" content="高德地图中行政区划的坑">
   <meta property="og:site_name" content="yo this is tulingrui">
 
   
@@ -126,7 +124,7 @@ var _hmt = _hmt || [];
 
 	
 		<div class="page-header">
-			<h1> 微信授权时出现了一直不断获取授权的问题</h1>
+			<h1> 高德地图中行政区划的坑</h1>
 		</div>
 	
 
@@ -143,19 +141,14 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <p>##微信授权时出现了一直不断获取授权的问题##</p>
-<pre><code>发生的问题
-</code></pre><p>在进行获取微信授权时出现了一直不断获取授权的情况</p>
-<pre><code>原因
-</code></pre><blockquote>
-<p>前端接口访问时带上了项目名 <a href="http://xxxx/项目名/action" target="_blank" rel="noopener">http://xxxx/项目名/action</a></p>
-</blockquote>
-<p>因为后端做了虚拟路径 所以访问时可以不带项目名 也可以带项目名 </p>
-<p>而后端设置的微信回调的地址是不带项目名的</p>
-<p>这时在进行获取微信授权时就发生了一直不断的获取授权的情况</p>
-<p>刚开始打开控制台看了一下 发现每次的sessionId都是不一样的</p>
-<p>排查了很久 还以为是nginx配置的有问题</p>
-<p>最后发现请求URL中带了项目名，突然想到回调的是不带项目名的 所以session每次都是不一样的</p>
+	  <h2 id="高德地图中行政区划的坑"><a href="#高德地图中行政区划的坑" class="headerlink" title="高德地图中行政区划的坑"></a>高德地图中行政区划的坑</h2><p>在查询所有行政区划代码时发现高德把县级以下的单位也加了进去 </p>
+<p>但所属的行政区划代码 和上级市级的行政区划代码是一样的 </p>
+<p>例：</p>
+<pre><code>行政区划 上级号码 单位名称
+429006  420000   天门市
+429006  429006   胡市镇
+429006  429006   多祥镇
+</code></pre><p>最后只能把这些重新自定义号码了</p>
 	  
 	</div>
 
@@ -165,12 +158,12 @@ var _hmt = _hmt || [];
 
     
     
-    <a href="/main/2019/05/23/内存泄漏与内存溢出/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a href="/main/2018/11/26/Jenkins+Maven+SVN+Tomcat搭建自动部署工具/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/main/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/main/2019/05/15/今天赚了1000块/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    <a href="/main/2018/08/07/YApi接口管理平台搭建时的记录/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
     
 
     
@@ -223,7 +216,7 @@ var _hmt = _hmt || [];
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2019-05-22 
+	2018-10-12 
 	</div>
 	
 

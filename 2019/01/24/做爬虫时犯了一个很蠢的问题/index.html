@@ -6,23 +6,20 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>微信授权时出现了一直不断获取授权的问题 | yo this is tulingrui</title>
+  <title>做爬虫时犯了一个很蠢的问题 | yo this is tulingrui</title>
   <meta name="author" content="John Doe">
   
-  <meta name="description" content="##微信授权时出现了一直不断获取授权的问题##
-发生的问题
-在进行获取微信授权时出现了一直不断获取授权的情况
-原因
-
-前端接口访问时带上了项目名 http://xxxx/项目名/action
-
-因为后端做了虚拟路径 所以访问时可以不带项目名 也可以带项目名 
-而后端设置的微信回调的地址是不带项目名的">
+  <meta name="description" content="做爬虫时犯了一个很蠢的问题需要爬取的信息在同一个li下
+一个a标签是地区名 在li下的span下 
+一个a标签是标题带内容 在li下
+之前抓取时没用到地区名 写的自动下载 ，没有问题
+现在客户提出新需求，要抓取下地区名 所以改成手动加入队列下载
+这时就发现 出现了 no protocol （无协议）">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="微信授权时出现了一直不断获取授权的问题">
+  <meta property="og:title" content="做爬虫时犯了一个很蠢的问题">
   <meta property="og:site_name" content="yo this is tulingrui">
 
   
@@ -126,7 +123,7 @@ var _hmt = _hmt || [];
 
 	
 		<div class="page-header">
-			<h1> 微信授权时出现了一直不断获取授权的问题</h1>
+			<h1> 做爬虫时犯了一个很蠢的问题</h1>
 		</div>
 	
 
@@ -143,19 +140,18 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <p>##微信授权时出现了一直不断获取授权的问题##</p>
-<pre><code>发生的问题
-</code></pre><p>在进行获取微信授权时出现了一直不断获取授权的情况</p>
-<pre><code>原因
-</code></pre><blockquote>
-<p>前端接口访问时带上了项目名 <a href="http://xxxx/项目名/action" target="_blank" rel="noopener">http://xxxx/项目名/action</a></p>
-</blockquote>
-<p>因为后端做了虚拟路径 所以访问时可以不带项目名 也可以带项目名 </p>
-<p>而后端设置的微信回调的地址是不带项目名的</p>
-<p>这时在进行获取微信授权时就发生了一直不断的获取授权的情况</p>
-<p>刚开始打开控制台看了一下 发现每次的sessionId都是不一样的</p>
-<p>排查了很久 还以为是nginx配置的有问题</p>
-<p>最后发现请求URL中带了项目名，突然想到回调的是不带项目名的 所以session每次都是不一样的</p>
+	  <h2 id="做爬虫时犯了一个很蠢的问题"><a href="#做爬虫时犯了一个很蠢的问题" class="headerlink" title="做爬虫时犯了一个很蠢的问题"></a>做爬虫时犯了一个很蠢的问题</h2><p>需要爬取的信息在同一个li下</p>
+<p>一个a标签是地区名 在li下的span下 </p>
+<p>一个a标签是标题带内容 在li下</p>
+<p>之前抓取时没用到地区名 写的自动下载 ，没有问题</p>
+<p>现在客户提出新需求，要抓取下地区名 所以改成手动加入队列下载</p>
+<p>这时就发现 出现了 no protocol （无协议）</p>
+<p>并且 我在处理下载内容的同时需要将获取的地区名再加到parameters中</p>
+<p>而这时循环预下载列表中 获取地区名时 出现了下标越界 </p>
+<p>嗯？？满脑袋问号</p>
+<p>输出一下 好8 发现原来是同时把地区名的a标签的链接也抓取进来了</p>
+<p>导致列表的数据大小直接double，而地区名数据的大小是正常大小的，所以下标越界了</p>
+<p>而这时再去下载空字符的URL 就出现了 no protocol</p>
 	  
 	</div>
 
@@ -165,12 +161,12 @@ var _hmt = _hmt || [];
 
     
     
-    <a href="/main/2019/05/23/内存泄漏与内存溢出/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a href="/main/2019/03/15/1个部署时遇到的问题/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/main/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/main/2019/05/15/今天赚了1000块/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    <a href="/main/2018/12/29/MyEclipse CI 2018 HTML标签不高亮显示/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
     
 
     
@@ -223,7 +219,7 @@ var _hmt = _hmt || [];
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2019-05-22 
+	2019-01-24 
 	</div>
 	
 

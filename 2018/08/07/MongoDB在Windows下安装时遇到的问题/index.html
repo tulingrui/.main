@@ -6,23 +6,18 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>微信授权时出现了一直不断获取授权的问题 | yo this is tulingrui</title>
+  <title>MongoDB在Windows下安装时遇到的问题 | yo this is tulingrui</title>
   <meta name="author" content="John Doe">
   
-  <meta name="description" content="##微信授权时出现了一直不断获取授权的问题##
-发生的问题
-在进行获取微信授权时出现了一直不断获取授权的情况
-原因
-
-前端接口访问时带上了项目名 http://xxxx/项目名/action
-
-因为后端做了虚拟路径 所以访问时可以不带项目名 也可以带项目名 
-而后端设置的微信回调的地址是不带项目名的">
+  <meta name="description" content="MongoDB在Windows下安装时遇到的问题搭建项目时需要用到MongoDB,之前没接触过
+在本机按照runoob.com的教程安装了一遍 挺顺利的,
+就是需要注意最后一步时左下角的 “Install MongoDB Compass”
+图形化界面如果不取消勾选 要等很久很久很久(电脑开了一晚上)">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="微信授权时出现了一直不断获取授权的问题">
+  <meta property="og:title" content="MongoDB在Windows下安装时遇到的问题">
   <meta property="og:site_name" content="yo this is tulingrui">
 
   
@@ -126,7 +121,7 @@ var _hmt = _hmt || [];
 
 	
 		<div class="page-header">
-			<h1> 微信授权时出现了一直不断获取授权的问题</h1>
+			<h1> MongoDB在Windows下安装时遇到的问题</h1>
 		</div>
 	
 
@@ -143,20 +138,32 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <p>##微信授权时出现了一直不断获取授权的问题##</p>
-<pre><code>发生的问题
-</code></pre><p>在进行获取微信授权时出现了一直不断获取授权的情况</p>
-<pre><code>原因
-</code></pre><blockquote>
-<p>前端接口访问时带上了项目名 <a href="http://xxxx/项目名/action" target="_blank" rel="noopener">http://xxxx/项目名/action</a></p>
-</blockquote>
-<p>因为后端做了虚拟路径 所以访问时可以不带项目名 也可以带项目名 </p>
-<p>而后端设置的微信回调的地址是不带项目名的</p>
-<p>这时在进行获取微信授权时就发生了一直不断的获取授权的情况</p>
-<p>刚开始打开控制台看了一下 发现每次的sessionId都是不一样的</p>
-<p>排查了很久 还以为是nginx配置的有问题</p>
-<p>最后发现请求URL中带了项目名，突然想到回调的是不带项目名的 所以session每次都是不一样的</p>
-	  
+	  <h2 id="MongoDB在Windows下安装时遇到的问题"><a href="#MongoDB在Windows下安装时遇到的问题" class="headerlink" title="MongoDB在Windows下安装时遇到的问题"></a>MongoDB在Windows下安装时遇到的问题</h2><p>搭建项目时需要用到MongoDB,之前没接触过</p>
+<p>在本机按照runoob.com的教程安装了一遍 挺顺利的,</p>
+<p>就是需要注意最后一步时左下角的 “Install MongoDB Compass”</p>
+<p>图形化界面如果不取消勾选 要等很久很久很久(电脑开了一晚上)都没安装完</p>
+<p>ok 本机没问题 开始服务器搭建，第一步就出现问题了，可能是因为服务器环境的原因，安装时一直提示权限不足 安装不了。</p>
+<p>搜了一下 <a href="https://www.mongodb.org/dl/win32" target="_blank" rel="noopener">https://www.mongodb.org/dl/win32</a> 官网提供了免安装包 可以对应的下载，配置好环境变量 “Path”  我的放在了E盘符下 </p>
+<p>在解压好的 “mongoDB” 文件夹下建立好 “date” 与 “log” 文件夹</p>
+<p>cmd控制台 命令进入到 “E:\mongoDB\bin” </p>
+<p>执行命令 <code>mongod--dbpath E:\mongoDB\data</code>  配置</p>
+<p>无意外 打开 localhost:27017 时页面就会给予提示了</p>
+<p>然后我想更换端口为8098 查了一下</p>
+<p>更换端口的命令 控制台执行命令 </p>
+<pre><code>mongod --dbpath E:\MongoDB\data --port 8098
+</code></pre><p>这时提示我有错误了，搜了一下 是因为有文件锁住了的原因</p>
+<p>在”mongoDB\data”下有 “mongod.lock” 与 “storage.bson” 这两个文件，将这两个删除后 重新执行就好了</p>
+<p>接着 想转成Window服务 </p>
+<p>首先 先把当前服务关掉, 然后把 “mongoDB\data”下有 “mongod.lock” 与 “storage.bson” 这两个文件删除掉</p>
+<p>如果当前已经有Window服务了就需要移除一下</p>
+<p>执行移除命令</p>
+<pre><code>mongod --logpath &quot;E:\MongoDB\log\MongoDB.log&quot; --logappend --dbpath &quot;E:\Mongodb\data&quot; --directoryperdb --serviceName &quot;MongoDB&quot; --serviceDisplayName &quot;MongoDB&quot; --remove
+</code></pre><p>再继续执行添加服务命令</p>
+<pre><code>mongod --logpath &quot;E:\MongoDB\log\MongoDB.log&quot; --logappend --dbpath &quot;E:\MongoDB\data&quot; --port 8098 --directoryperdb --serviceName &quot;MongoDB&quot; --serviceDisplayName &quot;MongoDB&quot; --install
+</code></pre><p>注意 “–port 8098” 要把这个加进去，我搜到的都是只有添加服务，如果不加 “–port 8098” 这个Window服务启动时 服务的端口还是默认的27017，这样就ok了</p>
+<p>更改端口后连接数据库后面也要加上端口号才行 (不然还会连默认的27017端口)</p>
+<pre><code>mongo --port 8098
+</code></pre>	  
 	</div>
 
 	<div>
@@ -165,12 +172,12 @@ var _hmt = _hmt || [];
 
     
     
-    <a href="/main/2019/05/23/内存泄漏与内存溢出/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a href="/main/2018/08/07/YApi接口管理平台搭建时的记录/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/main/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/main/2019/05/15/今天赚了1000块/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    <a href="/main/2017/03/25/Google地图未能正常加载/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
     
 
     
@@ -223,7 +230,7 @@ var _hmt = _hmt || [];
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2019-05-22 
+	2018-08-07 
 	</div>
 	
 
