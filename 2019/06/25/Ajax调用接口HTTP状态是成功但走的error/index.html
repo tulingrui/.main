@@ -6,20 +6,16 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>记一个初试WebSocket遇到的问题 | yo this is tulingrui</title>
+  <title>Ajax调用接口HTTP状态是成功但走的error | yo this is tulingrui</title>
   <meta name="author" content="John Doe">
   
-  <meta name="description" content="记一个初试WebSocket遇到的问题
-本机运行没问题，打包时报出
-java.lang.IllegalStateException: javax.websocket.server.ServerContainer not available
-我把打包测试关掉之后没问题了
-&amp;lt;build&amp;gt;
- ">
+  <meta name="description" content="Ajax调用接口HTTP状态是成功但走的error之前和其他同事对接接口时 调他的接口在浏览器看是没问题，Chrome控制台看也是没异常可以转换成对象格式 但Ajax调用时一直走error 不走success HTTP状态码又是200最后发现还是他返回数据的格式问题
+{msg : &amp;quot;ok&amp;">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="记一个初试WebSocket遇到的问题">
+  <meta property="og:title" content="Ajax调用接口HTTP状态是成功但走的error">
   <meta property="og:site_name" content="yo this is tulingrui">
 
   
@@ -111,7 +107,7 @@ var _hmt = _hmt || [];
 
 	
 		<div class="page-header">
-			<h1> 记一个初试WebSocket遇到的问题</h1>
+			<h1> Ajax调用接口HTTP状态是成功但走的error</h1>
 		</div>
 	
 
@@ -128,32 +124,12 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <p>记一个初试WebSocket遇到的问题</p>
-<p>本机运行没问题，打包时报出</p>
-<pre><code>java.lang.IllegalStateException: javax.websocket.server.ServerContainer not available
-</code></pre><p>我把打包测试关掉之后没问题了</p>
-<pre><code>&lt;build&gt;
-    &lt;plugins&gt;
-        &lt;plugin&gt;
-            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-            &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
-            &lt;configuration&gt;
-                &lt;source&gt;1.8&lt;/source&gt;
-                &lt;target&gt;1.8&lt;/target&gt;
-                &lt;encoding&gt;UTF-8&lt;/encoding&gt;
-                &lt;skip&gt;true&lt;/skip&gt;
-            &lt;/configuration&gt;
-        &lt;/plugin&gt;
-    &lt;/plugins&gt;
-&lt;/build&gt;
-</code></pre><p>可以打包了</p>
-<p>而部署到服务器上运行时又报出</p>
-<pre><code>java.lang.IllegalStateException: Failed to register @ServerEndpoint class
-</code></pre><p>搜了一下<br>需要改一下WebSocketConfig，将@Configuration 删掉</p>
-<p>这时又报出了一个错误</p>
-<pre><code>Failed to start component [StandardEngine[Catalina].StandardHost[localhost]]
-</code></pre><p>搜了一下说是Tomcat问题</p>
-<p>换了个Tomcat8 OK了</p>
+	  <h2 id="Ajax调用接口HTTP状态是成功但走的error"><a href="#Ajax调用接口HTTP状态是成功但走的error" class="headerlink" title="Ajax调用接口HTTP状态是成功但走的error"></a>Ajax调用接口HTTP状态是成功但走的error</h2><p>之前和其他同事对接接口时 调他的接口在浏览器看是没问题，Chrome控制台看也是没异常可以转换成对象格式 但Ajax调用时一直走error 不走success HTTP状态码又是200<br>最后发现还是他返回数据的格式问题</p>
+<pre><code>{msg : &quot;ok&quot;} 
+</code></pre><p>这种格式浏览器不认为是错误的，可以正确的转换成对象格式，然后到ajax就会认为是错误的了</p>
+<p>so 改成</p>
+<pre><code>{&quot;msg&quot; : &quot;ok&quot;}
+</code></pre><p>键要加上双引号 这样就可以了</p>
 	  
 	</div>
 
@@ -163,12 +139,12 @@ var _hmt = _hmt || [];
 
     
     
-    <a href="/main/2019/05/15/今天赚了1000块/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a href="/main/2019/06/26/Js链式调用思路/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/main/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/main/2019/04/17/记一事故md/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    <a href="/main/2019/06/20/lombok注解引用不到与无效问题/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
     
 
     
@@ -221,7 +197,7 @@ var _hmt = _hmt || [];
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2019-05-07 
+	2019-06-25 
 	</div>
 	
 
@@ -232,7 +208,7 @@ var _hmt = _hmt || [];
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    </li><li><a href="/main/categories/Java/">Java<span>8</span></a></li>
+    </li><li><a href="/main/categories/前端/">前端<span>4</span></a></li>
   
 
     </ul>

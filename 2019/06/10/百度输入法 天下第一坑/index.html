@@ -6,20 +6,17 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>记一个初试WebSocket遇到的问题 | yo this is tulingrui</title>
+  <title>百度输入法 天下第一坑 | yo this is tulingrui</title>
   <meta name="author" content="John Doe">
   
-  <meta name="description" content="记一个初试WebSocket遇到的问题
-本机运行没问题，打包时报出
-java.lang.IllegalStateException: javax.websocket.server.ServerContainer not available
-我把打包测试关掉之后没问题了
-&amp;lt;build&amp;gt;
- ">
+  <meta name="description" content="百度输入法 天下第一坑今天发现线上服务的服务器内存占用很多，8G的内存居然占用60%多
+打开控制台 发现百度输入法的服务占用了居然快2个G ，嗯？？？？
+直接卸载，但发现卸载完输入法还在，直接找安装目录把占用的应用关掉再删文件">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="记一个初试WebSocket遇到的问题">
+  <meta property="og:title" content="百度输入法 天下第一坑">
   <meta property="og:site_name" content="yo this is tulingrui">
 
   
@@ -111,7 +108,7 @@ var _hmt = _hmt || [];
 
 	
 		<div class="page-header">
-			<h1> 记一个初试WebSocket遇到的问题</h1>
+			<h1> 百度输入法 天下第一坑</h1>
 		</div>
 	
 
@@ -128,32 +125,9 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <p>记一个初试WebSocket遇到的问题</p>
-<p>本机运行没问题，打包时报出</p>
-<pre><code>java.lang.IllegalStateException: javax.websocket.server.ServerContainer not available
-</code></pre><p>我把打包测试关掉之后没问题了</p>
-<pre><code>&lt;build&gt;
-    &lt;plugins&gt;
-        &lt;plugin&gt;
-            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-            &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
-            &lt;configuration&gt;
-                &lt;source&gt;1.8&lt;/source&gt;
-                &lt;target&gt;1.8&lt;/target&gt;
-                &lt;encoding&gt;UTF-8&lt;/encoding&gt;
-                &lt;skip&gt;true&lt;/skip&gt;
-            &lt;/configuration&gt;
-        &lt;/plugin&gt;
-    &lt;/plugins&gt;
-&lt;/build&gt;
-</code></pre><p>可以打包了</p>
-<p>而部署到服务器上运行时又报出</p>
-<pre><code>java.lang.IllegalStateException: Failed to register @ServerEndpoint class
-</code></pre><p>搜了一下<br>需要改一下WebSocketConfig，将@Configuration 删掉</p>
-<p>这时又报出了一个错误</p>
-<pre><code>Failed to start component [StandardEngine[Catalina].StandardHost[localhost]]
-</code></pre><p>搜了一下说是Tomcat问题</p>
-<p>换了个Tomcat8 OK了</p>
+	  <h2 id="百度输入法-天下第一坑"><a href="#百度输入法-天下第一坑" class="headerlink" title="百度输入法 天下第一坑"></a>百度输入法 天下第一坑</h2><p>今天发现线上服务的服务器内存占用很多，8G的内存居然占用60%多</p>
+<p>打开控制台 发现百度输入法的服务占用了居然快2个G ，嗯？？？？</p>
+<p>直接卸载，但发现卸载完输入法还在，直接找安装目录把占用的应用关掉再删文件</p>
 	  
 	</div>
 
@@ -163,12 +137,12 @@ var _hmt = _hmt || [];
 
     
     
-    <a href="/main/2019/05/15/今天赚了1000块/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a href="/main/2019/06/20/lombok注解引用不到与无效问题/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/main/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/main/2019/04/17/记一事故md/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    <a href="/main/2019/05/23/内存泄漏与内存溢出/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
     
 
     
@@ -221,7 +195,7 @@ var _hmt = _hmt || [];
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2019-05-07 
+	2019-06-10 
 	</div>
 	
 
@@ -232,7 +206,7 @@ var _hmt = _hmt || [];
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    </li><li><a href="/main/categories/Java/">Java<span>8</span></a></li>
+    </li><li><a href="/main/categories/其他/">其他<span>8</span></a></li>
   
 
     </ul>

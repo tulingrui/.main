@@ -6,20 +6,22 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>记一个初试WebSocket遇到的问题 | yo this is tulingrui</title>
+  <title>Js链式调用思路 | yo this is tulingrui</title>
   <meta name="author" content="John Doe">
   
-  <meta name="description" content="记一个初试WebSocket遇到的问题
-本机运行没问题，打包时报出
-java.lang.IllegalStateException: javax.websocket.server.ServerContainer not available
-我把打包测试关掉之后没问题了
-&amp;lt;build&amp;gt;
+  <meta name="description" content="Js链式调用思路今天突然想到Js链式调用，效果这样 ↓
+&amp;gt; tool.加(1,2,3,4).减(1,1,3).乘(10,10).除(2,2).和();
+&amp;lt; 20
+代码如下，一个加减乘除的方法
+var tool = {
+    x : 0,
+    加 : (...n) =&amp;gt; {
  ">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="记一个初试WebSocket遇到的问题">
+  <meta property="og:title" content="Js链式调用思路">
   <meta property="og:site_name" content="yo this is tulingrui">
 
   
@@ -111,7 +113,7 @@ var _hmt = _hmt || [];
 
 	
 		<div class="page-header">
-			<h1> 记一个初试WebSocket遇到的问题</h1>
+			<h1> Js链式调用思路</h1>
 		</div>
 	
 
@@ -128,32 +130,75 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <p>记一个初试WebSocket遇到的问题</p>
-<p>本机运行没问题，打包时报出</p>
-<pre><code>java.lang.IllegalStateException: javax.websocket.server.ServerContainer not available
-</code></pre><p>我把打包测试关掉之后没问题了</p>
-<pre><code>&lt;build&gt;
-    &lt;plugins&gt;
-        &lt;plugin&gt;
-            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-            &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
-            &lt;configuration&gt;
-                &lt;source&gt;1.8&lt;/source&gt;
-                &lt;target&gt;1.8&lt;/target&gt;
-                &lt;encoding&gt;UTF-8&lt;/encoding&gt;
-                &lt;skip&gt;true&lt;/skip&gt;
-            &lt;/configuration&gt;
-        &lt;/plugin&gt;
-    &lt;/plugins&gt;
-&lt;/build&gt;
-</code></pre><p>可以打包了</p>
-<p>而部署到服务器上运行时又报出</p>
-<pre><code>java.lang.IllegalStateException: Failed to register @ServerEndpoint class
-</code></pre><p>搜了一下<br>需要改一下WebSocketConfig，将@Configuration 删掉</p>
-<p>这时又报出了一个错误</p>
-<pre><code>Failed to start component [StandardEngine[Catalina].StandardHost[localhost]]
-</code></pre><p>搜了一下说是Tomcat问题</p>
-<p>换了个Tomcat8 OK了</p>
+	  <h2 id="Js链式调用思路"><a href="#Js链式调用思路" class="headerlink" title="Js链式调用思路"></a>Js链式调用思路</h2><p>今天突然想到Js链式调用，效果这样 ↓</p>
+<pre><code>&gt; tool.加(1,2,3,4).减(1,1,3).乘(10,10).除(2,2).和();
+&lt; 20
+</code></pre><p>代码如下，一个加减乘除的方法</p>
+<pre><code>var tool = {
+    x : 0,
+    加 : (...n) =&gt; {
+            tool.x += n.reduce((m,c)=&gt;m+c);
+            return tool;
+    },
+    减 : (...n) =&gt; {
+            tool.x += n.reduce((m,c)=&gt;m-c);
+            return tool;
+    },
+    乘 : (...n) =&gt; {
+            tool.x *=n.reduce((m,c)=&gt;m*c);
+            return tool;
+    },
+    除 : (...n) =&gt; {
+            for(var x of n){
+                tool.x/=x;
+            }
+            return tool;
+    },
+    和 : () =&gt; {
+            var x = tool.x;
+            tool.x = 0;
+            return x;
+    }
+};
+</code></pre><p>思路就是当调用其中1个方法计算结束后 返回函数tool</p>
+<p>这样做 </p>
+<pre><code>tool.加(1,2,3).减(1,2,3);
+</code></pre><p>就等同于</p>
+<pre><code>tool.加(1,2,3);
+tool.减(1,2,3);
+</code></pre><p>当然最后要返回值的嘛，把想计算的写完后再调用 和();将函数中存计算值的变量清空再返回</p>
+<pre><code>var x = tool.x;
+tool.x = 0;
+return x;
+</code></pre><hr>
+<p>在segmentfault还看到另外一种链式调用写法</p>
+<blockquote>
+<p><a href="https://segmentfault.com/a/1190000008724608?utm_source=tag-newest" target="_blank" rel="noopener">https://segmentfault.com/a/1190000008724608?utm_source=tag-newest</a></p>
+</blockquote>
+<p>效果</p>
+<pre><code>&gt;add(1)(2)(3) //6
+</code></pre><p>代码</p>
+<pre><code>function add (num) {
+    var count = num;
+    var _b = function(l){
+        count += l;
+        return _b
+    }
+    _b.valueOf = function(){
+        return count
+    }
+    return _b
+}
+</code></pre><p><em>在方法体内部通过私有方法实现运算，由于闭包 count得以累加 利用valueOf来存返回值，<br>最后返回计算方法<strong>b，而再次调用时调用的是前一次返回的</strong>b方法本身，这样就实现了链式。</em></p>
+<p><em>最后就是得到的结果, b并不是数字而是一个方法，重写valueOf指定了_b方法的原始值，所以console.log输出时_b显示的是计算值，而调用b方法时还会继续进行计算</em></p>
+<p>举个栗子 ↓ </p>
+<pre><code>function test(){
+    return 5;
+}
+test.valueOf = function (){ return 20}
+console.log(test); // 20
+console.log(test());// 5
+</code></pre><p>这样来看就简单了 </p>
 	  
 	</div>
 
@@ -163,12 +208,12 @@ var _hmt = _hmt || [];
 
     
     
-    <a href="/main/2019/05/15/今天赚了1000块/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
     
 
     <a href="/main/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/main/2019/04/17/记一事故md/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    <a href="/main/2019/06/25/Ajax调用接口HTTP状态是成功但走的error/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
     
 
     
@@ -221,7 +266,7 @@ var _hmt = _hmt || [];
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2019-05-07 
+	2019-06-26 
 	</div>
 	
 
@@ -232,7 +277,7 @@ var _hmt = _hmt || [];
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    </li><li><a href="/main/categories/Java/">Java<span>8</span></a></li>
+    </li><li><a href="/main/categories/前端/">前端<span>4</span></a></li>
   
 
     </ul>

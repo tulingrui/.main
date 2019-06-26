@@ -129,6 +129,197 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/main/2019/06/26/Js链式调用思路/">Js链式调用思路</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-06-26  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Js链式调用思路"><a href="#Js链式调用思路" class="headerlink" title="Js链式调用思路"></a>Js链式调用思路</h2><p>今天突然想到Js链式调用，效果这样 ↓</p>
+<pre><code>&gt; tool.加(1,2,3,4).减(1,1,3).乘(10,10).除(2,2).和();
+&lt; 20
+</code></pre><p>代码如下，一个加减乘除的方法</p>
+<pre><code>var tool = {
+    x : 0,
+    加 : (...n) =&gt; {
+            tool.x += n.reduce((m,c)=&gt;m+c);
+            return tool;
+    },
+    减 : (...n) =&gt; {
+            tool.x += n.reduce((m,c)=&gt;m-c);
+            return tool;
+    },
+    乘 : (...n) =&gt; {
+            tool.x *=n.reduce((m,c)=&gt;m*c);
+            return tool;
+    },
+    除 : (...n) =&gt; {
+            for(var x of n){
+                tool.x/=x;
+            }
+            return tool;
+    },
+    和 : () =&gt; {
+            var x = tool.x;
+            tool.x = 0;
+            return x;
+    }
+};
+</code></pre><p>思路就是当调用其中1个方法计算结束后 返回函数tool</p>
+<p>这样做 </p>
+<pre><code>tool.加(1,2,3).减(1,2,3);
+</code></pre><p>就等同于</p>
+<pre><code>tool.加(1,2,3);
+tool.减(1,2,3);
+</code></pre><p>当然最后要返回值的嘛，把想计算的写完后再调用 和();将函数中存计算值的变量清空再返回</p>
+<pre><code>var x = tool.x;
+tool.x = 0;
+return x;
+</code></pre><hr>
+<p>在segmentfault还看到另外一种链式调用写法</p>
+<blockquote>
+<p><a href="https://segmentfault.com/a/1190000008724608?utm_source=tag-newest" target="_blank" rel="noopener">https://segmentfault.com/a/1190000008724608?utm_source=tag-newest</a></p>
+</blockquote>
+<p>效果</p>
+<pre><code>&gt;add(1)(2)(3) //6
+</code></pre><p>代码</p>
+<pre><code>function add (num) {
+    var count = num;
+    var _b = function(l){
+        count += l;
+        return _b
+    }
+    _b.valueOf = function(){
+        return count
+    }
+    return _b
+}
+</code></pre><p><em>在方法体内部通过私有方法实现运算，由于闭包 count得以累加 利用valueOf来存返回值，<br>最后返回计算方法<strong>b，而再次调用时调用的是前一次返回的</strong>b方法本身，这样就实现了链式。</em></p>
+<p><em>最后就是得到的结果, b并不是数字而是一个方法，重写valueOf指定了_b方法的原始值，所以console.log输出时_b显示的是计算值，而调用b方法时还会继续进行计算</em></p>
+<p>举个栗子 ↓ </p>
+<pre><code>function test(){
+    return 5;
+}
+test.valueOf = function (){ return 20}
+console.log(test); // 20
+console.log(test());// 5
+</code></pre><p>这样来看就简单了 </p>
+
+	
+	</div>
+  <a type="button" href="/main/2019/06/26/Js链式调用思路/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/main/2019/06/25/Ajax调用接口HTTP状态是成功但走的error/">Ajax调用接口HTTP状态是成功但走的error</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-06-25  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Ajax调用接口HTTP状态是成功但走的error"><a href="#Ajax调用接口HTTP状态是成功但走的error" class="headerlink" title="Ajax调用接口HTTP状态是成功但走的error"></a>Ajax调用接口HTTP状态是成功但走的error</h2><p>之前和其他同事对接接口时 调他的接口在浏览器看是没问题，Chrome控制台看也是没异常可以转换成对象格式 但Ajax调用时一直走error 不走success HTTP状态码又是200<br>最后发现还是他返回数据的格式问题</p>
+<pre><code>{msg : &quot;ok&quot;} 
+</code></pre><p>这种格式浏览器不认为是错误的，可以正确的转换成对象格式，然后到ajax就会认为是错误的了</p>
+<p>so 改成</p>
+<pre><code>{&quot;msg&quot; : &quot;ok&quot;}
+</code></pre><p>键要加上双引号 这样就可以了</p>
+
+	
+	</div>
+  <a type="button" href="/main/2019/06/25/Ajax调用接口HTTP状态是成功但走的error/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/main/2019/06/20/lombok注解引用不到与无效问题/">lombok注解引用不到与无效问题</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-06-20  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="lombok注解引用不到与无效问题"><a href="#lombok注解引用不到与无效问题" class="headerlink" title="lombok注解引用不到与无效问题"></a>lombok注解引用不到与无效问题</h2><p>POM中明明都引入了maven仓库中也有包 但是写注解的时候就是提示找不到引入包</p>
+<p>解决：进到maven仓库 把lombok包删除掉，再maven update项目 重新下载后就好了</p>
+<hr>
+<p>但是这时又发现虽然注解需要的包引入了，但是没效果！</p>
+<p>解决：打开lombok目录下的lombok.jar 然后Specify location 选myEclipse目录下的myEclipse.exe （eclipse一样的） ，然后Install ，重启一下IDE OK了</p>
+
+	
+	</div>
+  <a type="button" href="/main/2019/06/20/lombok注解引用不到与无效问题/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/main/2019/06/10/百度输入法 天下第一坑/">百度输入法 天下第一坑</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-06-10  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="百度输入法-天下第一坑"><a href="#百度输入法-天下第一坑" class="headerlink" title="百度输入法 天下第一坑"></a>百度输入法 天下第一坑</h2><p>今天发现线上服务的服务器内存占用很多，8G的内存居然占用60%多</p>
+<p>打开控制台 发现百度输入法的服务占用了居然快2个G ，嗯？？？？</p>
+<p>直接卸载，但发现卸载完输入法还在，直接找安装目录把占用的应用关掉再删文件</p>
+
+	
+	</div>
+  <a type="button" href="/main/2019/06/10/百度输入法 天下第一坑/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/main/2019/05/23/内存泄漏与内存溢出/">内存泄漏和内存溢出</a>
 		</h3>
 		</div>
@@ -386,190 +577,6 @@ public static BouncyCastleProvider getInstance() {
 </div>
 
 		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/main/2019/03/15/1个部署时遇到的问题/">1个困扰很久的问题</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-15  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<p>更新项目时很多时候只改了一部分功能<br>所以 更新时也是本地编译后更新修改的部分文件</p>
-<p>本地研发环境运行时是毫无问题</p>
-<p>但是更新到服务器上时偶尔就会报出</p>
-<pre><code>java (Ljava/lang/String;Ljava/lang/String;I)V
-</code></pre><p>差不多就这种的 有斜杠斜杠分开的不同类型的错误</p>
-<p>怀疑过是环境问题导致错误</p>
-<p>但是我将所有文件一起发布时又没问题了</p>
-<p>反复之后发现 将与更新文件有相关调用的文件一起发布才可以</p>
-<p>但是不明白原因</p>
-<p>找了很久 发现这篇博客 </p>
-<blockquote>
-<p><a href="https://blog.csdn.net/dailywater/article/details/72848770" target="_blank" rel="noopener">https://blog.csdn.net/dailywater/article/details/72848770</a></p>
-</blockquote>
-<p><strong>方法签名不一致</strong></p>
-
-	
-	</div>
-  <a type="button" href="/main/2019/03/15/1个部署时遇到的问题/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/main/2019/01/24/做爬虫时犯了一个很蠢的问题/">做爬虫时犯了一个很蠢的问题</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-01-24  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="做爬虫时犯了一个很蠢的问题"><a href="#做爬虫时犯了一个很蠢的问题" class="headerlink" title="做爬虫时犯了一个很蠢的问题"></a>做爬虫时犯了一个很蠢的问题</h2><p>需要爬取的信息在同一个li下</p>
-<p>一个a标签是地区名 在li下的span下 </p>
-<p>一个a标签是标题带内容 在li下</p>
-<p>之前抓取时没用到地区名 写的自动下载 ，没有问题</p>
-<p>现在客户提出新需求，要抓取下地区名 所以改成手动加入队列下载</p>
-<p>这时就发现 出现了 no protocol （无协议）</p>
-<p>并且 我在处理下载内容的同时需要将获取的地区名再加到parameters中</p>
-<p>而这时循环预下载列表中 获取地区名时 出现了下标越界 </p>
-<p>嗯？？满脑袋问号</p>
-<p>输出一下 好8 发现原来是同时把地区名的a标签的链接也抓取进来了</p>
-<p>导致列表的数据大小直接double，而地区名数据的大小是正常大小的，所以下标越界了</p>
-<p>而这时再去下载空字符的URL 就出现了 no protocol</p>
-
-	
-	</div>
-  <a type="button" href="/main/2019/01/24/做爬虫时犯了一个很蠢的问题/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/main/2018/12/29/MyEclipse CI 2018 HTML标签不高亮显示/">MyEclipse CI 2018 HTML标签不高亮显示</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2018-12-29  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="MyEclipse-CI-2018-HTML标签不高亮显示"><a href="#MyEclipse-CI-2018-HTML标签不高亮显示" class="headerlink" title="MyEclipse CI 2018 HTML标签不高亮显示"></a>MyEclipse CI 2018 HTML标签不高亮显示</h2><p>新版本的是在左侧行数的旁边变色显示的，看起来很不舒服 </p>
-<p>Preferences &gt; General &gt; Editors &gt; File Associations &gt; 找到html 把编辑器改回JSP就好了！</p>
-
-	
-	</div>
-  <a type="button" href="/main/2018/12/29/MyEclipse CI 2018 HTML标签不高亮显示/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/main/2018/12/10/基于Socks5协议的代理服务搭建突破网络限制/">基于Socks5协议的代理服务搭建突破网络限制</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2018-12-10  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="基于Socks5协议的代理服务搭建突破网络限制"><a href="#基于Socks5协议的代理服务搭建突破网络限制" class="headerlink" title="基于Socks5协议的代理服务搭建突破网络限制"></a>基于Socks5协议的代理服务搭建突破网络限制</h2><p>操作系统 - Windows</p>
-<p>首先 需要有 nodeJs</p>
-<p>然后安装1下<strong>服务端</strong></p>
-<blockquote>
-<p>npm install -g shadowsocks</p>
-</blockquote>
-<p>安装完之后打开安装目录 举个栗子：</p>
-<blockquote>
-<p>C:\Users\DELL\AppData\Roaming\npm\node_modules\shadowsocks</p>
-</blockquote>
-<p>打开 config.json文件 开始配置</p>
-<pre><code>{
-&quot;server&quot;:&quot;你服务器的IP&quot;,
-&quot;server_port&quot;:8081,
-&quot;local_address&quot;:&quot;127.0.0.1&quot;,
-&quot;local_port&quot;:1080,
-&quot;password&quot;:&quot;Tulingrui321.!&quot;,
-&quot;timeout&quot;:600,
-&quot;method&quot;:&quot;aes-256-cfb&quot;
-}
-</code></pre><blockquote>
-<p>server : 你服务器的IP</p>
-<p>server_port : 对外的服务访问端口</p>
-<p>local_port : 本地端口</p>
-<p>password : 密码</p>
-<p>method : 加密方式</p>
-</blockquote>
-<p>保存  然后 cmd，输 ssserver 回车 启动了</p>
-<hr>
-<p><strong>客户端下载地址</strong> </p>
-<blockquote>
-<p><a href="https://github.com/shadowsocksr-backup/shadowsocksr-csharp/releases" target="_blank" rel="noopener">https://github.com/shadowsocksr-backup/shadowsocksr-csharp/releases</a></p>
-</blockquote>
-<p>客户端配置</p>
-<p>加密方式 - aes-256-cfb</p>
-<p>协议 - origin</p>
-<p>混淆 - plain</p>
-<p>全局代理 OK 一些网站可以访问了</p>
-<p>这时发现我的网易云音乐也被限制了</p>
-<p>首先 打开IE </p>
-<p>Internet选项 &gt; 连接 &gt; 局域网设置</p>
-<p>勾选为LAN使用代理服务器 </p>
-<p>取消勾选 对于本地地址不使用代理服务器</p>
-<p>地址：127.0.0.1</p>
-<p>端口：1080</p>
-<p>确定 </p>
-<p>网易云音乐中可以设置代理</p>
-<p>选择 【使用IE代理设置】确定后重新打开网易云音乐 OK了</p>
-
-	
-	</div>
-  <a type="button" href="/main/2018/12/10/基于Socks5协议的代理服务搭建突破网络限制/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -619,11 +626,11 @@ public static BouncyCastleProvider getInstance() {
 		
 			<li><a href="/main/categories/IDE/">IDE<span>1</span></a></li>
 		
-			<li><a href="/main/categories/Java/">Java<span>7</span></a></li>
+			<li><a href="/main/categories/Java/">Java<span>8</span></a></li>
 		
-			<li><a href="/main/categories/其他/">其他<span>7</span></a></li>
+			<li><a href="/main/categories/其他/">其他<span>8</span></a></li>
 		
-			<li><a href="/main/categories/前端/">前端<span>2</span></a></li>
+			<li><a href="/main/categories/前端/">前端<span>4</span></a></li>
 		
 			<li><a href="/main/categories/数据库/">数据库<span>2</span></a></li>
 		
@@ -640,23 +647,23 @@ public static BouncyCastleProvider getInstance() {
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/main/2019/06/26/Js链式调用思路/"><i class="fa fa-file-o"></i>Js链式调用思路</a>
+      </li>
+    
+      <li>
+        <a href="/main/2019/06/25/Ajax调用接口HTTP状态是成功但走的error/"><i class="fa fa-file-o"></i>Ajax调用接口HTTP状态是成功但走的error</a>
+      </li>
+    
+      <li>
+        <a href="/main/2019/06/20/lombok注解引用不到与无效问题/"><i class="fa fa-file-o"></i>lombok注解引用不到与无效问题</a>
+      </li>
+    
+      <li>
+        <a href="/main/2019/06/10/百度输入法 天下第一坑/"><i class="fa fa-file-o"></i>百度输入法 天下第一坑</a>
+      </li>
+    
+      <li>
         <a href="/main/2019/05/23/内存泄漏与内存溢出/"><i class="fa fa-file-o"></i>内存泄漏和内存溢出</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/05/22/微信授权时出现了一直不断获取授权的问题/"><i class="fa fa-file-o"></i>微信授权时一直不断获取授权的问题记录</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/05/15/今天赚了1000块/"><i class="fa fa-file-o"></i>今天赚了1000块 耶</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/05/07/记一个初试WebSocket遇到的问题/"><i class="fa fa-file-o"></i>记一个初试WebSocket遇到的问题</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/04/17/记一事故md/"><i class="fa fa-file-o"></i>记一个项目事故</a>
       </li>
     
   </ul>

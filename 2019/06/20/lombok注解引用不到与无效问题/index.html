@@ -6,20 +6,19 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>记一个初试WebSocket遇到的问题 | yo this is tulingrui</title>
+  <title>lombok注解引用不到与无效问题 | yo this is tulingrui</title>
   <meta name="author" content="John Doe">
   
-  <meta name="description" content="记一个初试WebSocket遇到的问题
-本机运行没问题，打包时报出
-java.lang.IllegalStateException: javax.websocket.server.ServerContainer not available
-我把打包测试关掉之后没问题了
-&amp;lt;build&amp;gt;
- ">
+  <meta name="description" content="lombok注解引用不到与无效问题POM中明明都引入了maven仓库中也有包 但是写注解的时候就是提示找不到引入包
+解决：进到maven仓库 把lombok包删除掉，再maven update项目 重新下载后就好了
+
+但是这时又发现虽然注解需要的包引入了，但是没效果！
+解决：打开lombok目录下的">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="记一个初试WebSocket遇到的问题">
+  <meta property="og:title" content="lombok注解引用不到与无效问题">
   <meta property="og:site_name" content="yo this is tulingrui">
 
   
@@ -111,7 +110,7 @@ var _hmt = _hmt || [];
 
 	
 		<div class="page-header">
-			<h1> 记一个初试WebSocket遇到的问题</h1>
+			<h1> lombok注解引用不到与无效问题</h1>
 		</div>
 	
 
@@ -128,32 +127,11 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <p>记一个初试WebSocket遇到的问题</p>
-<p>本机运行没问题，打包时报出</p>
-<pre><code>java.lang.IllegalStateException: javax.websocket.server.ServerContainer not available
-</code></pre><p>我把打包测试关掉之后没问题了</p>
-<pre><code>&lt;build&gt;
-    &lt;plugins&gt;
-        &lt;plugin&gt;
-            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-            &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
-            &lt;configuration&gt;
-                &lt;source&gt;1.8&lt;/source&gt;
-                &lt;target&gt;1.8&lt;/target&gt;
-                &lt;encoding&gt;UTF-8&lt;/encoding&gt;
-                &lt;skip&gt;true&lt;/skip&gt;
-            &lt;/configuration&gt;
-        &lt;/plugin&gt;
-    &lt;/plugins&gt;
-&lt;/build&gt;
-</code></pre><p>可以打包了</p>
-<p>而部署到服务器上运行时又报出</p>
-<pre><code>java.lang.IllegalStateException: Failed to register @ServerEndpoint class
-</code></pre><p>搜了一下<br>需要改一下WebSocketConfig，将@Configuration 删掉</p>
-<p>这时又报出了一个错误</p>
-<pre><code>Failed to start component [StandardEngine[Catalina].StandardHost[localhost]]
-</code></pre><p>搜了一下说是Tomcat问题</p>
-<p>换了个Tomcat8 OK了</p>
+	  <h2 id="lombok注解引用不到与无效问题"><a href="#lombok注解引用不到与无效问题" class="headerlink" title="lombok注解引用不到与无效问题"></a>lombok注解引用不到与无效问题</h2><p>POM中明明都引入了maven仓库中也有包 但是写注解的时候就是提示找不到引入包</p>
+<p>解决：进到maven仓库 把lombok包删除掉，再maven update项目 重新下载后就好了</p>
+<hr>
+<p>但是这时又发现虽然注解需要的包引入了，但是没效果！</p>
+<p>解决：打开lombok目录下的lombok.jar 然后Specify location 选myEclipse目录下的myEclipse.exe （eclipse一样的） ，然后Install ，重启一下IDE OK了</p>
 	  
 	</div>
 
@@ -163,12 +141,12 @@ var _hmt = _hmt || [];
 
     
     
-    <a href="/main/2019/05/15/今天赚了1000块/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a href="/main/2019/06/25/Ajax调用接口HTTP状态是成功但走的error/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/main/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/main/2019/04/17/记一事故md/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    <a href="/main/2019/06/10/百度输入法 天下第一坑/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
     
 
     
@@ -221,7 +199,7 @@ var _hmt = _hmt || [];
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2019-05-07 
+	2019-06-20 
 	</div>
 	
 
