@@ -6,7 +6,7 @@
   <link href="/main/atom.xml" rel="self"/>
   
   <link href="https://tulingrui.github.io/main/"/>
-  <updated>2019-06-26T08:41:25.998Z</updated>
+  <updated>2019-07-15T08:47:53.780Z</updated>
   <id>https://tulingrui.github.io/main/</id>
   
   <author>
@@ -15,6 +15,79 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>channel is already closed due to channel error; protocol method</title>
+    <link href="https://tulingrui.github.io/main/2019/07/15/RabbitMQ-channel%20is%20already%20closed%20due%20to%20channel%20error;%20protocol%20method/"/>
+    <id>https://tulingrui.github.io/main/2019/07/15/RabbitMQ-channel is already closed due to channel error; protocol method/</id>
+    <published>2019-07-15T08:31:25.000Z</published>
+    <updated>2019-07-15T08:47:53.780Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="channel-is-already-closed-due-to-channel-error-protocol-method"><a href="#channel-is-already-closed-due-to-channel-error-protocol-method" class="headerlink" title="channel is already closed due to channel error; protocol method"></a>channel is already closed due to channel error; protocol method</h2><p>in Java use RabbitMQ Client develop，using work model occurred error “channel is already closed due to channel error; protocol method”</p><p>info ↓</p><pre><code>Exception in thread &quot;main&quot; com.rabbitmq.client.AlreadyClosedException: channel is already closed due to channel error; protocol method: #method&lt;channel.close&gt;(reply-code=406, reply-text=PRECONDITION_FAILED - unknown delivery tag 1, class-id=60, method-id=80)at com.rabbitmq.client.impl.AMQChannel.ensureIsOpen(AMQChannel.java:190)at com.rabbitmq.client.impl.AMQChannel.transmit(AMQChannel.java:291)at com.rabbitmq.client.impl.AMQChannel.transmit(AMQChannel.java:285)at com.rabbitmq.client.impl.ChannelN.basicAck(ChannelN.java:1012)at com.tlr.rabbitMQ.consumer.SimpleMsgConsumer.main(SimpleMsgConsumer.java:35)</code></pre><p>AutoAck true is automatic</p><pre><code>channel.basicConsume(QUEUE_NAME, true, consumer);</code></pre><p>so</p><pre><code>// OKchannel.basicConsume(QUEUE_NAME, false, consumer);</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;channel-is-already-closed-due-to-channel-error-protocol-method&quot;&gt;&lt;a href=&quot;#channel-is-already-closed-due-to-channel-error-protocol-me
+      
+    
+    </summary>
+    
+      <category term="RabbitMQ" scheme="https://tulingrui.github.io/main/categories/RabbitMQ/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SpringCloud-Config Cannot clone or checkout repository</title>
+    <link href="https://tulingrui.github.io/main/2019/07/07/SpringCloud-Config%20Cannot%20clone%20or%20checkout%20repository/"/>
+    <id>https://tulingrui.github.io/main/2019/07/07/SpringCloud-Config Cannot clone or checkout repository/</id>
+    <published>2019-07-07T05:38:44.000Z</published>
+    <updated>2019-07-07T05:38:45.250Z</updated>
+    
+    <content type="html"><![CDATA[<p>##SpringCloud-Config Cannot clone or checkout repository</p><p>看视频学时url地址是使用的ssh</p><p>配置好访问时却报 Cannot clone or checkout repository</p><p>于是换成HTTPS 可以了</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;##SpringCloud-Config Cannot clone or checkout repository&lt;/p&gt;
+&lt;p&gt;看视频学时url地址是使用的ssh&lt;/p&gt;
+&lt;p&gt;配置好访问时却报 Cannot clone or checkout repository&lt;/p&gt;
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://tulingrui.github.io/main/categories/Java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SpringCloud-Eureka集群启动时候Read timed out</title>
+    <link href="https://tulingrui.github.io/main/2019/07/02/SpringCloud-Eureka%E5%90%AF%E5%8A%A8%E6%97%B6%E5%80%99Read%20Timeout/"/>
+    <id>https://tulingrui.github.io/main/2019/07/02/SpringCloud-Eureka启动时候Read Timeout/</id>
+    <published>2019-07-02T06:14:36.000Z</published>
+    <updated>2019-07-02T06:19:32.355Z</updated>
+    
+    <content type="html"><![CDATA[<p>##SpringCloud-Eureka集群启动时候Read timed out</p><pre><code>Caused by: java.net.SocketTimeoutException: Read timed outat java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_144]at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_144]at java.net.SocketInputStream.read(SocketInputStream.java:171) ~[na:1.8.0_144]at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_144]at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:161) ~[httpcore-4.4.8.jar:4.4.8]at org.apache.http.impl.io.SocketInputBuffer.fillBuffer(SocketInputBuffer.java:82) ~[httpcore-4.4.8.jar:4.4.8]at org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:278) ~[httpcore-4.4.8.jar:4.4.8]at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:138) ~[httpclient-4.5.3.jar:4.5.3]at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:56) ~[httpclient-4.5.3.jar:4.5.3]at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:259) ~[httpcore-4.4.8.jar:4.4.8]at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:286) ~[httpcore-4.4.8.jar:4.4.8]at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:257) ~[httpclient-4.5.3.jar:4.5.3]at org.apache.http.impl.conn.AbstractClientConnAdapter.receiveResponseHeader(AbstractClientConnAdapter.java:230) ~[httpclient-4.5.3.jar:4.5.3]at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:273) ~[httpcore-4.4.8.jar:4.4.8]at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125) ~[httpcore-4.4.8.jar:4.4.8]at org.apache.http.impl.client.DefaultRequestDirector.tryExecute(DefaultRequestDirector.java:684) ~[httpclient-4.5.3.jar:4.5.3]at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:486) ~[httpclient-4.5.3.jar:4.5.3]at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.3.jar:4.5.3]at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.3.jar:4.5.3]at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.3.jar:4.5.3]at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar:1.19.1]... 10 common frames omitted</code></pre><p>一共3个Eureka服务，每次我启动时都是同一个服务会报出Read timed out,所有集群启动完成之后就不会报了 倒也没什么影响，搜了1下。</p><p>这样说的</p><blockquote><p>Eureka在同步集群节点时报错，因为时顺序启动，当第一个启动成功之后，同步不了节点就报错了，集群全部启动之后就不会报了</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;##SpringCloud-Eureka集群启动时候Read timed out&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Caused by: java.net.SocketTimeoutException: Read timed out
+at java.net.SocketInpu
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://tulingrui.github.io/main/categories/Java/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Js链式调用思路</title>
@@ -421,75 +494,6 @@
     </summary>
     
       <category term="其他" scheme="https://tulingrui.github.io/main/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>YApi接口管理平台搭建时的记录</title>
-    <link href="https://tulingrui.github.io/main/2018/08/07/YApi%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA%E6%97%B6%E7%9A%84%E8%AE%B0%E5%BD%95/"/>
-    <id>https://tulingrui.github.io/main/2018/08/07/YApi接口管理平台搭建时的记录/</id>
-    <published>2018-08-07T12:03:12.000Z</published>
-    <updated>2019-06-10T06:59:31.387Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="YApi接口管理平台搭建时的记录"><a href="#YApi接口管理平台搭建时的记录" class="headerlink" title="YApi接口管理平台搭建时的记录"></a>YApi接口管理平台搭建时的记录</h2><p>无意发现了这个接口管理平台，觉得挺不错 开始搭一个吧</p><p>一共有两种部署方式 （方式一. 可视化部署、方式二. 命令行部署）</p><p>我选择的是命令行部署 </p><p>首先环境需要 nodeJs、mongoDB</p><p>需要注意的是</p><p>1.确保 node 版本=&gt; 7.6, 可运行 node -v 查看版本号</p><p>2.确保 mongodb 版本 =&gt; 2.6，可运行 mongo –version 查看版本号</p><p>3.确保安装了 npm, 可运行 npm -v 查看版本号</p><p>4.确保安装了 node-gyp 环境，配置方法 运行</p><p> <code>npm install --global --production windows-build-tools</code></p><p>这些都可以之后 到Git将包下载下来 </p><blockquote><p><a href="https://github.com/YMFE/yapi.git" target="_blank" rel="noopener">https://github.com/YMFE/yapi.git</a></p></blockquote><p>首先创建一个 “yapi” 文件夹 ，然后 在yapi文件夹下创建 “vendors” 文件夹</p><p>将下载下来的包解压，将里面所有的文件复制到 “vendors”文件夹下面</p><p>找到解压出的文件中的 “config_example.json” 复制到 “yapi” 文件夹下，并改名为 “config.json” 在”config.json”中可以配置访问端口和访问数据的连接</p><p>cmd命令进入到 “E:\yapi\vendors” 下   (我的放在E盘了)</p><p>执行命令</p><pre><code>npm install --production --registry https://registry.npm.taobao.org</code></pre><p>等待完成后 继续执行 <code>npm run install-server</code> 安装程序会初始化数据库索引和管理员账号</p><p>最后执行命令 <code>node E:\yapi\vendors\server\app.js</code> 启动服务</p><p>打开 127.0.0.1:3000 ok</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;YApi接口管理平台搭建时的记录&quot;&gt;&lt;a href=&quot;#YApi接口管理平台搭建时的记录&quot; class=&quot;headerlink&quot; title=&quot;YApi接口管理平台搭建时的记录&quot;&gt;&lt;/a&gt;YApi接口管理平台搭建时的记录&lt;/h2&gt;&lt;p&gt;无意发现了这个接口管理平台，
-      
-    
-    </summary>
-    
-      <category term="其他" scheme="https://tulingrui.github.io/main/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>MongoDB在Windows下安装时遇到的问题</title>
-    <link href="https://tulingrui.github.io/main/2018/08/07/MongoDB%E5%9C%A8Windows%E4%B8%8B%E5%AE%89%E8%A3%85%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-    <id>https://tulingrui.github.io/main/2018/08/07/MongoDB在Windows下安装时遇到的问题/</id>
-    <published>2018-08-07T11:16:51.000Z</published>
-    <updated>2019-06-10T06:58:52.651Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="MongoDB在Windows下安装时遇到的问题"><a href="#MongoDB在Windows下安装时遇到的问题" class="headerlink" title="MongoDB在Windows下安装时遇到的问题"></a>MongoDB在Windows下安装时遇到的问题</h2><p>搭建项目时需要用到MongoDB,之前没接触过</p><p>在本机按照runoob.com的教程安装了一遍 挺顺利的,</p><p>就是需要注意最后一步时左下角的 “Install MongoDB Compass”</p><p>图形化界面如果不取消勾选 要等很久很久很久(电脑开了一晚上)都没安装完</p><p>ok 本机没问题 开始服务器搭建，第一步就出现问题了，可能是因为服务器环境的原因，安装时一直提示权限不足 安装不了。</p><p>搜了一下 <a href="https://www.mongodb.org/dl/win32" target="_blank" rel="noopener">https://www.mongodb.org/dl/win32</a> 官网提供了免安装包 可以对应的下载，配置好环境变量 “Path”  我的放在了E盘符下 </p><p>在解压好的 “mongoDB” 文件夹下建立好 “date” 与 “log” 文件夹</p><p>cmd控制台 命令进入到 “E:\mongoDB\bin” </p><p>执行命令 <code>mongod--dbpath E:\mongoDB\data</code>  配置</p><p>无意外 打开 localhost:27017 时页面就会给予提示了</p><p>然后我想更换端口为8098 查了一下</p><p>更换端口的命令 控制台执行命令 </p><pre><code>mongod --dbpath E:\MongoDB\data --port 8098</code></pre><p>这时提示我有错误了，搜了一下 是因为有文件锁住了的原因</p><p>在”mongoDB\data”下有 “mongod.lock” 与 “storage.bson” 这两个文件，将这两个删除后 重新执行就好了</p><p>接着 想转成Window服务 </p><p>首先 先把当前服务关掉, 然后把 “mongoDB\data”下有 “mongod.lock” 与 “storage.bson” 这两个文件删除掉</p><p>如果当前已经有Window服务了就需要移除一下</p><p>执行移除命令</p><pre><code>mongod --logpath &quot;E:\MongoDB\log\MongoDB.log&quot; --logappend --dbpath &quot;E:\Mongodb\data&quot; --directoryperdb --serviceName &quot;MongoDB&quot; --serviceDisplayName &quot;MongoDB&quot; --remove</code></pre><p>再继续执行添加服务命令</p><pre><code>mongod --logpath &quot;E:\MongoDB\log\MongoDB.log&quot; --logappend --dbpath &quot;E:\MongoDB\data&quot; --port 8098 --directoryperdb --serviceName &quot;MongoDB&quot; --serviceDisplayName &quot;MongoDB&quot; --install</code></pre><p>注意 “–port 8098” 要把这个加进去，我搜到的都是只有添加服务，如果不加 “–port 8098” 这个Window服务启动时 服务的端口还是默认的27017，这样就ok了</p><p>更改端口后连接数据库后面也要加上端口号才行 (不然还会连默认的27017端口)</p><pre><code>mongo --port 8098</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;MongoDB在Windows下安装时遇到的问题&quot;&gt;&lt;a href=&quot;#MongoDB在Windows下安装时遇到的问题&quot; class=&quot;headerlink&quot; title=&quot;MongoDB在Windows下安装时遇到的问题&quot;&gt;&lt;/a&gt;MongoDB在Window
-      
-    
-    </summary>
-    
-      <category term="数据库" scheme="https://tulingrui.github.io/main/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Google地图未能正常加载</title>
-    <link href="https://tulingrui.github.io/main/2017/03/25/Google%E5%9C%B0%E5%9B%BE%E6%9C%AA%E8%83%BD%E6%AD%A3%E5%B8%B8%E5%8A%A0%E8%BD%BD/"/>
-    <id>https://tulingrui.github.io/main/2017/03/25/Google地图未能正常加载/</id>
-    <published>2017-03-25T06:48:02.000Z</published>
-    <updated>2019-06-10T07:00:47.963Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Google地图未能正常加载"><a href="#Google地图未能正常加载" class="headerlink" title="Google地图未能正常加载"></a>Google地图未能正常加载</h2><p>项目里用到了Google地图,本机上可以正常加载,放到服务器上就不行了,<br>搜了一下 找到了这个</p><blockquote><p>If you are using the Google Maps API on localhost or your domain was not active prior to June 22nd, 2016, it will require a key going forward. To fix this problem, please see the Google Maps APIs documentation to get a key and add it to your application:</p></blockquote><p>oh，原来是需要加key，百度了一下 , </p><p>第一步<br>访问 API 控制台（网址为 <a href="https://code.google.com/apis/console）并使用您的" target="_blank" rel="noopener">https://code.google.com/apis/console）并使用您的</a> Google 帐户登录。</p><p>第二步<br>在控制台中激活谷歌地图的相关服务，然后进入谷歌api库，选择Google 地图 API下的对应程序（我用的是Google Maps JavaScript API）</p><p>第三步<br>点击为此 API 创建凭据，即可生成相关api的密钥，然后在地图文件中引入该密钥</p><p>赶紧翻了个墙创建了个密钥,加上之后 就OK了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;Google地图未能正常加载&quot;&gt;&lt;a href=&quot;#Google地图未能正常加载&quot; class=&quot;headerlink&quot; title=&quot;Google地图未能正常加载&quot;&gt;&lt;/a&gt;Google地图未能正常加载&lt;/h2&gt;&lt;p&gt;项目里用到了Google地图,本机上可以正常
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="https://tulingrui.github.io/main/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
   </entry>

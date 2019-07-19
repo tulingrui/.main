@@ -6,15 +6,19 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>微信公众号支付初步开发 | yo this is tulingrui</title>
+  <title>Arcgis fo JavaScript 4.x polyLine不显示问题 | yo this is tulingrui</title>
   <meta name="author" content="John Doe">
   
-  <meta name="description" content="微信公众号支付初步开发用户授权拿到code &amp;gt; 拿code去换access_token &amp;gt; 拿token换用户信息 &amp;gt; 到达输入缴费页面 &amp;gt; 使用JSSDK config接口注入权限验证配置 &amp;gt; 通过ready接口处理成功验证 成功后及可调用其他接口 &amp;gt; 点击支付">
+  <meta name="description" content="Arcgis fo JavaScript 4.x polyLine不显示问题4.x版本里多了一个截图的功能，要用到这个 所以要代码重构一下了
+一些小改动都调整差不多了准备看下数据展示 
+轨迹数据分为两个PolyLine（一个红色一个绿色）
+现在却只显示红色的，绿色的看不见
+思前想后检查了三四遍 都没">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="微信公众号支付初步开发">
+  <meta property="og:title" content="Arcgis fo JavaScript 4.x polyLine不显示问题">
   <meta property="og:site_name" content="yo this is tulingrui">
 
   
@@ -106,7 +110,7 @@ var _hmt = _hmt || [];
 
 	
 		<div class="page-header">
-			<h1> 微信公众号支付初步开发</h1>
+			<h1> Arcgis fo JavaScript 4.x polyLine不显示问题</h1>
 		</div>
 	
 
@@ -123,14 +127,27 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <h2 id="微信公众号支付初步开发"><a href="#微信公众号支付初步开发" class="headerlink" title="微信公众号支付初步开发"></a>微信公众号支付初步开发</h2><p>用户授权拿到code &gt; 拿code去换access_token &gt; 拿token换用户信息 &gt; 到达输入缴费页面 &gt; 使用JSSDK config接口注入权限验证配置 &gt; 通过ready接口处理成功验证 成功后及可调用其他接口 &gt; 点击支付 &gt; 调用wxPay方法ajax统一下单生成预付订单 &gt; 支付成功回调</p>
-<p>项目用JFinal Weixin框架开发的，省了很多事，签名阿之类的，遇到挺多问题，记录下来</p>
-<p>首先公众号先要有微信支付功能 申请一下 ,还有你的域名必须是80端口而且备案过的</p>
-<p>重要的三个设置</p>
-<p>1、设置JS接口安全域名，设置完之后可以在该域名下调用微信开放的JS  </p>
-<p>2、设置授权回调域名  ，写的时候这个授权域名没设置对 一到用户授权的时候就提示 redirect uri参数错误 调了半天 很难受</p>
-<p>3、支付授权的目录， 也就是你发起支付请求 所在页面 ！ 页面！ 页面！的目录 ，我设置的只有域名 结果一直支付失败 只给我 {“errMsg”:”chooseWXPay:fail”} 这就很难受了 只知道失败了 重新检查了一下 设置了一下授权目录<br>还有api支付的密钥  一定要和自己设置的一样 </p>
-<p>微信还提供了公众平台测试账号 在里面可以测试其他功能  但是测试不了微信支付</p>
+	  <h2 id="Arcgis-fo-JavaScript-4-x-polyLine不显示问题"><a href="#Arcgis-fo-JavaScript-4-x-polyLine不显示问题" class="headerlink" title="Arcgis fo JavaScript 4.x polyLine不显示问题"></a>Arcgis fo JavaScript 4.x polyLine不显示问题</h2><p>4.x版本里多了一个截图的功能，要用到这个 所以要代码重构一下了</p>
+<p>一些小改动都调整差不多了准备看下数据展示 </p>
+<p>轨迹数据分为两个PolyLine（一个红色一个绿色）</p>
+<p>现在却只显示红色的，绿色的看不见</p>
+<p>思前想后检查了三四遍 都没问题，且不报错</p>
+<p>控制台输出绿色的polyline也能看到数据。</p>
+<p>最后又仔细想想，对比着看了下数据结构</p>
+<p>举个栗子 差不多就这样 ↓</p>
+<pre><code>// 红色线段
+var polyline_RED = {
+    type : &quot;polyline&quot;, // autocasts as new Polyline()
+    paths : [ [ [ -111.3, 52.68 ], [ -98, 49.5 ], [ -93.94, 29.89 ] ], [],[ [ -133.3, 52.68 ], [ -122, 49.5 ], [ -116.94, 29.89 ] ] ]
+};
+
+// 绿色线段
+var polyline_GREEN = {
+    type : &quot;polyline&quot;, // autocasts as new Polyline()
+    paths : [ [],[ [ -111.3, 52.68 ], [ -98, 49.5 ], [ -93.94, 29.89 ] ],[ [ -133.3, 52.68 ], [ -122, 49.5 ], [ -116.94, 29.89 ] ] ]
+};
+</code></pre><p>于是写个最简单的demo试了下 果然，<strong>paths的下标第一个数组不可以是空的</strong></p>
+<p>另外还有要注意的就是要先准备好数据 再添加到图形里</p>
 	  
 	</div>
 
@@ -140,12 +157,12 @@ var _hmt = _hmt || [];
 
     
     
-    <a href="/main/2017/03/21/SQLSERVER服务启动错误1068-依存服务或组无法启动/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a href="/main/2018/08/07/MongoDB在Windows下安装时遇到的问题/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/main/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/main/2016/10/14/JsTree动态加载节点时节点重复问题/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    <a href="/main/2017/03/25/Google地图未能正常加载/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
     
 
     
@@ -198,7 +215,7 @@ var _hmt = _hmt || [];
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2016-12-30 
+	2017-03-25 
 	</div>
 	
 
@@ -209,7 +226,7 @@ var _hmt = _hmt || [];
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    </li><li><a href="/main/categories/Java/">Java<span>10</span></a></li>
+    </li><li><a href="/main/categories/前端/">前端<span>5</span></a></li>
   
 
     </ul>

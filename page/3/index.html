@@ -129,6 +129,192 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/main/2018/08/07/YApi接口管理平台搭建时的记录/">YApi接口管理平台搭建时的记录</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2018-08-07  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="YApi接口管理平台搭建时的记录"><a href="#YApi接口管理平台搭建时的记录" class="headerlink" title="YApi接口管理平台搭建时的记录"></a>YApi接口管理平台搭建时的记录</h2><p>无意发现了这个接口管理平台，觉得挺不错 开始搭一个吧</p>
+<p>一共有两种部署方式 （方式一. 可视化部署、方式二. 命令行部署）</p>
+<p>我选择的是命令行部署 </p>
+<p>首先环境需要 nodeJs、mongoDB</p>
+<p>需要注意的是</p>
+<p>1.确保 node 版本=&gt; 7.6, 可运行 node -v 查看版本号</p>
+<p>2.确保 mongodb 版本 =&gt; 2.6，可运行 mongo –version 查看版本号</p>
+<p>3.确保安装了 npm, 可运行 npm -v 查看版本号</p>
+<p>4.确保安装了 node-gyp 环境，配置方法 运行</p>
+<p> <code>npm install --global --production windows-build-tools</code></p>
+<p>这些都可以之后 到Git将包下载下来 </p>
+<blockquote>
+<p><a href="https://github.com/YMFE/yapi.git" target="_blank" rel="noopener">https://github.com/YMFE/yapi.git</a></p>
+</blockquote>
+<p>首先创建一个 “yapi” 文件夹 ，然后 在yapi文件夹下创建 “vendors” 文件夹</p>
+<p>将下载下来的包解压，将里面所有的文件复制到 “vendors”文件夹下面</p>
+<p>找到解压出的文件中的 “config_example.json” 复制到 “yapi” 文件夹下，并改名为 “config.json” 在”config.json”中可以配置访问端口和访问数据的连接</p>
+<p>cmd命令进入到 “E:\yapi\vendors” 下   (我的放在E盘了)</p>
+<p>执行命令</p>
+<pre><code>npm install --production --registry https://registry.npm.taobao.org
+</code></pre><p>等待完成后 继续执行 <code>npm run install-server</code> 安装程序会初始化数据库索引和管理员账号</p>
+<p>最后执行命令 <code>node E:\yapi\vendors\server\app.js</code> 启动服务</p>
+<p>打开 127.0.0.1:3000 ok</p>
+
+	
+	</div>
+  <a type="button" href="/main/2018/08/07/YApi接口管理平台搭建时的记录/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/main/2018/08/07/MongoDB在Windows下安装时遇到的问题/">MongoDB在Windows下安装时遇到的问题</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2018-08-07  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="MongoDB在Windows下安装时遇到的问题"><a href="#MongoDB在Windows下安装时遇到的问题" class="headerlink" title="MongoDB在Windows下安装时遇到的问题"></a>MongoDB在Windows下安装时遇到的问题</h2><p>搭建项目时需要用到MongoDB,之前没接触过</p>
+<p>在本机按照runoob.com的教程安装了一遍 挺顺利的,</p>
+<p>就是需要注意最后一步时左下角的 “Install MongoDB Compass”</p>
+<p>图形化界面如果不取消勾选 要等很久很久很久(电脑开了一晚上)都没安装完</p>
+<p>ok 本机没问题 开始服务器搭建，第一步就出现问题了，可能是因为服务器环境的原因，安装时一直提示权限不足 安装不了。</p>
+<p>搜了一下 <a href="https://www.mongodb.org/dl/win32" target="_blank" rel="noopener">https://www.mongodb.org/dl/win32</a> 官网提供了免安装包 可以对应的下载，配置好环境变量 “Path”  我的放在了E盘符下 </p>
+<p>在解压好的 “mongoDB” 文件夹下建立好 “date” 与 “log” 文件夹</p>
+<p>cmd控制台 命令进入到 “E:\mongoDB\bin” </p>
+<p>执行命令 <code>mongod--dbpath E:\mongoDB\data</code>  配置</p>
+<p>无意外 打开 localhost:27017 时页面就会给予提示了</p>
+<p>然后我想更换端口为8098 查了一下</p>
+<p>更换端口的命令 控制台执行命令 </p>
+<pre><code>mongod --dbpath E:\MongoDB\data --port 8098
+</code></pre><p>这时提示我有错误了，搜了一下 是因为有文件锁住了的原因</p>
+<p>在”mongoDB\data”下有 “mongod.lock” 与 “storage.bson” 这两个文件，将这两个删除后 重新执行就好了</p>
+<p>接着 想转成Window服务 </p>
+<p>首先 先把当前服务关掉, 然后把 “mongoDB\data”下有 “mongod.lock” 与 “storage.bson” 这两个文件删除掉</p>
+<p>如果当前已经有Window服务了就需要移除一下</p>
+<p>执行移除命令</p>
+<pre><code>mongod --logpath &quot;E:\MongoDB\log\MongoDB.log&quot; --logappend --dbpath &quot;E:\Mongodb\data&quot; --directoryperdb --serviceName &quot;MongoDB&quot; --serviceDisplayName &quot;MongoDB&quot; --remove
+</code></pre><p>再继续执行添加服务命令</p>
+<pre><code>mongod --logpath &quot;E:\MongoDB\log\MongoDB.log&quot; --logappend --dbpath &quot;E:\MongoDB\data&quot; --port 8098 --directoryperdb --serviceName &quot;MongoDB&quot; --serviceDisplayName &quot;MongoDB&quot; --install
+</code></pre><p>注意 “–port 8098” 要把这个加进去，我搜到的都是只有添加服务，如果不加 “–port 8098” 这个Window服务启动时 服务的端口还是默认的27017，这样就ok了</p>
+<p>更改端口后连接数据库后面也要加上端口号才行 (不然还会连默认的27017端口)</p>
+<pre><code>mongo --port 8098
+</code></pre>
+	
+	</div>
+  <a type="button" href="/main/2018/08/07/MongoDB在Windows下安装时遇到的问题/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/main/2017/03/25/Arcgis fo JavaScript 4.x polyLine不显示问题/">Arcgis fo JavaScript 4.x polyLine不显示问题</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2017-03-25  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Arcgis-fo-JavaScript-4-x-polyLine不显示问题"><a href="#Arcgis-fo-JavaScript-4-x-polyLine不显示问题" class="headerlink" title="Arcgis fo JavaScript 4.x polyLine不显示问题"></a>Arcgis fo JavaScript 4.x polyLine不显示问题</h2><p>4.x版本里多了一个截图的功能，要用到这个 所以要代码重构一下了</p>
+<p>一些小改动都调整差不多了准备看下数据展示 </p>
+<p>轨迹数据分为两个PolyLine（一个红色一个绿色）</p>
+<p>现在却只显示红色的，绿色的看不见</p>
+<p>思前想后检查了三四遍 都没问题，且不报错</p>
+<p>控制台输出绿色的polyline也能看到数据。</p>
+<p>最后又仔细想想，对比着看了下数据结构</p>
+<p>举个栗子 差不多就这样 ↓</p>
+<pre><code>// 红色线段
+var polyline_RED = {
+    type : &quot;polyline&quot;, // autocasts as new Polyline()
+    paths : [ [ [ -111.3, 52.68 ], [ -98, 49.5 ], [ -93.94, 29.89 ] ], [],[ [ -133.3, 52.68 ], [ -122, 49.5 ], [ -116.94, 29.89 ] ] ]
+};
+
+// 绿色线段
+var polyline_GREEN = {
+    type : &quot;polyline&quot;, // autocasts as new Polyline()
+    paths : [ [],[ [ -111.3, 52.68 ], [ -98, 49.5 ], [ -93.94, 29.89 ] ],[ [ -133.3, 52.68 ], [ -122, 49.5 ], [ -116.94, 29.89 ] ] ]
+};
+</code></pre><p>于是写个最简单的demo试了下 果然，<strong>paths的下标第一个数组不可以是空的</strong></p>
+<p>另外还有要注意的就是要先准备好数据 再添加到图形里</p>
+
+	
+	</div>
+  <a type="button" href="/main/2017/03/25/Arcgis fo JavaScript 4.x polyLine不显示问题/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/main/2017/03/25/Google地图未能正常加载/">Google地图未能正常加载</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2017-03-25  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Google地图未能正常加载"><a href="#Google地图未能正常加载" class="headerlink" title="Google地图未能正常加载"></a>Google地图未能正常加载</h2><p>项目里用到了Google地图,本机上可以正常加载,放到服务器上就不行了,<br>搜了一下 找到了这个</p>
+<blockquote>
+<p>If you are using the Google Maps API on localhost or your domain was not active prior to June 22nd, 2016, it will require a key going forward. To fix this problem, please see the Google Maps APIs documentation to get a key and add it to your application:</p>
+</blockquote>
+<p>oh，原来是需要加key，百度了一下 , </p>
+<p>第一步<br>访问 API 控制台（网址为 <a href="https://code.google.com/apis/console）并使用您的" target="_blank" rel="noopener">https://code.google.com/apis/console）并使用您的</a> Google 帐户登录。</p>
+<p>第二步<br>在控制台中激活谷歌地图的相关服务，然后进入谷歌api库，选择Google 地图 API下的对应程序（我用的是Google Maps JavaScript API）</p>
+<p>第三步<br>点击为此 API 创建凭据，即可生成相关api的密钥，然后在地图文件中引入该密钥</p>
+<p>赶紧翻了个墙创建了个密钥,加上之后 就OK了。</p>
+
+	
+	</div>
+  <a type="button" href="/main/2017/03/25/Google地图未能正常加载/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/main/2017/03/21/SQLSERVER服务启动错误1068-依存服务或组无法启动/">MSSQLSERVER服务启动错误1068-依存服务或组无法启动</a>
 		</h3>
 		</div>
@@ -273,11 +459,13 @@ var _hmt = _hmt || [];
 		
 			<li><a href="/main/categories/IDE/">IDE<span>1</span></a></li>
 		
-			<li><a href="/main/categories/Java/">Java<span>8</span></a></li>
+			<li><a href="/main/categories/Java/">Java<span>10</span></a></li>
+		
+			<li><a href="/main/categories/RabbitMQ/">RabbitMQ<span>1</span></a></li>
 		
 			<li><a href="/main/categories/其他/">其他<span>8</span></a></li>
 		
-			<li><a href="/main/categories/前端/">前端<span>4</span></a></li>
+			<li><a href="/main/categories/前端/">前端<span>5</span></a></li>
 		
 			<li><a href="/main/categories/数据库/">数据库<span>2</span></a></li>
 		
@@ -294,23 +482,23 @@ var _hmt = _hmt || [];
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/main/2019/07/15/RabbitMQ-channel is already closed due to channel error; protocol method/"><i class="fa fa-file-o"></i>channel is already closed d...</a>
+      </li>
+    
+      <li>
+        <a href="/main/2019/07/07/SpringCloud-Config Cannot clone or checkout repository/"><i class="fa fa-file-o"></i>SpringCloud-Config Cannot c...</a>
+      </li>
+    
+      <li>
+        <a href="/main/2019/07/02/SpringCloud-Eureka启动时候Read Timeout/"><i class="fa fa-file-o"></i>SpringCloud-Eureka集群启动时候Rea...</a>
+      </li>
+    
+      <li>
         <a href="/main/2019/06/26/Js链式调用思路/"><i class="fa fa-file-o"></i>Js链式调用思路</a>
       </li>
     
       <li>
         <a href="/main/2019/06/25/Ajax调用接口HTTP状态是成功但走的error/"><i class="fa fa-file-o"></i>Ajax调用接口HTTP状态是成功但走的error</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/06/20/lombok注解引用不到与无效问题/"><i class="fa fa-file-o"></i>lombok注解引用不到与无效问题</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/06/10/百度输入法 天下第一坑/"><i class="fa fa-file-o"></i>百度输入法 天下第一坑</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/05/23/内存泄漏与内存溢出/"><i class="fa fa-file-o"></i>内存泄漏和内存溢出</a>
       </li>
     
   </ul>

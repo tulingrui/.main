@@ -4,6 +4,63 @@
   
     
     <entry>
+      <title>channel is already closed due to channel error; protocol method</title>
+      <link href="/main/2019/07/15/RabbitMQ-channel%20is%20already%20closed%20due%20to%20channel%20error;%20protocol%20method/"/>
+      <url>/main/2019/07/15/RabbitMQ-channel%20is%20already%20closed%20due%20to%20channel%20error;%20protocol%20method/</url>
+      
+        <content type="html"><![CDATA[<h2 id="channel-is-already-closed-due-to-channel-error-protocol-method"><a href="#channel-is-already-closed-due-to-channel-error-protocol-method" class="headerlink" title="channel is already closed due to channel error; protocol method"></a>channel is already closed due to channel error; protocol method</h2><p>in Java use RabbitMQ Client develop，using work model occurred error “channel is already closed due to channel error; protocol method”</p><p>info ↓</p><pre><code>Exception in thread &quot;main&quot; com.rabbitmq.client.AlreadyClosedException: channel is already closed due to channel error; protocol method: #method&lt;channel.close&gt;(reply-code=406, reply-text=PRECONDITION_FAILED - unknown delivery tag 1, class-id=60, method-id=80)at com.rabbitmq.client.impl.AMQChannel.ensureIsOpen(AMQChannel.java:190)at com.rabbitmq.client.impl.AMQChannel.transmit(AMQChannel.java:291)at com.rabbitmq.client.impl.AMQChannel.transmit(AMQChannel.java:285)at com.rabbitmq.client.impl.ChannelN.basicAck(ChannelN.java:1012)at com.tlr.rabbitMQ.consumer.SimpleMsgConsumer.main(SimpleMsgConsumer.java:35)</code></pre><p>AutoAck true is automatic</p><pre><code>channel.basicConsume(QUEUE_NAME, true, consumer);</code></pre><p>so</p><pre><code>// OKchannel.basicConsume(QUEUE_NAME, false, consumer);</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> RabbitMQ </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SpringCloud-Config Cannot clone or checkout repository</title>
+      <link href="/main/2019/07/07/SpringCloud-Config%20Cannot%20clone%20or%20checkout%20repository/"/>
+      <url>/main/2019/07/07/SpringCloud-Config%20Cannot%20clone%20or%20checkout%20repository/</url>
+      
+        <content type="html"><![CDATA[<p>##SpringCloud-Config Cannot clone or checkout repository</p><p>看视频学时url地址是使用的ssh</p><p>配置好访问时却报 Cannot clone or checkout repository</p><p>于是换成HTTPS 可以了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SpringCloud-Eureka集群启动时候Read timed out</title>
+      <link href="/main/2019/07/02/SpringCloud-Eureka%E5%90%AF%E5%8A%A8%E6%97%B6%E5%80%99Read%20Timeout/"/>
+      <url>/main/2019/07/02/SpringCloud-Eureka%E5%90%AF%E5%8A%A8%E6%97%B6%E5%80%99Read%20Timeout/</url>
+      
+        <content type="html"><![CDATA[<p>##SpringCloud-Eureka集群启动时候Read timed out</p><pre><code>Caused by: java.net.SocketTimeoutException: Read timed outat java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_144]at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_144]at java.net.SocketInputStream.read(SocketInputStream.java:171) ~[na:1.8.0_144]at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_144]at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:161) ~[httpcore-4.4.8.jar:4.4.8]at org.apache.http.impl.io.SocketInputBuffer.fillBuffer(SocketInputBuffer.java:82) ~[httpcore-4.4.8.jar:4.4.8]at org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:278) ~[httpcore-4.4.8.jar:4.4.8]at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:138) ~[httpclient-4.5.3.jar:4.5.3]at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:56) ~[httpclient-4.5.3.jar:4.5.3]at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:259) ~[httpcore-4.4.8.jar:4.4.8]at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:286) ~[httpcore-4.4.8.jar:4.4.8]at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:257) ~[httpclient-4.5.3.jar:4.5.3]at org.apache.http.impl.conn.AbstractClientConnAdapter.receiveResponseHeader(AbstractClientConnAdapter.java:230) ~[httpclient-4.5.3.jar:4.5.3]at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:273) ~[httpcore-4.4.8.jar:4.4.8]at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125) ~[httpcore-4.4.8.jar:4.4.8]at org.apache.http.impl.client.DefaultRequestDirector.tryExecute(DefaultRequestDirector.java:684) ~[httpclient-4.5.3.jar:4.5.3]at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:486) ~[httpclient-4.5.3.jar:4.5.3]at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.3.jar:4.5.3]at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.3.jar:4.5.3]at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.3.jar:4.5.3]at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar:1.19.1]... 10 common frames omitted</code></pre><p>一共3个Eureka服务，每次我启动时都是同一个服务会报出Read timed out,所有集群启动完成之后就不会报了 倒也没什么影响，搜了1下。</p><p>这样说的</p><blockquote><p>Eureka在同步集群节点时报错，因为时顺序启动，当第一个启动成功之后，同步不了节点就报错了，集群全部启动之后就不会报了</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Js链式调用思路</title>
       <link href="/main/2019/06/26/Js%E9%93%BE%E5%BC%8F%E8%B0%83%E7%94%A8%E6%80%9D%E8%B7%AF/"/>
       <url>/main/2019/06/26/Js%E9%93%BE%E5%BC%8F%E8%B0%83%E7%94%A8%E6%80%9D%E8%B7%AF/</url>
@@ -356,6 +413,25 @@
       <categories>
           
           <category> 数据库 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Arcgis fo JavaScript 4.x polyLine不显示问题</title>
+      <link href="/main/2017/03/25/Arcgis%20fo%20JavaScript%204.x%20polyLine%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/"/>
+      <url>/main/2017/03/25/Arcgis%20fo%20JavaScript%204.x%20polyLine%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Arcgis-fo-JavaScript-4-x-polyLine不显示问题"><a href="#Arcgis-fo-JavaScript-4-x-polyLine不显示问题" class="headerlink" title="Arcgis fo JavaScript 4.x polyLine不显示问题"></a>Arcgis fo JavaScript 4.x polyLine不显示问题</h2><p>4.x版本里多了一个截图的功能，要用到这个 所以要代码重构一下了</p><p>一些小改动都调整差不多了准备看下数据展示 </p><p>轨迹数据分为两个PolyLine（一个红色一个绿色）</p><p>现在却只显示红色的，绿色的看不见</p><p>思前想后检查了三四遍 都没问题，且不报错</p><p>控制台输出绿色的polyline也能看到数据。</p><p>最后又仔细想想，对比着看了下数据结构</p><p>举个栗子 差不多就这样 ↓</p><pre><code>// 红色线段var polyline_RED = {    type : &quot;polyline&quot;, // autocasts as new Polyline()    paths : [ [ [ -111.3, 52.68 ], [ -98, 49.5 ], [ -93.94, 29.89 ] ], [],[ [ -133.3, 52.68 ], [ -122, 49.5 ], [ -116.94, 29.89 ] ] ]};// 绿色线段var polyline_GREEN = {    type : &quot;polyline&quot;, // autocasts as new Polyline()    paths : [ [],[ [ -111.3, 52.68 ], [ -98, 49.5 ], [ -93.94, 29.89 ] ],[ [ -133.3, 52.68 ], [ -122, 49.5 ], [ -116.94, 29.89 ] ] ]};</code></pre><p>于是写个最简单的demo试了下 果然，<strong>paths的下标第一个数组不可以是空的</strong></p><p>另外还有要注意的就是要先准备好数据 再添加到图形里</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
           
       </categories>
       

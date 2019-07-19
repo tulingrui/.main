@@ -129,6 +129,161 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/main/2019/05/07/记一个初试WebSocket遇到的问题/">记一个初试WebSocket遇到的问题</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-05-07  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>记一个初试WebSocket遇到的问题</p>
+<p>本机运行没问题，打包时报出</p>
+<pre><code>java.lang.IllegalStateException: javax.websocket.server.ServerContainer not available
+</code></pre><p>我把打包测试关掉之后没问题了</p>
+<pre><code>&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;source&gt;1.8&lt;/source&gt;
+                &lt;target&gt;1.8&lt;/target&gt;
+                &lt;encoding&gt;UTF-8&lt;/encoding&gt;
+                &lt;skip&gt;true&lt;/skip&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre><p>可以打包了</p>
+<p>而部署到服务器上运行时又报出</p>
+<pre><code>java.lang.IllegalStateException: Failed to register @ServerEndpoint class
+</code></pre><p>搜了一下<br>需要改一下WebSocketConfig，将@Configuration 删掉</p>
+<p>这时又报出了一个错误</p>
+<pre><code>Failed to start component [StandardEngine[Catalina].StandardHost[localhost]]
+</code></pre><p>搜了一下说是Tomcat问题</p>
+<p>换了个Tomcat8 OK了</p>
+
+	
+	</div>
+  <a type="button" href="/main/2019/05/07/记一个初试WebSocket遇到的问题/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/main/2019/04/17/记一事故md/">记一个项目事故</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-04-17  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="记一个项目事故"><a href="#记一个项目事故" class="headerlink" title="记一个项目事故"></a>记一个项目事故</h2><p>最近两个月做了一个支持服务 </p>
+<p>同事的设备会有源源不断的请求来查询账号</p>
+<p>而多数请求是需要我去调用另外一个厂家（硬件合作关系）的查询接口得到账号</p>
+<p><strong>（这个厂家不给用户提供查询账号的接口，而他们的官网登录后却可以查到，没办法 我只能去扒取他们的内部接口调用）</strong></p>
+<p>服务正式上线使用持续了一个多月 没有问题</p>
+<p>而今天 突然报出了很多 查询失败的问题 </p>
+<p>当然 之前就想到了查询失败的问题，所以返回了另外一种信息（一个Key）<br>Key也是可以使用的，但之前因为部分用户是电信网络会使用不了 所以改成返回账号的</p>
+<p>接着 设备发生了大面积的停止工作，原因是 <strong>非法Key验证错误</strong></p>
+<p>而这个Key是写死的不可能传错的</p>
+<p>同事将设备当时报出错误的Key复制 去调试时却是正常可以使用的</p>
+<p>而同时我的支持服务中去调用他们的查询接口时也不报错了</p>
+<p>我和同事一沟通 都明白了 一定是厂家的服务出问题了，但使用账号的不受影响。</p>
+<p>so 归根到底 在这个业务流程中 </p>
+<p>我和同事与厂家之间都太信任依赖对方了</p>
+<p>如果我的服务宕机了 那同事的设备就宕机了</p>
+<p>如果厂家的接口出问题了，那我就没有正确数据返回了</p>
+<p>领导知道情况后说的几句 我觉得很受益</p>
+<blockquote>
+<p>做通讯的 永远不要相信对方</p>
+</blockquote>
+<blockquote>
+<p>一个优秀程序员的代码百分之80都在做错误分支的处理，真正处理业务的代码只有20%</p>
+</blockquote>
+<blockquote>
+<p>发生错误又不确定怎么处理的时候，最好的办法就是什么都不做</p>
+</blockquote>
+<p>确实做了很多错误处理，也将那个Key返回了，但我没有用最优的方式保障服务</p>
+<p>吃一堑长一智 赶紧把处理方案实现，这次事故后也将代码重新审查一番 更加完善了一些</p>
+
+	
+	</div>
+  <a type="button" href="/main/2019/04/17/记一事故md/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/main/2019/03/25/rsa/">RSA加密导致内存溢出</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-25  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="RSA加密导致内存溢出"><a href="#RSA加密导致内存溢出" class="headerlink" title="RSA加密导致内存溢出"></a>RSA加密导致内存溢出</h2><p>近期做的一个功能需要用到RSA加密</p>
+<p>之前没接触过</p>
+<p>搜了一下然后就开始做了 功能完成上线测试时就发现问题了</p>
+<p>内存飙升且降不下来 直到内存溢出Tomcat自动关闭了</p>
+<p>再搜了1下 好多人都遇到这个问题 原因就是 </p>
+<pre><code>BouncyCastleProvider 
+</code></pre><p>这个类 每次 new一个就多一个，不回收</p>
+<p>所以内存见增不见减</p>
+<p>所有new的地方改成调用 getInstance()</p>
+<pre><code>private static volatile BouncyCastleProvider bouncyCastleProvider = null;
+public static BouncyCastleProvider getInstance() {
+        if(null == bouncyCastleProvider){
+            synchronized(RSAUtil.class){
+                if(null == bouncyCastleProvider){
+                    bouncyCastleProvider = new BouncyCastleProvider();
+                }
+            }
+        }
+        return bouncyCastleProvider;
+ }
+</code></pre>
+	
+	</div>
+  <a type="button" href="/main/2019/03/25/rsa/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/main/2019/03/15/1个部署时遇到的问题/">1个困扰很久的问题</a>
 		</h3>
 		</div>
@@ -531,144 +686,6 @@ nginx.exe -s reload
 </div>
 
 		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/main/2018/08/07/YApi接口管理平台搭建时的记录/">YApi接口管理平台搭建时的记录</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2018-08-07  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="YApi接口管理平台搭建时的记录"><a href="#YApi接口管理平台搭建时的记录" class="headerlink" title="YApi接口管理平台搭建时的记录"></a>YApi接口管理平台搭建时的记录</h2><p>无意发现了这个接口管理平台，觉得挺不错 开始搭一个吧</p>
-<p>一共有两种部署方式 （方式一. 可视化部署、方式二. 命令行部署）</p>
-<p>我选择的是命令行部署 </p>
-<p>首先环境需要 nodeJs、mongoDB</p>
-<p>需要注意的是</p>
-<p>1.确保 node 版本=&gt; 7.6, 可运行 node -v 查看版本号</p>
-<p>2.确保 mongodb 版本 =&gt; 2.6，可运行 mongo –version 查看版本号</p>
-<p>3.确保安装了 npm, 可运行 npm -v 查看版本号</p>
-<p>4.确保安装了 node-gyp 环境，配置方法 运行</p>
-<p> <code>npm install --global --production windows-build-tools</code></p>
-<p>这些都可以之后 到Git将包下载下来 </p>
-<blockquote>
-<p><a href="https://github.com/YMFE/yapi.git" target="_blank" rel="noopener">https://github.com/YMFE/yapi.git</a></p>
-</blockquote>
-<p>首先创建一个 “yapi” 文件夹 ，然后 在yapi文件夹下创建 “vendors” 文件夹</p>
-<p>将下载下来的包解压，将里面所有的文件复制到 “vendors”文件夹下面</p>
-<p>找到解压出的文件中的 “config_example.json” 复制到 “yapi” 文件夹下，并改名为 “config.json” 在”config.json”中可以配置访问端口和访问数据的连接</p>
-<p>cmd命令进入到 “E:\yapi\vendors” 下   (我的放在E盘了)</p>
-<p>执行命令</p>
-<pre><code>npm install --production --registry https://registry.npm.taobao.org
-</code></pre><p>等待完成后 继续执行 <code>npm run install-server</code> 安装程序会初始化数据库索引和管理员账号</p>
-<p>最后执行命令 <code>node E:\yapi\vendors\server\app.js</code> 启动服务</p>
-<p>打开 127.0.0.1:3000 ok</p>
-
-	
-	</div>
-  <a type="button" href="/main/2018/08/07/YApi接口管理平台搭建时的记录/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/main/2018/08/07/MongoDB在Windows下安装时遇到的问题/">MongoDB在Windows下安装时遇到的问题</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2018-08-07  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="MongoDB在Windows下安装时遇到的问题"><a href="#MongoDB在Windows下安装时遇到的问题" class="headerlink" title="MongoDB在Windows下安装时遇到的问题"></a>MongoDB在Windows下安装时遇到的问题</h2><p>搭建项目时需要用到MongoDB,之前没接触过</p>
-<p>在本机按照runoob.com的教程安装了一遍 挺顺利的,</p>
-<p>就是需要注意最后一步时左下角的 “Install MongoDB Compass”</p>
-<p>图形化界面如果不取消勾选 要等很久很久很久(电脑开了一晚上)都没安装完</p>
-<p>ok 本机没问题 开始服务器搭建，第一步就出现问题了，可能是因为服务器环境的原因，安装时一直提示权限不足 安装不了。</p>
-<p>搜了一下 <a href="https://www.mongodb.org/dl/win32" target="_blank" rel="noopener">https://www.mongodb.org/dl/win32</a> 官网提供了免安装包 可以对应的下载，配置好环境变量 “Path”  我的放在了E盘符下 </p>
-<p>在解压好的 “mongoDB” 文件夹下建立好 “date” 与 “log” 文件夹</p>
-<p>cmd控制台 命令进入到 “E:\mongoDB\bin” </p>
-<p>执行命令 <code>mongod--dbpath E:\mongoDB\data</code>  配置</p>
-<p>无意外 打开 localhost:27017 时页面就会给予提示了</p>
-<p>然后我想更换端口为8098 查了一下</p>
-<p>更换端口的命令 控制台执行命令 </p>
-<pre><code>mongod --dbpath E:\MongoDB\data --port 8098
-</code></pre><p>这时提示我有错误了，搜了一下 是因为有文件锁住了的原因</p>
-<p>在”mongoDB\data”下有 “mongod.lock” 与 “storage.bson” 这两个文件，将这两个删除后 重新执行就好了</p>
-<p>接着 想转成Window服务 </p>
-<p>首先 先把当前服务关掉, 然后把 “mongoDB\data”下有 “mongod.lock” 与 “storage.bson” 这两个文件删除掉</p>
-<p>如果当前已经有Window服务了就需要移除一下</p>
-<p>执行移除命令</p>
-<pre><code>mongod --logpath &quot;E:\MongoDB\log\MongoDB.log&quot; --logappend --dbpath &quot;E:\Mongodb\data&quot; --directoryperdb --serviceName &quot;MongoDB&quot; --serviceDisplayName &quot;MongoDB&quot; --remove
-</code></pre><p>再继续执行添加服务命令</p>
-<pre><code>mongod --logpath &quot;E:\MongoDB\log\MongoDB.log&quot; --logappend --dbpath &quot;E:\MongoDB\data&quot; --port 8098 --directoryperdb --serviceName &quot;MongoDB&quot; --serviceDisplayName &quot;MongoDB&quot; --install
-</code></pre><p>注意 “–port 8098” 要把这个加进去，我搜到的都是只有添加服务，如果不加 “–port 8098” 这个Window服务启动时 服务的端口还是默认的27017，这样就ok了</p>
-<p>更改端口后连接数据库后面也要加上端口号才行 (不然还会连默认的27017端口)</p>
-<pre><code>mongo --port 8098
-</code></pre>
-	
-	</div>
-  <a type="button" href="/main/2018/08/07/MongoDB在Windows下安装时遇到的问题/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/main/2017/03/25/Google地图未能正常加载/">Google地图未能正常加载</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2017-03-25  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Google地图未能正常加载"><a href="#Google地图未能正常加载" class="headerlink" title="Google地图未能正常加载"></a>Google地图未能正常加载</h2><p>项目里用到了Google地图,本机上可以正常加载,放到服务器上就不行了,<br>搜了一下 找到了这个</p>
-<blockquote>
-<p>If you are using the Google Maps API on localhost or your domain was not active prior to June 22nd, 2016, it will require a key going forward. To fix this problem, please see the Google Maps APIs documentation to get a key and add it to your application:</p>
-</blockquote>
-<p>oh，原来是需要加key，百度了一下 , </p>
-<p>第一步<br>访问 API 控制台（网址为 <a href="https://code.google.com/apis/console）并使用您的" target="_blank" rel="noopener">https://code.google.com/apis/console）并使用您的</a> Google 帐户登录。</p>
-<p>第二步<br>在控制台中激活谷歌地图的相关服务，然后进入谷歌api库，选择Google 地图 API下的对应程序（我用的是Google Maps JavaScript API）</p>
-<p>第三步<br>点击为此 API 创建凭据，即可生成相关api的密钥，然后在地图文件中引入该密钥</p>
-<p>赶紧翻了个墙创建了个密钥,加上之后 就OK了。</p>
-
-	
-	</div>
-  <a type="button" href="/main/2017/03/25/Google地图未能正常加载/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -718,11 +735,13 @@ nginx.exe -s reload
 		
 			<li><a href="/main/categories/IDE/">IDE<span>1</span></a></li>
 		
-			<li><a href="/main/categories/Java/">Java<span>8</span></a></li>
+			<li><a href="/main/categories/Java/">Java<span>10</span></a></li>
+		
+			<li><a href="/main/categories/RabbitMQ/">RabbitMQ<span>1</span></a></li>
 		
 			<li><a href="/main/categories/其他/">其他<span>8</span></a></li>
 		
-			<li><a href="/main/categories/前端/">前端<span>4</span></a></li>
+			<li><a href="/main/categories/前端/">前端<span>5</span></a></li>
 		
 			<li><a href="/main/categories/数据库/">数据库<span>2</span></a></li>
 		
@@ -739,23 +758,23 @@ nginx.exe -s reload
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/main/2019/07/15/RabbitMQ-channel is already closed due to channel error; protocol method/"><i class="fa fa-file-o"></i>channel is already closed d...</a>
+      </li>
+    
+      <li>
+        <a href="/main/2019/07/07/SpringCloud-Config Cannot clone or checkout repository/"><i class="fa fa-file-o"></i>SpringCloud-Config Cannot c...</a>
+      </li>
+    
+      <li>
+        <a href="/main/2019/07/02/SpringCloud-Eureka启动时候Read Timeout/"><i class="fa fa-file-o"></i>SpringCloud-Eureka集群启动时候Rea...</a>
+      </li>
+    
+      <li>
         <a href="/main/2019/06/26/Js链式调用思路/"><i class="fa fa-file-o"></i>Js链式调用思路</a>
       </li>
     
       <li>
         <a href="/main/2019/06/25/Ajax调用接口HTTP状态是成功但走的error/"><i class="fa fa-file-o"></i>Ajax调用接口HTTP状态是成功但走的error</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/06/20/lombok注解引用不到与无效问题/"><i class="fa fa-file-o"></i>lombok注解引用不到与无效问题</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/06/10/百度输入法 天下第一坑/"><i class="fa fa-file-o"></i>百度输入法 天下第一坑</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/05/23/内存泄漏与内存溢出/"><i class="fa fa-file-o"></i>内存泄漏和内存溢出</a>
       </li>
     
   </ul>

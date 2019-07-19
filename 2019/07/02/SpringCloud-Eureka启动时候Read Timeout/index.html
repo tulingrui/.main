@@ -6,15 +6,17 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>微信公众号支付初步开发 | yo this is tulingrui</title>
+  <title>SpringCloud-Eureka集群启动时候Read timed out | yo this is tulingrui</title>
   <meta name="author" content="John Doe">
   
-  <meta name="description" content="微信公众号支付初步开发用户授权拿到code &amp;gt; 拿code去换access_token &amp;gt; 拿token换用户信息 &amp;gt; 到达输入缴费页面 &amp;gt; 使用JSSDK config接口注入权限验证配置 &amp;gt; 通过ready接口处理成功验证 成功后及可调用其他接口 &amp;gt; 点击支付">
+  <meta name="description" content="##SpringCloud-Eureka集群启动时候Read timed out
+Caused by: java.net.SocketTimeoutException: Read timed out
+at java.net.SocketInputStream.socketRead0(Native M">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="微信公众号支付初步开发">
+  <meta property="og:title" content="SpringCloud-Eureka集群启动时候Read timed out">
   <meta property="og:site_name" content="yo this is tulingrui">
 
   
@@ -106,7 +108,7 @@ var _hmt = _hmt || [];
 
 	
 		<div class="page-header">
-			<h1> 微信公众号支付初步开发</h1>
+			<h1> SpringCloud-Eureka集群启动时候Read timed out</h1>
 		</div>
 	
 
@@ -123,14 +125,35 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <h2 id="微信公众号支付初步开发"><a href="#微信公众号支付初步开发" class="headerlink" title="微信公众号支付初步开发"></a>微信公众号支付初步开发</h2><p>用户授权拿到code &gt; 拿code去换access_token &gt; 拿token换用户信息 &gt; 到达输入缴费页面 &gt; 使用JSSDK config接口注入权限验证配置 &gt; 通过ready接口处理成功验证 成功后及可调用其他接口 &gt; 点击支付 &gt; 调用wxPay方法ajax统一下单生成预付订单 &gt; 支付成功回调</p>
-<p>项目用JFinal Weixin框架开发的，省了很多事，签名阿之类的，遇到挺多问题，记录下来</p>
-<p>首先公众号先要有微信支付功能 申请一下 ,还有你的域名必须是80端口而且备案过的</p>
-<p>重要的三个设置</p>
-<p>1、设置JS接口安全域名，设置完之后可以在该域名下调用微信开放的JS  </p>
-<p>2、设置授权回调域名  ，写的时候这个授权域名没设置对 一到用户授权的时候就提示 redirect uri参数错误 调了半天 很难受</p>
-<p>3、支付授权的目录， 也就是你发起支付请求 所在页面 ！ 页面！ 页面！的目录 ，我设置的只有域名 结果一直支付失败 只给我 {“errMsg”:”chooseWXPay:fail”} 这就很难受了 只知道失败了 重新检查了一下 设置了一下授权目录<br>还有api支付的密钥  一定要和自己设置的一样 </p>
-<p>微信还提供了公众平台测试账号 在里面可以测试其他功能  但是测试不了微信支付</p>
+	  <p>##SpringCloud-Eureka集群启动时候Read timed out</p>
+<pre><code>Caused by: java.net.SocketTimeoutException: Read timed out
+at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_144]
+at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_144]
+at java.net.SocketInputStream.read(SocketInputStream.java:171) ~[na:1.8.0_144]
+at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_144]
+at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:161) ~[httpcore-4.4.8.jar:4.4.8]
+at org.apache.http.impl.io.SocketInputBuffer.fillBuffer(SocketInputBuffer.java:82) ~[httpcore-4.4.8.jar:4.4.8]
+at org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:278) ~[httpcore-4.4.8.jar:4.4.8]
+at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:138) ~[httpclient-4.5.3.jar:4.5.3]
+at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:56) ~[httpclient-4.5.3.jar:4.5.3]
+at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:259) ~[httpcore-4.4.8.jar:4.4.8]
+at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:286) ~[httpcore-4.4.8.jar:4.4.8]
+at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:257) ~[httpclient-4.5.3.jar:4.5.3]
+at org.apache.http.impl.conn.AbstractClientConnAdapter.receiveResponseHeader(AbstractClientConnAdapter.java:230) ~[httpclient-4.5.3.jar:4.5.3]
+at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:273) ~[httpcore-4.4.8.jar:4.4.8]
+at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125) ~[httpcore-4.4.8.jar:4.4.8]
+at org.apache.http.impl.client.DefaultRequestDirector.tryExecute(DefaultRequestDirector.java:684) ~[httpclient-4.5.3.jar:4.5.3]
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:486) ~[httpclient-4.5.3.jar:4.5.3]
+at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.3.jar:4.5.3]
+at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.3.jar:4.5.3]
+at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.3.jar:4.5.3]
+at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar:1.19.1]
+... 10 common frames omitted
+</code></pre><p>一共3个Eureka服务，每次我启动时都是同一个服务会报出Read timed out,所有集群启动完成之后就不会报了 倒也没什么影响，搜了1下。</p>
+<p>这样说的</p>
+<blockquote>
+<p>Eureka在同步集群节点时报错，因为时顺序启动，当第一个启动成功之后，同步不了节点就报错了，集群全部启动之后就不会报了</p>
+</blockquote>
 	  
 	</div>
 
@@ -140,12 +163,12 @@ var _hmt = _hmt || [];
 
     
     
-    <a href="/main/2017/03/21/SQLSERVER服务启动错误1068-依存服务或组无法启动/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a href="/main/2019/07/07/SpringCloud-Config Cannot clone or checkout repository/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/main/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/main/2016/10/14/JsTree动态加载节点时节点重复问题/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    <a href="/main/2019/06/26/Js链式调用思路/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
     
 
     
@@ -198,7 +221,7 @@ var _hmt = _hmt || [];
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2016-12-30 
+	2019-07-02 
 	</div>
 	
 

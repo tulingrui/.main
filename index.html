@@ -129,6 +129,133 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/main/2019/07/15/RabbitMQ-channel is already closed due to channel error; protocol method/">channel is already closed due to channel error; protocol method</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-07-15  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="channel-is-already-closed-due-to-channel-error-protocol-method"><a href="#channel-is-already-closed-due-to-channel-error-protocol-method" class="headerlink" title="channel is already closed due to channel error; protocol method"></a>channel is already closed due to channel error; protocol method</h2><p>in Java use RabbitMQ Client develop，using work model occurred error “channel is already closed due to channel error; protocol method”</p>
+<p>info ↓</p>
+<pre><code>Exception in thread &quot;main&quot; com.rabbitmq.client.AlreadyClosedException: channel is already closed due to channel error; protocol method: #method&lt;channel.close&gt;(reply-code=406, reply-text=PRECONDITION_FAILED - unknown delivery tag 1, class-id=60, method-id=80)
+at com.rabbitmq.client.impl.AMQChannel.ensureIsOpen(AMQChannel.java:190)
+at com.rabbitmq.client.impl.AMQChannel.transmit(AMQChannel.java:291)
+at com.rabbitmq.client.impl.AMQChannel.transmit(AMQChannel.java:285)
+at com.rabbitmq.client.impl.ChannelN.basicAck(ChannelN.java:1012)
+at com.tlr.rabbitMQ.consumer.SimpleMsgConsumer.main(SimpleMsgConsumer.java:35)
+</code></pre><p>AutoAck true is automatic</p>
+<pre><code>channel.basicConsume(QUEUE_NAME, true, consumer);
+</code></pre><p>so</p>
+<pre><code>// OK
+channel.basicConsume(QUEUE_NAME, false, consumer);
+</code></pre>
+	
+	</div>
+  <a type="button" href="/main/2019/07/15/RabbitMQ-channel is already closed due to channel error; protocol method/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/main/2019/07/07/SpringCloud-Config Cannot clone or checkout repository/">SpringCloud-Config Cannot clone or checkout repository</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-07-07  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>##SpringCloud-Config Cannot clone or checkout repository</p>
+<p>看视频学时url地址是使用的ssh</p>
+<p>配置好访问时却报 Cannot clone or checkout repository</p>
+<p>于是换成HTTPS 可以了</p>
+
+	
+	</div>
+  <a type="button" href="/main/2019/07/07/SpringCloud-Config Cannot clone or checkout repository/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/main/2019/07/02/SpringCloud-Eureka启动时候Read Timeout/">SpringCloud-Eureka集群启动时候Read timed out</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-07-02  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>##SpringCloud-Eureka集群启动时候Read timed out</p>
+<pre><code>Caused by: java.net.SocketTimeoutException: Read timed out
+at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_144]
+at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_144]
+at java.net.SocketInputStream.read(SocketInputStream.java:171) ~[na:1.8.0_144]
+at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_144]
+at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:161) ~[httpcore-4.4.8.jar:4.4.8]
+at org.apache.http.impl.io.SocketInputBuffer.fillBuffer(SocketInputBuffer.java:82) ~[httpcore-4.4.8.jar:4.4.8]
+at org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:278) ~[httpcore-4.4.8.jar:4.4.8]
+at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:138) ~[httpclient-4.5.3.jar:4.5.3]
+at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:56) ~[httpclient-4.5.3.jar:4.5.3]
+at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:259) ~[httpcore-4.4.8.jar:4.4.8]
+at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:286) ~[httpcore-4.4.8.jar:4.4.8]
+at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:257) ~[httpclient-4.5.3.jar:4.5.3]
+at org.apache.http.impl.conn.AbstractClientConnAdapter.receiveResponseHeader(AbstractClientConnAdapter.java:230) ~[httpclient-4.5.3.jar:4.5.3]
+at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:273) ~[httpcore-4.4.8.jar:4.4.8]
+at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125) ~[httpcore-4.4.8.jar:4.4.8]
+at org.apache.http.impl.client.DefaultRequestDirector.tryExecute(DefaultRequestDirector.java:684) ~[httpclient-4.5.3.jar:4.5.3]
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:486) ~[httpclient-4.5.3.jar:4.5.3]
+at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.3.jar:4.5.3]
+at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.3.jar:4.5.3]
+at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.3.jar:4.5.3]
+at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar:1.19.1]
+... 10 common frames omitted
+</code></pre><p>一共3个Eureka服务，每次我启动时都是同一个服务会报出Read timed out,所有集群启动完成之后就不会报了 倒也没什么影响，搜了1下。</p>
+<p>这样说的</p>
+<blockquote>
+<p>Eureka在同步集群节点时报错，因为时顺序启动，当第一个启动成功之后，同步不了节点就报错了，集群全部启动之后就不会报了</p>
+</blockquote>
+
+	
+	</div>
+  <a type="button" href="/main/2019/07/02/SpringCloud-Eureka启动时候Read Timeout/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/main/2019/06/26/Js链式调用思路/">Js链式调用思路</a>
 		</h3>
 		</div>
@@ -422,161 +549,6 @@ console.log(test());// 5
 </div>
 
 		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/main/2019/05/07/记一个初试WebSocket遇到的问题/">记一个初试WebSocket遇到的问题</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-05-07  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<p>记一个初试WebSocket遇到的问题</p>
-<p>本机运行没问题，打包时报出</p>
-<pre><code>java.lang.IllegalStateException: javax.websocket.server.ServerContainer not available
-</code></pre><p>我把打包测试关掉之后没问题了</p>
-<pre><code>&lt;build&gt;
-    &lt;plugins&gt;
-        &lt;plugin&gt;
-            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-            &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
-            &lt;configuration&gt;
-                &lt;source&gt;1.8&lt;/source&gt;
-                &lt;target&gt;1.8&lt;/target&gt;
-                &lt;encoding&gt;UTF-8&lt;/encoding&gt;
-                &lt;skip&gt;true&lt;/skip&gt;
-            &lt;/configuration&gt;
-        &lt;/plugin&gt;
-    &lt;/plugins&gt;
-&lt;/build&gt;
-</code></pre><p>可以打包了</p>
-<p>而部署到服务器上运行时又报出</p>
-<pre><code>java.lang.IllegalStateException: Failed to register @ServerEndpoint class
-</code></pre><p>搜了一下<br>需要改一下WebSocketConfig，将@Configuration 删掉</p>
-<p>这时又报出了一个错误</p>
-<pre><code>Failed to start component [StandardEngine[Catalina].StandardHost[localhost]]
-</code></pre><p>搜了一下说是Tomcat问题</p>
-<p>换了个Tomcat8 OK了</p>
-
-	
-	</div>
-  <a type="button" href="/main/2019/05/07/记一个初试WebSocket遇到的问题/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/main/2019/04/17/记一事故md/">记一个项目事故</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-04-17  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="记一个项目事故"><a href="#记一个项目事故" class="headerlink" title="记一个项目事故"></a>记一个项目事故</h2><p>最近两个月做了一个支持服务 </p>
-<p>同事的设备会有源源不断的请求来查询账号</p>
-<p>而多数请求是需要我去调用另外一个厂家（硬件合作关系）的查询接口得到账号</p>
-<p><strong>（这个厂家不给用户提供查询账号的接口，而他们的官网登录后却可以查到，没办法 我只能去扒取他们的内部接口调用）</strong></p>
-<p>服务正式上线使用持续了一个多月 没有问题</p>
-<p>而今天 突然报出了很多 查询失败的问题 </p>
-<p>当然 之前就想到了查询失败的问题，所以返回了另外一种信息（一个Key）<br>Key也是可以使用的，但之前因为部分用户是电信网络会使用不了 所以改成返回账号的</p>
-<p>接着 设备发生了大面积的停止工作，原因是 <strong>非法Key验证错误</strong></p>
-<p>而这个Key是写死的不可能传错的</p>
-<p>同事将设备当时报出错误的Key复制 去调试时却是正常可以使用的</p>
-<p>而同时我的支持服务中去调用他们的查询接口时也不报错了</p>
-<p>我和同事一沟通 都明白了 一定是厂家的服务出问题了，但使用账号的不受影响。</p>
-<p>so 归根到底 在这个业务流程中 </p>
-<p>我和同事与厂家之间都太信任依赖对方了</p>
-<p>如果我的服务宕机了 那同事的设备就宕机了</p>
-<p>如果厂家的接口出问题了，那我就没有正确数据返回了</p>
-<p>领导知道情况后说的几句 我觉得很受益</p>
-<blockquote>
-<p>做通讯的 永远不要相信对方</p>
-</blockquote>
-<blockquote>
-<p>一个优秀程序员的代码百分之80都在做错误分支的处理，真正处理业务的代码只有20%</p>
-</blockquote>
-<blockquote>
-<p>发生错误又不确定怎么处理的时候，最好的办法就是什么都不做</p>
-</blockquote>
-<p>确实做了很多错误处理，也将那个Key返回了，但我没有用最优的方式保障服务</p>
-<p>吃一堑长一智 赶紧把处理方案实现，这次事故后也将代码重新审查一番 更加完善了一些</p>
-
-	
-	</div>
-  <a type="button" href="/main/2019/04/17/记一事故md/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/main/2019/03/25/rsa/">RSA加密导致内存溢出</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-25  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="RSA加密导致内存溢出"><a href="#RSA加密导致内存溢出" class="headerlink" title="RSA加密导致内存溢出"></a>RSA加密导致内存溢出</h2><p>近期做的一个功能需要用到RSA加密</p>
-<p>之前没接触过</p>
-<p>搜了一下然后就开始做了 功能完成上线测试时就发现问题了</p>
-<p>内存飙升且降不下来 直到内存溢出Tomcat自动关闭了</p>
-<p>再搜了1下 好多人都遇到这个问题 原因就是 </p>
-<pre><code>BouncyCastleProvider 
-</code></pre><p>这个类 每次 new一个就多一个，不回收</p>
-<p>所以内存见增不见减</p>
-<p>所有new的地方改成调用 getInstance()</p>
-<pre><code>private static volatile BouncyCastleProvider bouncyCastleProvider = null;
-public static BouncyCastleProvider getInstance() {
-        if(null == bouncyCastleProvider){
-            synchronized(RSAUtil.class){
-                if(null == bouncyCastleProvider){
-                    bouncyCastleProvider = new BouncyCastleProvider();
-                }
-            }
-        }
-        return bouncyCastleProvider;
- }
-</code></pre>
-	
-	</div>
-  <a type="button" href="/main/2019/03/25/rsa/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -626,11 +598,13 @@ public static BouncyCastleProvider getInstance() {
 		
 			<li><a href="/main/categories/IDE/">IDE<span>1</span></a></li>
 		
-			<li><a href="/main/categories/Java/">Java<span>8</span></a></li>
+			<li><a href="/main/categories/Java/">Java<span>10</span></a></li>
+		
+			<li><a href="/main/categories/RabbitMQ/">RabbitMQ<span>1</span></a></li>
 		
 			<li><a href="/main/categories/其他/">其他<span>8</span></a></li>
 		
-			<li><a href="/main/categories/前端/">前端<span>4</span></a></li>
+			<li><a href="/main/categories/前端/">前端<span>5</span></a></li>
 		
 			<li><a href="/main/categories/数据库/">数据库<span>2</span></a></li>
 		
@@ -647,23 +621,23 @@ public static BouncyCastleProvider getInstance() {
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/main/2019/07/15/RabbitMQ-channel is already closed due to channel error; protocol method/"><i class="fa fa-file-o"></i>channel is already closed d...</a>
+      </li>
+    
+      <li>
+        <a href="/main/2019/07/07/SpringCloud-Config Cannot clone or checkout repository/"><i class="fa fa-file-o"></i>SpringCloud-Config Cannot c...</a>
+      </li>
+    
+      <li>
+        <a href="/main/2019/07/02/SpringCloud-Eureka启动时候Read Timeout/"><i class="fa fa-file-o"></i>SpringCloud-Eureka集群启动时候Rea...</a>
+      </li>
+    
+      <li>
         <a href="/main/2019/06/26/Js链式调用思路/"><i class="fa fa-file-o"></i>Js链式调用思路</a>
       </li>
     
       <li>
         <a href="/main/2019/06/25/Ajax调用接口HTTP状态是成功但走的error/"><i class="fa fa-file-o"></i>Ajax调用接口HTTP状态是成功但走的error</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/06/20/lombok注解引用不到与无效问题/"><i class="fa fa-file-o"></i>lombok注解引用不到与无效问题</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/06/10/百度输入法 天下第一坑/"><i class="fa fa-file-o"></i>百度输入法 天下第一坑</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/05/23/内存泄漏与内存溢出/"><i class="fa fa-file-o"></i>内存泄漏和内存溢出</a>
       </li>
     
   </ul>
