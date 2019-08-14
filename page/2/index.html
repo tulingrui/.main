@@ -129,6 +129,155 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/main/2019/05/23/内存泄漏与内存溢出/">内存泄漏和内存溢出</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-05-23  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="内存泄漏和内存溢出"><a href="#内存泄漏和内存溢出" class="headerlink" title="内存泄漏和内存溢出"></a>内存泄漏和内存溢出</h2><p>内存泄漏和内存溢出的区别，它俩是两个完全不同的概念， 它们之间存在一些关联。</p>
+<p>内存溢出 out of memory，是指程序在申请内存时，没有足够的内存空间供其使用，出现 out of memory；</p>
+<p>内存泄露 memory leak，是指程序在申请内存后，无法释放已申请的内存空间，一次内存泄露危害可以忽略，但内存泄露堆积后果很严重，无论多少内存,迟早会被占光。</p>
+<p>所以内存泄漏可能会导致内存溢出，但内存溢出并不完全都是因为内存泄漏，也有可能使用了太多的大对象导致。</p>
+<pre><code>作者：ityouknow
+链接：https://juejin.im/post/5ce5d750f265da1b6a346b91
+</code></pre>
+	
+	</div>
+  <a type="button" href="/main/2019/05/23/内存泄漏与内存溢出/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/main/2019/05/22/微信授权时出现了一直不断获取授权的问题/">微信授权时一直不断获取授权的问题记录</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-05-22  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>##微信授权时一直不断获取授权的问题记录##</p>
+<p>最近要开发新的微信功能，在本地搭环境测试时获取微信授权时出现了一直不断获取授权的情况</p>
+<p>都做了这么久了，之前也没遇到过这个问题，想了半天才找到原因</p>
+<blockquote>
+<p>前端接口访问时带上了项目名 <a href="http://xxxx/项目名/action" target="_blank" rel="noopener">http://xxxx/项目名/action</a></p>
+</blockquote>
+<p>因为后端做了虚拟路径 所以访问时可以不带项目名 也可以带项目名 </p>
+<p>而后端设置的微信回调的地址是不带项目名的</p>
+<p>这时在进行获取微信授权时就发生了一直不断的获取授权的情况</p>
+<p>刚开始打开控制台看了一下 发现每次的sessionId都是不一样的</p>
+<p>排查了半天 还以为是nginx配置的有问题</p>
+<p>最后发现请求URL中带了项目名，突然想到回调的是不带项目名的 所以session每次都是不一样的</p>
+<p>太久没开发微信 想不起来这个事 居然犯这种傻问题 真是浪费时间….</p>
+
+	
+	</div>
+  <a type="button" href="/main/2019/05/22/微信授权时出现了一直不断获取授权的问题/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/main/2019/05/15/今天赚了1000块/">今天赚了1000块 耶</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-05-15  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>##今天赚了1000块 耶##</p>
+<p>去年2018年九十月份买了4000的BTC</p>
+<p>才零点零零几 接着就开始跌跌跌跌，偶尔看一眼 又跌了 最后一次看 卖出去只能卖2000多，就没再想着了</p>
+<p>今天突然看到新闻 喔嚯</p>
+<p><strong>BTC突破8000美元了</strong></p>
+<p>打开遗忘在手机角落里的交易软件 嗯 密码我都忘了 找回1下</p>
+<p>然后进交易中看下 预估价值变5000多了 nice</p>
+<p>赶紧出手 小赚1000块 hahah 够买挺多零食了</p>
+
+	
+	</div>
+  <a type="button" href="/main/2019/05/15/今天赚了1000块/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/main/2019/05/14/线上服务器CPU满载问题排查/">线上服务器CPU满载问题排查</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-05-14  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>##线上服务器CPU满载问题排查</p>
+<p>网站突然变得特别慢，打开登录页面都要等一会</p>
+<p>上服务器看一下，连服务器就等了很久 连上之后就看到CPU100%了</p>
+<p>任务管理器看了一下占用最高的tomcat的PID，</p>
+<p>然后把进程快照导出</p>
+<pre><code>jstack -l 6004 &gt; c:/6004.stack  
+</code></pre><p>然后用微软提供的Process Explorer v15.3 查看进程</p>
+<blockquote>
+<p><a href="https://docs.microsoft.com/zh-cn/sysinternals/downloads/process-explorer" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/sysinternals/downloads/process-explorer</a></p>
+</blockquote>
+<p>打开之后右键需要查看的进程 -&gt; properties</p>
+<p>然后选择Threads 就能看到占用CPU最高的线程了 </p>
+<p>复制下TID 然后转换成16进制</p>
+<p>再打开刚刚导出的进程的快照，搜16进制后的TID，就可以看到具体的原因了</p>
+
+	
+	</div>
+  <a type="button" href="/main/2019/05/14/线上服务器CPU满载问题排查/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/main/2019/05/07/记一个初试WebSocket遇到的问题/">记一个初试WebSocket遇到的问题</a>
 		</h3>
 		</div>
@@ -387,305 +536,6 @@ public static BouncyCastleProvider getInstance() {
 </div>
 
 		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/main/2018/12/10/基于Socks5协议的代理服务搭建突破网络限制/">基于Socks5协议的代理服务搭建突破网络限制</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2018-12-10  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="基于Socks5协议的代理服务搭建突破网络限制"><a href="#基于Socks5协议的代理服务搭建突破网络限制" class="headerlink" title="基于Socks5协议的代理服务搭建突破网络限制"></a>基于Socks5协议的代理服务搭建突破网络限制</h2><p>操作系统 - Windows</p>
-<p>首先 需要有 nodeJs</p>
-<p>然后安装1下<strong>服务端</strong></p>
-<blockquote>
-<p>npm install -g shadowsocks</p>
-</blockquote>
-<p>安装完之后打开安装目录 举个栗子：</p>
-<blockquote>
-<p>C:\Users\DELL\AppData\Roaming\npm\node_modules\shadowsocks</p>
-</blockquote>
-<p>打开 config.json文件 开始配置</p>
-<pre><code>{
-&quot;server&quot;:&quot;你服务器的IP&quot;,
-&quot;server_port&quot;:8081,
-&quot;local_address&quot;:&quot;127.0.0.1&quot;,
-&quot;local_port&quot;:1080,
-&quot;password&quot;:&quot;Tulingrui321.!&quot;,
-&quot;timeout&quot;:600,
-&quot;method&quot;:&quot;aes-256-cfb&quot;
-}
-</code></pre><blockquote>
-<p>server : 你服务器的IP</p>
-<p>server_port : 对外的服务访问端口</p>
-<p>local_port : 本地端口</p>
-<p>password : 密码</p>
-<p>method : 加密方式</p>
-</blockquote>
-<p>保存  然后 cmd，输 ssserver 回车 启动了</p>
-<hr>
-<p><strong>客户端下载地址</strong> </p>
-<blockquote>
-<p><a href="https://github.com/shadowsocksr-backup/shadowsocksr-csharp/releases" target="_blank" rel="noopener">https://github.com/shadowsocksr-backup/shadowsocksr-csharp/releases</a></p>
-</blockquote>
-<p>客户端配置</p>
-<p>加密方式 - aes-256-cfb</p>
-<p>协议 - origin</p>
-<p>混淆 - plain</p>
-<p>全局代理 OK 一些网站可以访问了</p>
-<p>这时发现我的网易云音乐也被限制了</p>
-<p>首先 打开IE </p>
-<p>Internet选项 &gt; 连接 &gt; 局域网设置</p>
-<p>勾选为LAN使用代理服务器 </p>
-<p>取消勾选 对于本地地址不使用代理服务器</p>
-<p>地址：127.0.0.1</p>
-<p>端口：1080</p>
-<p>确定 </p>
-<p>网易云音乐中可以设置代理</p>
-<p>选择 【使用IE代理设置】确定后重新打开网易云音乐 OK了</p>
-
-	
-	</div>
-  <a type="button" href="/main/2018/12/10/基于Socks5协议的代理服务搭建突破网络限制/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/main/2018/12/06/简单的nginx搭建负载均衡与根据URL关键字转发服务/">简单的nginx搭建负载均衡与根据URL关键字转发服务</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2018-12-06  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="简单的nginx搭建负载均衡与根据URL关键字转发服务"><a href="#简单的nginx搭建负载均衡与根据URL关键字转发服务" class="headerlink" title="简单的nginx搭建负载均衡与根据URL关键字转发服务"></a>简单的nginx搭建负载均衡与根据URL关键字转发服务</h2><p>项目要做前后端分离</p>
-<p>后端服务要做负载均衡</p>
-<p>本地先试1下 start</p>
-<p>首先</p>
-<p>写两个集群 </p>
-<pre><code>upstream hd_cloud {  #后端服务集群名字   
-    serverlocalhost:9091  weight=1;
-    serverlocalhost:9092  weight=1;
-    serverlocalhost:9093  weight=1;
-    serverlocalhost:9094  weight=1;
-}
-
-upstream hd_client{  #前端服务集群名字   
-    serverlocalhost:8081;
-}
-</code></pre><p>weight是权重的意思，权重越大，分配的概率越大。</p>
-<p>然后是 配置server</p>
-<pre><code>listen 80;
-server_name  localhost;
-location ~/action {
-    proxy_pass http://hd_cloud;  #后端集群的名 上面写的 upstream hd_cloud
-    proxy_connect_timeout 1; #连接超时时间
-    index  index.html index.htm;
-}
-
-location / {
-    proxy_pass http://hd_client; #前端集群的名 
-    proxy_connect_timeout 1; #连接超时时间
-    index  index.html index.htm;
-}
-</code></pre><p>location ~/action 匹配路径如果访问路径中包含action 就访问后端服务</p>
-<p>location / 表示通用匹配</p>
-<p>“~” 开头表示区分大小写的正则匹配</p>
-<p>“~*” 开头表示不区分大小写的正则匹配</p>
-<p>“/“ 通用匹配，任何请求都会匹配到</p>
-<p>还有其他的规则不列举了 </p>
-<p>nginx的匹配顺序是 先匹配正则 再匹配普通</p>
-<p>服务启动 试1下 可以了。</p>
-<p>nginx的关闭与重新载入配置信息</p>
-<pre><code>退出
-nginx.exe -s quit  
-
-重新载入配置信息
-nginx.exe -s reload  
-</code></pre><p>写个bat文件放在nginx目录中方便一些</p>
-
-	
-	</div>
-  <a type="button" href="/main/2018/12/06/简单的nginx搭建负载均衡与根据URL关键字转发服务/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/main/2018/11/26/Jenkins+Maven+SVN+Tomcat搭建自动部署工具/">Jenkins+Maven+SVN+Tomcat搭建自动部署工具</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2018-11-26  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Jenkins-Maven-SVN-Tomcat搭建自动部署工具"><a href="#Jenkins-Maven-SVN-Tomcat搭建自动部署工具" class="headerlink" title="Jenkins+Maven+SVN+Tomcat搭建自动部署工具"></a>Jenkins+Maven+SVN+Tomcat搭建自动部署工具</h2><p>项目更新比较频繁，每次都要上服务器 复制 粘贴 重启 很烦 </p>
-<p>百度了1下 Jenkins/Maven/SVN/Tomcat 嗯 开搞8 </p>
-<p>首先准备好 Maven、SVN、Tomcat（还有环境变量什么的）</p>
-<p>Jenkins 下载地址 ↓</p>
-<blockquote>
-<p> <a href="https://jenkins.io/download/" target="_blank" rel="noopener">https://jenkins.io/download/</a></p>
-</blockquote>
-<p>我是放Tomcat下，下的是war包 (Generic Java package)</p>
-<p>下载好把它复制到 tomcat 的 webapps 文件夹中</p>
-<p>启动1下 Tomcat ，可以访问了 http:/localhost:8080/jenkins/</p>
-<p>Jenkins初始化页面会提示你输入密码， 按提示路径打开密码文件，输入密码确定</p>
-<hr>
-<p>记点重要的</p>
-<p>先进入<strong>插件管理</strong>安装必需的插件</p>
-<ol>
-<li>Build Timeout</li>
-<li>Deploy to container Plugin</li>
-<li>Email Extension Plugin</li>
-<li>Gradle Plugin</li>
-<li>LDAP Plugin</li>
-<li>Matrix Authorization Strategy Plugin</li>
-<li>OWASP Markup Formatter Plugin</li>
-<li>Pipeline</li>
-<li>Pipeline Maven Integration Plugin</li>
-<li>.Publish Over SSH</li>
-<li>SSH plugin</li>
-<li>SSH Slaves plugin</li>
-<li>Subversion Plug-in</li>
-<li>Timestamper</li>
-<li>Workspace Cleanup Plugin</li>
-</ol>
-<p>安装完重启1下Tomcat</p>
-<p>接下来 <strong>系统设置</strong></p>
-<p>设置编码全局属性  </p>
-<blockquote>
-<p>Name : LANG</p>
-<p>Value : zh_CN UTF-8</p>
-</blockquote>
-<p>增加系统管理员邮件地址</p>
-<blockquote>
-<p>Jenkins Location ：</p>
-<p>Jenkins URL - Jenkins的访问地址  <a href="http://localhost:8080/jenkins" target="_blank" rel="noopener">http://localhost:8080/jenkins</a></p>
-<p>System Admin e-mail address  <a href="mailto:youEmail@qq.com" target="_blank" rel="noopener">youEmail@qq.com</a></p>
-</blockquote>
-<p>其他暂时先默认的</p>
-<hr>
-<p>然后是 添加全局工具配置 <strong>Global ToolConfiguration</strong></p>
-<p>将JDK取消自动安装 把本机的JDK路径填上(例：E:\Java\jdk1.8.0_171)</p>
-<p>Maven也一样取消自动安装，将本机的Maven路径填上(例：D:\apache-maven-3.5.4)</p>
-<p>接着 可以开始一个任务了 - New任务</p>
-<p>构建一个自由风格的软件项目或者根据需要选类型</p>
-<p>新建完在左侧可以看到1些按钮，接下来可以配置（Configure）项目了</p>
-<p>General配置</p>
-<blockquote>
-<p>Description - 项目介绍</p>
-<p>Days to keep builds - 保持构造的天数 （我设置的 30）</p>
-<p>Max # of builds to keep -保持构造的最大个数 （100）</p>
-</blockquote>
-<p>然后是 代码管理(Source Code Management) 也就是 设置你项目的SVN地址</p>
-<blockquote>
-<p>Repository URL 输入你SVN的地址 </p>
-<p>点添加 输你SVN的账号密码</p>
-</blockquote>
-<p>还可以配置构建触发器（Build Triggers），但后来用不到就没配置了</p>
-<p>然后是构造 （Build Environment）</p>
-<blockquote>
-<p>勾选 构造之前删除工作空间 (Delete workspace before build starts) </p>
-<p>Maven Version ：maven-3.5.4</p>
-<p>Goals ：clean install</p>
-<p>POM :pom.xml</p>
-</blockquote>
-<hr>
-<p>接着是构造后的操作 (Post-build Actions)</p>
-<blockquote>
-<p>WAR/EAR files - 指的是你构造工作空间的目录</p>
-<p>我的是 C:\Users\DELL.jenkins\workspace\target\manageTool.war</p>
-<p>那么 填 target/manageTool.war 就可以了</p>
-<p>Context path - 是配置项目访问路径</p>
-<p>如填 /manageTool 项目根访问目录就是：<a href="http://localhost:8080/manageTool" target="_blank" rel="noopener">http://localhost:8080/manageTool</a></p>
-<p>Add Container 选你对应的Tomcat版本， add 添加你Tomcat的账号密码与Tomcat地址 </p>
-</blockquote>
-<p>Tomcat的用户配置 在 conf 下的 tomcat-users.xml 文件中</p>
-<p>例：</p>
-<pre><code>&lt;tomcat-users&gt;
-    &lt;role rolename=&quot;manager-gui&quot;/&gt;
-    &lt;role rolename=&quot;manager-script&quot;/&gt;
- &lt;user username=&quot;admin&quot; password=&quot;admin&quot; roles=&quot;manager-gui,manager-script&quot;/&gt;
-&lt;/tomcat-users&gt; 
-</code></pre><p>密码要复杂点阿</p>
-<p>最后保存，回到Jenkins保存 - 左面列表 &gt; 立即构建 ok了</p>
-
-	
-	</div>
-  <a type="button" href="/main/2018/11/26/Jenkins+Maven+SVN+Tomcat搭建自动部署工具/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/main/2018/10/12/高德地图中行政区划的坑/">高德地图中行政区划的坑</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2018-10-12  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="高德地图中行政区划的坑"><a href="#高德地图中行政区划的坑" class="headerlink" title="高德地图中行政区划的坑"></a>高德地图中行政区划的坑</h2><p>在查询所有行政区划代码时发现高德把县级以下的单位也加了进去 </p>
-<p>但所属的行政区划代码 和上级市级的行政区划代码是一样的 </p>
-<p>例：</p>
-<pre><code>行政区划 上级号码 单位名称
-429006  420000   天门市
-429006  429006   胡市镇
-429006  429006   多祥镇
-</code></pre><p>最后只能把这些重新自定义号码了</p>
-
-	
-	</div>
-  <a type="button" href="/main/2018/10/12/高德地图中行政区划的坑/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -735,15 +585,15 @@ nginx.exe -s reload
 		
 			<li><a href="/main/categories/IDE/">IDE<span>1</span></a></li>
 		
-			<li><a href="/main/categories/Java/">Java<span>10</span></a></li>
+			<li><a href="/main/categories/Java/">Java<span>12</span></a></li>
 		
 			<li><a href="/main/categories/RabbitMQ/">RabbitMQ<span>1</span></a></li>
 		
 			<li><a href="/main/categories/其他/">其他<span>8</span></a></li>
 		
-			<li><a href="/main/categories/前端/">前端<span>5</span></a></li>
+			<li><a href="/main/categories/前端/">前端<span>6</span></a></li>
 		
-			<li><a href="/main/categories/数据库/">数据库<span>2</span></a></li>
+			<li><a href="/main/categories/数据库/">数据库<span>3</span></a></li>
 		
 		</ul>
 	</div>
@@ -758,23 +608,23 @@ nginx.exe -s reload
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/main/2019/08/05/mySql分组后的所有数据列根据组内的某字段倒序展示/"><i class="fa fa-file-o"></i>mySql分组后的所有数据列根据组内的某字段倒序展示</a>
+      </li>
+    
+      <li>
+        <a href="/main/2019/07/24/Tomcat命令行窗口中文乱码/"><i class="fa fa-file-o"></i>Tomcat命令行窗口中文乱码</a>
+      </li>
+    
+      <li>
+        <a href="/main/2019/07/23/jquery.print打印预览空白/"><i class="fa fa-file-o"></i>jquery.print打印预览空白无打印内容</a>
+      </li>
+    
+      <li>
         <a href="/main/2019/07/15/RabbitMQ-channel is already closed due to channel error; protocol method/"><i class="fa fa-file-o"></i>channel is already closed d...</a>
       </li>
     
       <li>
         <a href="/main/2019/07/07/SpringCloud-Config Cannot clone or checkout repository/"><i class="fa fa-file-o"></i>SpringCloud-Config Cannot c...</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/07/02/SpringCloud-Eureka启动时候Read Timeout/"><i class="fa fa-file-o"></i>SpringCloud-Eureka集群启动时候Rea...</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/06/26/Js链式调用思路/"><i class="fa fa-file-o"></i>Js链式调用思路</a>
-      </li>
-    
-      <li>
-        <a href="/main/2019/06/25/Ajax调用接口HTTP状态是成功但走的error/"><i class="fa fa-file-o"></i>Ajax调用接口HTTP状态是成功但走的error</a>
       </li>
     
   </ul>
@@ -812,7 +662,19 @@ nginx.exe -s reload
       with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
      <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
 </p>
- </footer>
+<br>
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style="display:none">
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+   </footer>
 </div> <!-- container-narrow -->
   
 

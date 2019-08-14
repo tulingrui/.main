@@ -4,6 +4,63 @@
   
     
     <entry>
+      <title>mySql分组后的所有数据列根据组内的某字段倒序展示</title>
+      <link href="/main/2019/08/05/mySql%E5%88%86%E7%BB%84%E5%90%8E%E7%9A%84%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE%E5%88%97%E6%A0%B9%E6%8D%AE%E7%BB%84%E5%86%85%E7%9A%84%E6%9F%90%E5%AD%97%E6%AE%B5%E5%80%92%E5%BA%8F%E5%B1%95%E7%A4%BA/"/>
+      <url>/main/2019/08/05/mySql%E5%88%86%E7%BB%84%E5%90%8E%E7%9A%84%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE%E5%88%97%E6%A0%B9%E6%8D%AE%E7%BB%84%E5%86%85%E7%9A%84%E6%9F%90%E5%AD%97%E6%AE%B5%E5%80%92%E5%BA%8F%E5%B1%95%E7%A4%BA/</url>
+      
+        <content type="html"><![CDATA[<h2 id="mySql分组后的所有数据列根据组内的某字段倒序展示"><a href="#mySql分组后的所有数据列根据组内的某字段倒序展示" class="headerlink" title="mySql分组后的所有数据列根据组内的某字段倒序展示"></a>mySql分组后的所有数据列根据组内的某字段倒序展示</h2><p>场景</p><blockquote><p>用户数据在A表</p><p>员工操作修改时不允许更新A表数据要单独存另外B表里（存在多次修改），但查询时要显示最新的 </p></blockquote><p>那么 写个子查询 在子查询中排序，然后再分组就可以了</p><pre><code>SELECT `name`,age FROM (    SELECT a.`name` AS `name`,b.age AS age     FROM tb_a a    LEFT JOIN b ON a.`name` = b.`name`    ORDER BY b.createTime DESC    LIMIT 10000000  ) dd  GROUP BY `name`</code></pre><p>要注意的是 mysql 5.7之后子查询内排序是无效的，所以加上limit</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Tomcat命令行窗口中文乱码</title>
+      <link href="/main/2019/07/24/Tomcat%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AA%97%E5%8F%A3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/"/>
+      <url>/main/2019/07/24/Tomcat%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AA%97%E5%8F%A3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/</url>
+      
+        <content type="html"><![CDATA[<p>##Tomcat命令行窗口中文乱码</p><p>新下的Tomcat打开之后中文都乱码了 虽然不影响但看着烦</p><p>打开 conf 目录下 logging.properties 文件</p><p>找到 java.util.logging.ConsoleHandler.encoding 改成GBK</p><p>如果没有就添加这行</p><pre><code>java.util.logging.ConsoleHandler.encoding = GBK</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>jquery.print打印预览空白无打印内容</title>
+      <link href="/main/2019/07/23/jquery.print%E6%89%93%E5%8D%B0%E9%A2%84%E8%A7%88%E7%A9%BA%E7%99%BD/"/>
+      <url>/main/2019/07/23/jquery.print%E6%89%93%E5%8D%B0%E9%A2%84%E8%A7%88%E7%A9%BA%E7%99%BD/</url>
+      
+        <content type="html"><![CDATA[<h2 id="jquery-print打印预览空白无打印内容"><a href="#jquery-print打印预览空白无打印内容" class="headerlink" title="jquery.print打印预览空白无打印内容"></a>jquery.print打印预览空白无打印内容</h2><p>环境：Chrome浏览器</p><p>在打印时偶尔会出现一片空白无打印内容的情况</p><p>搜了很多 大部分都是说 改源码、延时加载等</p><p>或者加上open方法</p><pre><code>var doc = iframe.contentWindow.document;//↓新加的doc.open();</code></pre><p>但也还是出现空白的情况</p><p>最后我发现 在HTML的头部加上</p><pre><code>&lt;meta http-equiv=&quot;Access-Control-Allow-Origin&quot; content=&quot;*&quot;&gt;</code></pre><p>就解决了这个问题，但这个标签是解决跨域用的 可能是浏览器的打印功能与页面之间存在跨域…? 但也不是每次都会出现空白内容 8知道怎么回事了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>channel is already closed due to channel error; protocol method</title>
       <link href="/main/2019/07/15/RabbitMQ-channel%20is%20already%20closed%20due%20to%20channel%20error;%20protocol%20method/"/>
       <url>/main/2019/07/15/RabbitMQ-channel%20is%20already%20closed%20due%20to%20channel%20error;%20protocol%20method/</url>
@@ -185,6 +242,25 @@
       <categories>
           
           <category> 其他 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>线上服务器CPU满载问题排查</title>
+      <link href="/main/2019/05/14/%E7%BA%BF%E4%B8%8A%E6%9C%8D%E5%8A%A1%E5%99%A8CPU%E6%BB%A1%E8%BD%BD%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/"/>
+      <url>/main/2019/05/14/%E7%BA%BF%E4%B8%8A%E6%9C%8D%E5%8A%A1%E5%99%A8CPU%E6%BB%A1%E8%BD%BD%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/</url>
+      
+        <content type="html"><![CDATA[<p>##线上服务器CPU满载问题排查</p><p>网站突然变得特别慢，打开登录页面都要等一会</p><p>上服务器看一下，连服务器就等了很久 连上之后就看到CPU100%了</p><p>任务管理器看了一下占用最高的tomcat的PID，</p><p>然后把进程快照导出</p><pre><code>jstack -l 6004 &gt; c:/6004.stack  </code></pre><p>然后用微软提供的Process Explorer v15.3 查看进程</p><blockquote><p><a href="https://docs.microsoft.com/zh-cn/sysinternals/downloads/process-explorer" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/sysinternals/downloads/process-explorer</a></p></blockquote><p>打开之后右键需要查看的进程 -&gt; properties</p><p>然后选择Threads 就能看到占用CPU最高的线程了 </p><p>复制下TID 然后转换成16进制</p><p>再打开刚刚导出的进程的快照，搜16进制后的TID，就可以看到具体的原因了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
           
       </categories>
       
@@ -422,11 +498,11 @@
     
     
     <entry>
-      <title>Arcgis fo JavaScript 4.x polyLine不显示问题</title>
-      <link href="/main/2017/03/25/Arcgis%20fo%20JavaScript%204.x%20polyLine%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/"/>
-      <url>/main/2017/03/25/Arcgis%20fo%20JavaScript%204.x%20polyLine%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</url>
+      <title>Google地图未能正常加载</title>
+      <link href="/main/2017/03/25/Google%E5%9C%B0%E5%9B%BE%E6%9C%AA%E8%83%BD%E6%AD%A3%E5%B8%B8%E5%8A%A0%E8%BD%BD/"/>
+      <url>/main/2017/03/25/Google%E5%9C%B0%E5%9B%BE%E6%9C%AA%E8%83%BD%E6%AD%A3%E5%B8%B8%E5%8A%A0%E8%BD%BD/</url>
       
-        <content type="html"><![CDATA[<h2 id="Arcgis-fo-JavaScript-4-x-polyLine不显示问题"><a href="#Arcgis-fo-JavaScript-4-x-polyLine不显示问题" class="headerlink" title="Arcgis fo JavaScript 4.x polyLine不显示问题"></a>Arcgis fo JavaScript 4.x polyLine不显示问题</h2><p>4.x版本里多了一个截图的功能，要用到这个 所以要代码重构一下了</p><p>一些小改动都调整差不多了准备看下数据展示 </p><p>轨迹数据分为两个PolyLine（一个红色一个绿色）</p><p>现在却只显示红色的，绿色的看不见</p><p>思前想后检查了三四遍 都没问题，且不报错</p><p>控制台输出绿色的polyline也能看到数据。</p><p>最后又仔细想想，对比着看了下数据结构</p><p>举个栗子 差不多就这样 ↓</p><pre><code>// 红色线段var polyline_RED = {    type : &quot;polyline&quot;, // autocasts as new Polyline()    paths : [ [ [ -111.3, 52.68 ], [ -98, 49.5 ], [ -93.94, 29.89 ] ], [],[ [ -133.3, 52.68 ], [ -122, 49.5 ], [ -116.94, 29.89 ] ] ]};// 绿色线段var polyline_GREEN = {    type : &quot;polyline&quot;, // autocasts as new Polyline()    paths : [ [],[ [ -111.3, 52.68 ], [ -98, 49.5 ], [ -93.94, 29.89 ] ],[ [ -133.3, 52.68 ], [ -122, 49.5 ], [ -116.94, 29.89 ] ] ]};</code></pre><p>于是写个最简单的demo试了下 果然，<strong>paths的下标第一个数组不可以是空的</strong></p><p>另外还有要注意的就是要先准备好数据 再添加到图形里</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="Google地图未能正常加载"><a href="#Google地图未能正常加载" class="headerlink" title="Google地图未能正常加载"></a>Google地图未能正常加载</h2><p>项目里用到了Google地图,本机上可以正常加载,放到服务器上就不行了,<br>搜了一下 找到了这个</p><blockquote><p>If you are using the Google Maps API on localhost or your domain was not active prior to June 22nd, 2016, it will require a key going forward. To fix this problem, please see the Google Maps APIs documentation to get a key and add it to your application:</p></blockquote><p>oh，原来是需要加key，百度了一下 , </p><p>第一步<br>访问 API 控制台（网址为 <a href="https://code.google.com/apis/console）并使用您的" target="_blank" rel="noopener">https://code.google.com/apis/console）并使用您的</a> Google 帐户登录。</p><p>第二步<br>在控制台中激活谷歌地图的相关服务，然后进入谷歌api库，选择Google 地图 API下的对应程序（我用的是Google Maps JavaScript API）</p><p>第三步<br>点击为此 API 创建凭据，即可生成相关api的密钥，然后在地图文件中引入该密钥</p><p>赶紧翻了个墙创建了个密钥,加上之后 就OK了。</p>]]></content>
       
       
       <categories>
@@ -441,11 +517,11 @@
     
     
     <entry>
-      <title>Google地图未能正常加载</title>
-      <link href="/main/2017/03/25/Google%E5%9C%B0%E5%9B%BE%E6%9C%AA%E8%83%BD%E6%AD%A3%E5%B8%B8%E5%8A%A0%E8%BD%BD/"/>
-      <url>/main/2017/03/25/Google%E5%9C%B0%E5%9B%BE%E6%9C%AA%E8%83%BD%E6%AD%A3%E5%B8%B8%E5%8A%A0%E8%BD%BD/</url>
+      <title>Arcgis fo JavaScript 4.x polyLine不显示问题</title>
+      <link href="/main/2017/03/25/Arcgis%20fo%20JavaScript%204.x%20polyLine%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/"/>
+      <url>/main/2017/03/25/Arcgis%20fo%20JavaScript%204.x%20polyLine%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</url>
       
-        <content type="html"><![CDATA[<h2 id="Google地图未能正常加载"><a href="#Google地图未能正常加载" class="headerlink" title="Google地图未能正常加载"></a>Google地图未能正常加载</h2><p>项目里用到了Google地图,本机上可以正常加载,放到服务器上就不行了,<br>搜了一下 找到了这个</p><blockquote><p>If you are using the Google Maps API on localhost or your domain was not active prior to June 22nd, 2016, it will require a key going forward. To fix this problem, please see the Google Maps APIs documentation to get a key and add it to your application:</p></blockquote><p>oh，原来是需要加key，百度了一下 , </p><p>第一步<br>访问 API 控制台（网址为 <a href="https://code.google.com/apis/console）并使用您的" target="_blank" rel="noopener">https://code.google.com/apis/console）并使用您的</a> Google 帐户登录。</p><p>第二步<br>在控制台中激活谷歌地图的相关服务，然后进入谷歌api库，选择Google 地图 API下的对应程序（我用的是Google Maps JavaScript API）</p><p>第三步<br>点击为此 API 创建凭据，即可生成相关api的密钥，然后在地图文件中引入该密钥</p><p>赶紧翻了个墙创建了个密钥,加上之后 就OK了。</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="Arcgis-fo-JavaScript-4-x-polyLine不显示问题"><a href="#Arcgis-fo-JavaScript-4-x-polyLine不显示问题" class="headerlink" title="Arcgis fo JavaScript 4.x polyLine不显示问题"></a>Arcgis fo JavaScript 4.x polyLine不显示问题</h2><p>4.x版本里多了一个截图的功能，要用到这个 所以要代码重构一下了</p><p>一些小改动都调整差不多了准备看下数据展示 </p><p>轨迹数据分为两个PolyLine（一个红色一个绿色）</p><p>现在却只显示红色的，绿色的看不见</p><p>思前想后检查了三四遍 都没问题，且不报错</p><p>控制台输出绿色的polyline也能看到数据。</p><p>最后又仔细想想，对比着看了下数据结构</p><p>举个栗子 差不多就这样 ↓</p><pre><code>// 红色线段var polyline_RED = {    type : &quot;polyline&quot;, // autocasts as new Polyline()    paths : [ [ [ -111.3, 52.68 ], [ -98, 49.5 ], [ -93.94, 29.89 ] ], [],[ [ -133.3, 52.68 ], [ -122, 49.5 ], [ -116.94, 29.89 ] ] ]};// 绿色线段var polyline_GREEN = {    type : &quot;polyline&quot;, // autocasts as new Polyline()    paths : [ [],[ [ -111.3, 52.68 ], [ -98, 49.5 ], [ -93.94, 29.89 ] ],[ [ -133.3, 52.68 ], [ -122, 49.5 ], [ -116.94, 29.89 ] ] ]};</code></pre><p>于是写个最简单的demo试了下 果然，<strong>paths的下标第一个数组不可以是空的</strong></p><p>另外还有要注意的就是要先准备好数据 再添加到图形里</p>]]></content>
       
       
       <categories>

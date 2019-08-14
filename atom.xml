@@ -6,7 +6,7 @@
   <link href="/main/atom.xml" rel="self"/>
   
   <link href="https://tulingrui.github.io/main/"/>
-  <updated>2019-07-15T08:47:53.780Z</updated>
+  <updated>2019-08-05T06:53:26.469Z</updated>
   <id>https://tulingrui.github.io/main/</id>
   
   <author>
@@ -15,6 +15,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mySql分组后的所有数据列根据组内的某字段倒序展示</title>
+    <link href="https://tulingrui.github.io/main/2019/08/05/mySql%E5%88%86%E7%BB%84%E5%90%8E%E7%9A%84%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE%E5%88%97%E6%A0%B9%E6%8D%AE%E7%BB%84%E5%86%85%E7%9A%84%E6%9F%90%E5%AD%97%E6%AE%B5%E5%80%92%E5%BA%8F%E5%B1%95%E7%A4%BA/"/>
+    <id>https://tulingrui.github.io/main/2019/08/05/mySql分组后的所有数据列根据组内的某字段倒序展示/</id>
+    <published>2019-08-05T06:32:00.000Z</published>
+    <updated>2019-08-05T06:53:26.469Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="mySql分组后的所有数据列根据组内的某字段倒序展示"><a href="#mySql分组后的所有数据列根据组内的某字段倒序展示" class="headerlink" title="mySql分组后的所有数据列根据组内的某字段倒序展示"></a>mySql分组后的所有数据列根据组内的某字段倒序展示</h2><p>场景</p><blockquote><p>用户数据在A表</p><p>员工操作修改时不允许更新A表数据要单独存另外B表里（存在多次修改），但查询时要显示最新的 </p></blockquote><p>那么 写个子查询 在子查询中排序，然后再分组就可以了</p><pre><code>SELECT `name`,age FROM (    SELECT a.`name` AS `name`,b.age AS age     FROM tb_a a    LEFT JOIN b ON a.`name` = b.`name`    ORDER BY b.createTime DESC    LIMIT 10000000  ) dd  GROUP BY `name`</code></pre><p>要注意的是 mysql 5.7之后子查询内排序是无效的，所以加上limit</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;mySql分组后的所有数据列根据组内的某字段倒序展示&quot;&gt;&lt;a href=&quot;#mySql分组后的所有数据列根据组内的某字段倒序展示&quot; class=&quot;headerlink&quot; title=&quot;mySql分组后的所有数据列根据组内的某字段倒序展示&quot;&gt;&lt;/a&gt;mySql分组后
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="https://tulingrui.github.io/main/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Tomcat命令行窗口中文乱码</title>
+    <link href="https://tulingrui.github.io/main/2019/07/24/Tomcat%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AA%97%E5%8F%A3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/"/>
+    <id>https://tulingrui.github.io/main/2019/07/24/Tomcat命令行窗口中文乱码/</id>
+    <published>2019-07-24T02:18:20.000Z</published>
+    <updated>2019-07-24T02:18:22.364Z</updated>
+    
+    <content type="html"><![CDATA[<p>##Tomcat命令行窗口中文乱码</p><p>新下的Tomcat打开之后中文都乱码了 虽然不影响但看着烦</p><p>打开 conf 目录下 logging.properties 文件</p><p>找到 java.util.logging.ConsoleHandler.encoding 改成GBK</p><p>如果没有就添加这行</p><pre><code>java.util.logging.ConsoleHandler.encoding = GBK</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;##Tomcat命令行窗口中文乱码&lt;/p&gt;
+&lt;p&gt;新下的Tomcat打开之后中文都乱码了 虽然不影响但看着烦&lt;/p&gt;
+&lt;p&gt;打开 conf 目录下 logging.properties 文件&lt;/p&gt;
+&lt;p&gt;找到 java.util.logging.ConsoleHandle
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://tulingrui.github.io/main/categories/Java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>jquery.print打印预览空白无打印内容</title>
+    <link href="https://tulingrui.github.io/main/2019/07/23/jquery.print%E6%89%93%E5%8D%B0%E9%A2%84%E8%A7%88%E7%A9%BA%E7%99%BD/"/>
+    <id>https://tulingrui.github.io/main/2019/07/23/jquery.print打印预览空白/</id>
+    <published>2019-07-23T06:10:39.000Z</published>
+    <updated>2019-07-23T06:11:31.342Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="jquery-print打印预览空白无打印内容"><a href="#jquery-print打印预览空白无打印内容" class="headerlink" title="jquery.print打印预览空白无打印内容"></a>jquery.print打印预览空白无打印内容</h2><p>环境：Chrome浏览器</p><p>在打印时偶尔会出现一片空白无打印内容的情况</p><p>搜了很多 大部分都是说 改源码、延时加载等</p><p>或者加上open方法</p><pre><code>var doc = iframe.contentWindow.document;//↓新加的doc.open();</code></pre><p>但也还是出现空白的情况</p><p>最后我发现 在HTML的头部加上</p><pre><code>&lt;meta http-equiv=&quot;Access-Control-Allow-Origin&quot; content=&quot;*&quot;&gt;</code></pre><p>就解决了这个问题，但这个标签是解决跨域用的 可能是浏览器的打印功能与页面之间存在跨域…? 但也不是每次都会出现空白内容 8知道怎么回事了</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;jquery-print打印预览空白无打印内容&quot;&gt;&lt;a href=&quot;#jquery-print打印预览空白无打印内容&quot; class=&quot;headerlink&quot; title=&quot;jquery.print打印预览空白无打印内容&quot;&gt;&lt;/a&gt;jquery.print打印预览空
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="https://tulingrui.github.io/main/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>channel is already closed due to channel error; protocol method</title>
@@ -260,6 +332,33 @@ at java.net.SocketInpu
   </entry>
   
   <entry>
+    <title>线上服务器CPU满载问题排查</title>
+    <link href="https://tulingrui.github.io/main/2019/05/14/%E7%BA%BF%E4%B8%8A%E6%9C%8D%E5%8A%A1%E5%99%A8CPU%E6%BB%A1%E8%BD%BD%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/"/>
+    <id>https://tulingrui.github.io/main/2019/05/14/线上服务器CPU满载问题排查/</id>
+    <published>2019-05-14T08:49:17.000Z</published>
+    <updated>2019-07-24T02:07:04.713Z</updated>
+    
+    <content type="html"><![CDATA[<p>##线上服务器CPU满载问题排查</p><p>网站突然变得特别慢，打开登录页面都要等一会</p><p>上服务器看一下，连服务器就等了很久 连上之后就看到CPU100%了</p><p>任务管理器看了一下占用最高的tomcat的PID，</p><p>然后把进程快照导出</p><pre><code>jstack -l 6004 &gt; c:/6004.stack  </code></pre><p>然后用微软提供的Process Explorer v15.3 查看进程</p><blockquote><p><a href="https://docs.microsoft.com/zh-cn/sysinternals/downloads/process-explorer" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/sysinternals/downloads/process-explorer</a></p></blockquote><p>打开之后右键需要查看的进程 -&gt; properties</p><p>然后选择Threads 就能看到占用CPU最高的线程了 </p><p>复制下TID 然后转换成16进制</p><p>再打开刚刚导出的进程的快照，搜16进制后的TID，就可以看到具体的原因了</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;##线上服务器CPU满载问题排查&lt;/p&gt;
+&lt;p&gt;网站突然变得特别慢，打开登录页面都要等一会&lt;/p&gt;
+&lt;p&gt;上服务器看一下，连服务器就等了很久 连上之后就看到CPU100%了&lt;/p&gt;
+&lt;p&gt;任务管理器看了一下占用最高的tomcat的PID，&lt;/p&gt;
+&lt;p&gt;然后把进程快照导出&lt;
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://tulingrui.github.io/main/categories/Java/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>记一个初试WebSocket遇到的问题</title>
     <link href="https://tulingrui.github.io/main/2019/05/07/%E8%AE%B0%E4%B8%80%E4%B8%AA%E5%88%9D%E8%AF%95WebSocket%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>https://tulingrui.github.io/main/2019/05/07/记一个初试WebSocket遇到的问题/</id>
@@ -402,98 +501,6 @@ at java.net.SocketInpu
     </summary>
     
       <category term="IDE" scheme="https://tulingrui.github.io/main/categories/IDE/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>基于Socks5协议的代理服务搭建突破网络限制</title>
-    <link href="https://tulingrui.github.io/main/2018/12/10/%E5%9F%BA%E4%BA%8ESocks5%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA%E7%AA%81%E7%A0%B4%E7%BD%91%E7%BB%9C%E9%99%90%E5%88%B6/"/>
-    <id>https://tulingrui.github.io/main/2018/12/10/基于Socks5协议的代理服务搭建突破网络限制/</id>
-    <published>2018-12-10T02:12:01.000Z</published>
-    <updated>2019-06-10T06:59:54.579Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="基于Socks5协议的代理服务搭建突破网络限制"><a href="#基于Socks5协议的代理服务搭建突破网络限制" class="headerlink" title="基于Socks5协议的代理服务搭建突破网络限制"></a>基于Socks5协议的代理服务搭建突破网络限制</h2><p>操作系统 - Windows</p><p>首先 需要有 nodeJs</p><p>然后安装1下<strong>服务端</strong></p><blockquote><p>npm install -g shadowsocks</p></blockquote><p>安装完之后打开安装目录 举个栗子：</p><blockquote><p>C:\Users\DELL\AppData\Roaming\npm\node_modules\shadowsocks</p></blockquote><p>打开 config.json文件 开始配置</p><pre><code>{&quot;server&quot;:&quot;你服务器的IP&quot;,&quot;server_port&quot;:8081,&quot;local_address&quot;:&quot;127.0.0.1&quot;,&quot;local_port&quot;:1080,&quot;password&quot;:&quot;Tulingrui321.!&quot;,&quot;timeout&quot;:600,&quot;method&quot;:&quot;aes-256-cfb&quot;}</code></pre><blockquote><p>server : 你服务器的IP</p><p>server_port : 对外的服务访问端口</p><p>local_port : 本地端口</p><p>password : 密码</p><p>method : 加密方式</p></blockquote><p>保存  然后 cmd，输 ssserver 回车 启动了</p><hr><p><strong>客户端下载地址</strong> </p><blockquote><p><a href="https://github.com/shadowsocksr-backup/shadowsocksr-csharp/releases" target="_blank" rel="noopener">https://github.com/shadowsocksr-backup/shadowsocksr-csharp/releases</a></p></blockquote><p>客户端配置</p><p>加密方式 - aes-256-cfb</p><p>协议 - origin</p><p>混淆 - plain</p><p>全局代理 OK 一些网站可以访问了</p><p>这时发现我的网易云音乐也被限制了</p><p>首先 打开IE </p><p>Internet选项 &gt; 连接 &gt; 局域网设置</p><p>勾选为LAN使用代理服务器 </p><p>取消勾选 对于本地地址不使用代理服务器</p><p>地址：127.0.0.1</p><p>端口：1080</p><p>确定 </p><p>网易云音乐中可以设置代理</p><p>选择 【使用IE代理设置】确定后重新打开网易云音乐 OK了</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;基于Socks5协议的代理服务搭建突破网络限制&quot;&gt;&lt;a href=&quot;#基于Socks5协议的代理服务搭建突破网络限制&quot; class=&quot;headerlink&quot; title=&quot;基于Socks5协议的代理服务搭建突破网络限制&quot;&gt;&lt;/a&gt;基于Socks5协议的代理服务搭建
-      
-    
-    </summary>
-    
-      <category term="其他" scheme="https://tulingrui.github.io/main/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>简单的nginx搭建负载均衡与根据URL关键字转发服务</title>
-    <link href="https://tulingrui.github.io/main/2018/12/06/%E7%AE%80%E5%8D%95%E7%9A%84nginx%E6%90%AD%E5%BB%BA%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%8E%E6%A0%B9%E6%8D%AEURL%E5%85%B3%E9%94%AE%E5%AD%97%E8%BD%AC%E5%8F%91%E6%9C%8D%E5%8A%A1/"/>
-    <id>https://tulingrui.github.io/main/2018/12/06/简单的nginx搭建负载均衡与根据URL关键字转发服务/</id>
-    <published>2018-12-06T07:43:21.000Z</published>
-    <updated>2019-06-10T07:00:09.467Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="简单的nginx搭建负载均衡与根据URL关键字转发服务"><a href="#简单的nginx搭建负载均衡与根据URL关键字转发服务" class="headerlink" title="简单的nginx搭建负载均衡与根据URL关键字转发服务"></a>简单的nginx搭建负载均衡与根据URL关键字转发服务</h2><p>项目要做前后端分离</p><p>后端服务要做负载均衡</p><p>本地先试1下 start</p><p>首先</p><p>写两个集群 </p><pre><code>upstream hd_cloud {  #后端服务集群名字       serverlocalhost:9091  weight=1;    serverlocalhost:9092  weight=1;    serverlocalhost:9093  weight=1;    serverlocalhost:9094  weight=1;}upstream hd_client{  #前端服务集群名字       serverlocalhost:8081;}</code></pre><p>weight是权重的意思，权重越大，分配的概率越大。</p><p>然后是 配置server</p><pre><code>listen 80;server_name  localhost;location ~/action {    proxy_pass http://hd_cloud;  #后端集群的名 上面写的 upstream hd_cloud    proxy_connect_timeout 1; #连接超时时间    index  index.html index.htm;}location / {    proxy_pass http://hd_client; #前端集群的名     proxy_connect_timeout 1; #连接超时时间    index  index.html index.htm;}</code></pre><p>location ~/action 匹配路径如果访问路径中包含action 就访问后端服务</p><p>location / 表示通用匹配</p><p>“~” 开头表示区分大小写的正则匹配</p><p>“~*” 开头表示不区分大小写的正则匹配</p><p>“/“ 通用匹配，任何请求都会匹配到</p><p>还有其他的规则不列举了 </p><p>nginx的匹配顺序是 先匹配正则 再匹配普通</p><p>服务启动 试1下 可以了。</p><p>nginx的关闭与重新载入配置信息</p><pre><code>退出nginx.exe -s quit  重新载入配置信息nginx.exe -s reload  </code></pre><p>写个bat文件放在nginx目录中方便一些</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;简单的nginx搭建负载均衡与根据URL关键字转发服务&quot;&gt;&lt;a href=&quot;#简单的nginx搭建负载均衡与根据URL关键字转发服务&quot; class=&quot;headerlink&quot; title=&quot;简单的nginx搭建负载均衡与根据URL关键字转发服务&quot;&gt;&lt;/a&gt;简单的ng
-      
-    
-    </summary>
-    
-      <category term="其他" scheme="https://tulingrui.github.io/main/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Jenkins+Maven+SVN+Tomcat搭建自动部署工具</title>
-    <link href="https://tulingrui.github.io/main/2018/11/26/Jenkins+Maven+SVN+Tomcat%E6%90%AD%E5%BB%BA%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/"/>
-    <id>https://tulingrui.github.io/main/2018/11/26/Jenkins+Maven+SVN+Tomcat搭建自动部署工具/</id>
-    <published>2018-11-26T12:51:05.000Z</published>
-    <updated>2019-06-10T07:00:57.076Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Jenkins-Maven-SVN-Tomcat搭建自动部署工具"><a href="#Jenkins-Maven-SVN-Tomcat搭建自动部署工具" class="headerlink" title="Jenkins+Maven+SVN+Tomcat搭建自动部署工具"></a>Jenkins+Maven+SVN+Tomcat搭建自动部署工具</h2><p>项目更新比较频繁，每次都要上服务器 复制 粘贴 重启 很烦 </p><p>百度了1下 Jenkins/Maven/SVN/Tomcat 嗯 开搞8 </p><p>首先准备好 Maven、SVN、Tomcat（还有环境变量什么的）</p><p>Jenkins 下载地址 ↓</p><blockquote><p> <a href="https://jenkins.io/download/" target="_blank" rel="noopener">https://jenkins.io/download/</a></p></blockquote><p>我是放Tomcat下，下的是war包 (Generic Java package)</p><p>下载好把它复制到 tomcat 的 webapps 文件夹中</p><p>启动1下 Tomcat ，可以访问了 http:/localhost:8080/jenkins/</p><p>Jenkins初始化页面会提示你输入密码， 按提示路径打开密码文件，输入密码确定</p><hr><p>记点重要的</p><p>先进入<strong>插件管理</strong>安装必需的插件</p><ol><li>Build Timeout</li><li>Deploy to container Plugin</li><li>Email Extension Plugin</li><li>Gradle Plugin</li><li>LDAP Plugin</li><li>Matrix Authorization Strategy Plugin</li><li>OWASP Markup Formatter Plugin</li><li>Pipeline</li><li>Pipeline Maven Integration Plugin</li><li>.Publish Over SSH</li><li>SSH plugin</li><li>SSH Slaves plugin</li><li>Subversion Plug-in</li><li>Timestamper</li><li>Workspace Cleanup Plugin</li></ol><p>安装完重启1下Tomcat</p><p>接下来 <strong>系统设置</strong></p><p>设置编码全局属性  </p><blockquote><p>Name : LANG</p><p>Value : zh_CN UTF-8</p></blockquote><p>增加系统管理员邮件地址</p><blockquote><p>Jenkins Location ：</p><p>Jenkins URL - Jenkins的访问地址  <a href="http://localhost:8080/jenkins" target="_blank" rel="noopener">http://localhost:8080/jenkins</a></p><p>System Admin e-mail address  <a href="mailto:youEmail@qq.com" target="_blank" rel="noopener">youEmail@qq.com</a></p></blockquote><p>其他暂时先默认的</p><hr><p>然后是 添加全局工具配置 <strong>Global ToolConfiguration</strong></p><p>将JDK取消自动安装 把本机的JDK路径填上(例：E:\Java\jdk1.8.0_171)</p><p>Maven也一样取消自动安装，将本机的Maven路径填上(例：D:\apache-maven-3.5.4)</p><p>接着 可以开始一个任务了 - New任务</p><p>构建一个自由风格的软件项目或者根据需要选类型</p><p>新建完在左侧可以看到1些按钮，接下来可以配置（Configure）项目了</p><p>General配置</p><blockquote><p>Description - 项目介绍</p><p>Days to keep builds - 保持构造的天数 （我设置的 30）</p><p>Max # of builds to keep -保持构造的最大个数 （100）</p></blockquote><p>然后是 代码管理(Source Code Management) 也就是 设置你项目的SVN地址</p><blockquote><p>Repository URL 输入你SVN的地址 </p><p>点添加 输你SVN的账号密码</p></blockquote><p>还可以配置构建触发器（Build Triggers），但后来用不到就没配置了</p><p>然后是构造 （Build Environment）</p><blockquote><p>勾选 构造之前删除工作空间 (Delete workspace before build starts) </p><p>Maven Version ：maven-3.5.4</p><p>Goals ：clean install</p><p>POM :pom.xml</p></blockquote><hr><p>接着是构造后的操作 (Post-build Actions)</p><blockquote><p>WAR/EAR files - 指的是你构造工作空间的目录</p><p>我的是 C:\Users\DELL.jenkins\workspace\target\manageTool.war</p><p>那么 填 target/manageTool.war 就可以了</p><p>Context path - 是配置项目访问路径</p><p>如填 /manageTool 项目根访问目录就是：<a href="http://localhost:8080/manageTool" target="_blank" rel="noopener">http://localhost:8080/manageTool</a></p><p>Add Container 选你对应的Tomcat版本， add 添加你Tomcat的账号密码与Tomcat地址 </p></blockquote><p>Tomcat的用户配置 在 conf 下的 tomcat-users.xml 文件中</p><p>例：</p><pre><code>&lt;tomcat-users&gt;    &lt;role rolename=&quot;manager-gui&quot;/&gt;    &lt;role rolename=&quot;manager-script&quot;/&gt; &lt;user username=&quot;admin&quot; password=&quot;admin&quot; roles=&quot;manager-gui,manager-script&quot;/&gt;&lt;/tomcat-users&gt; </code></pre><p>密码要复杂点阿</p><p>最后保存，回到Jenkins保存 - 左面列表 &gt; 立即构建 ok了</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;Jenkins-Maven-SVN-Tomcat搭建自动部署工具&quot;&gt;&lt;a href=&quot;#Jenkins-Maven-SVN-Tomcat搭建自动部署工具&quot; class=&quot;headerlink&quot; title=&quot;Jenkins+Maven+SVN+Tomcat搭建自动
-      
-    
-    </summary>
-    
-      <category term="其他" scheme="https://tulingrui.github.io/main/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>高德地图中行政区划的坑</title>
-    <link href="https://tulingrui.github.io/main/2018/10/12/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E4%B8%AD%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92%E7%9A%84%E5%9D%91/"/>
-    <id>https://tulingrui.github.io/main/2018/10/12/高德地图中行政区划的坑/</id>
-    <published>2018-10-12T02:27:51.000Z</published>
-    <updated>2019-06-10T06:59:42.226Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="高德地图中行政区划的坑"><a href="#高德地图中行政区划的坑" class="headerlink" title="高德地图中行政区划的坑"></a>高德地图中行政区划的坑</h2><p>在查询所有行政区划代码时发现高德把县级以下的单位也加了进去 </p><p>但所属的行政区划代码 和上级市级的行政区划代码是一样的 </p><p>例：</p><pre><code>行政区划 上级号码 单位名称429006  420000   天门市429006  429006   胡市镇429006  429006   多祥镇</code></pre><p>最后只能把这些重新自定义号码了</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;高德地图中行政区划的坑&quot;&gt;&lt;a href=&quot;#高德地图中行政区划的坑&quot; class=&quot;headerlink&quot; title=&quot;高德地图中行政区划的坑&quot;&gt;&lt;/a&gt;高德地图中行政区划的坑&lt;/h2&gt;&lt;p&gt;在查询所有行政区划代码时发现高德把县级以下的单位也加了进去 &lt;/p&gt;
-      
-    
-    </summary>
-    
-      <category term="其他" scheme="https://tulingrui.github.io/main/categories/%E5%85%B6%E4%BB%96/"/>
     
     
   </entry>
